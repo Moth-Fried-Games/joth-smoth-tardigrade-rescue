@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 GameGlobals="*res://scripts/globals/game_globals.gd"
 UiMain="*res://scripts/globals/ui_main.gd"
@@ -29,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SimpleDungeons/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/editor-scripts/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
+enabled=PackedStringArray("res://addons/SimpleDungeons/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg", "res://addons/editor-scripts/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
 
 [input]
 
