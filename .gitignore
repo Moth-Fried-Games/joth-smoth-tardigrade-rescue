@@ -1,5 +1,9 @@
+# Game Build ignores
+builds/
+
 # Godot 4+ specific ignores
 .godot/
+/android/
 
 # Godot-specific ignores
 .import/
@@ -13,3 +17,8 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Windows ignores
+desktop.ini
+addons/godotsteam/win64/~godotsteam.debug.x86_64.dll
+addons/godotsteam/win64/~libgodotsteam.windows.template_debug.x86_64.dll

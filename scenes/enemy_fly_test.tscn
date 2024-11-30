@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://sjvu3pfum0ou"]
+
+[ext_resource type="Script" path="res://scripts/enemy_fly_test.gd" id="1_glh4g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hvwqa"]
+
+[sub_resource type="Gradient" id="Gradient_78wca"]
+offsets = PackedFloat32Array(0, 0.9, 0.99, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5skfs"]
+gradient = SubResource("Gradient_78wca")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Enemy Fly" type="CharacterBody3D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_glh4g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_hvwqa")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="PlaceholderSprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 2
+alpha_cut = 2
+texture = SubResource("GradientTexture2D_5skfs")
+
+[node name="MeleeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
