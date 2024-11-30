@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt58ok2qwcjln"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui_transitions.gd" id="1_0bwdo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oua5h"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcti1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7426f"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="UITransitions" type="CanvasLayer"]
+script = ExtResource("1_0bwdo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingVBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -32.5
+offset_right = 54.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/LoadingVBoxContainer"]
+layout_mode = 2
+text = "LOADING"
+label_settings = SubResource("LabelSettings_oua5h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/LoadingVBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_bcti1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7426f")
+show_percentage = false
+indeterminate = true
+editor_preview_indeterminate = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

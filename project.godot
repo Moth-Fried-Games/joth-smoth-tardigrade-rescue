@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Moth Project 3"
+config/name="7dfps 2024"
 run/main_scene="res://scenes/world_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 GameGlobals="*res://scripts/globals/game_globals.gd"
+UiMain="*res://scripts/globals/ui_main.gd"
 
 [display]
 
@@ -28,7 +29,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SimpleDungeons/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/editor-scripts/plugin.cfg")
+enabled=PackedStringArray("res://addons/SimpleDungeons/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/editor-scripts/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
 
 [input]
 

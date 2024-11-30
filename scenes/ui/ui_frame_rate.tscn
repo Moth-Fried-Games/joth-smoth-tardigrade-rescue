@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwa6h68gp3cra"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui_frame_rate.gd" id="1_ejxet"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ikx0"]
+font_size = 12
+font_color = Color(0, 0.5, 0, 1)
+outline_size = 5
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[node name="UIFrameRate" type="CanvasLayer"]
+script = ExtResource("1_ejxet")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 35.0
+grow_horizontal = 0
+text = "0 FPS"
+label_settings = SubResource("LabelSettings_8ikx0")
+horizontal_alignment = 2
