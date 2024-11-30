@@ -2,7 +2,7 @@ extends Node
 class_name GameSettings
 
 var display_mode: DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
-var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_DISABLED
+var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
 var frame_rate_cap: int = 0
 var show_fps: bool = true
 var crt_filter: bool = true
@@ -93,4 +93,3 @@ func update_sound_volume(new_sound_volume: float) -> void:
 func update_ui_volume(new_ui_volume: float) -> void:
 	ui_volume = new_ui_volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI"), linear_to_db(ui_volume))
-
