@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/world_test.gd" id="1_2u64q"]
 [ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player_test.tscn" id="1_8nv5v"]
-[ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemy_test.tscn" id="3_qmsji"]
-[ext_resource type="PackedScene" uid="uid://sjvu3pfum0ou" path="res://scenes/enemy_fly_test.tscn" id="4_llnvl"]
+[ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemies/enemy_test.tscn" id="3_qmsji"]
+[ext_resource type="PackedScene" uid="uid://sjvu3pfum0ou" path="res://scenes/enemies/enemy_fly_test.tscn" id="4_llnvl"]
 
 [sub_resource type="Environment" id="Environment_kp4ou"]
 glow_enabled = true
