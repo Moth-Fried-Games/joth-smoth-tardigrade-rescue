@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 6.0
 const JUMP_VELOCITY = 4.5
 
@@ -21,8 +20,8 @@ func _ready() -> void:
 	if not is_in_group("enemies"):
 		add_to_group("enemies")
 
+
 func _physics_process(delta: float) -> void:
-	
 	# Melee Player if close.
 	if ray_cast_3d.is_colliding():
 		var collided_with := ray_cast_3d.get_collider()
@@ -32,11 +31,15 @@ func _physics_process(delta: float) -> void:
 				player_node.hurt_screen()
 
 	# Make sprite look at camera.
-	placeholder_sprite_3d.look_at(camera_node.global_transform.origin,Vector3(0,1,0))
+	placeholder_sprite_3d.look_at(camera_node.global_transform.origin, Vector3(0, 1, 0))
 	if player_node.wish_crouch:
-		ray_cast_3d.look_at(player_node.global_transform.origin+Vector3(0,0.5,0),Vector3(0,1,0))
+		ray_cast_3d.look_at(
+			player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
+		)
 	else:
-		ray_cast_3d.look_at(player_node.global_transform.origin+Vector3(0,1,0),Vector3(0,1,0))
+		ray_cast_3d.look_at(
+			player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
+		)
 
 	# Add the gravity.
 	if not is_on_floor():
