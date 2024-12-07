@@ -181,6 +181,125 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b7ftg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Stage/Ramp/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3qn58")
 
+[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+navigation_mesh = SubResource("NavigationMesh_0prut")
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D2"]
+start_position = Vector3(0, 1.6, -11.4)
+end_position = Vector3(0, 0.9, -12.6)
+
+[node name="Stage" type="Node3D" parent="NavigationRegion3D2"]
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+mesh = SubResource("BoxMesh_ujw1f")
+surface_material_override/0 = SubResource("StandardMaterial3D_tgydq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_0lyxm")
+
+[node name="Box" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -5)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box5" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -17.6, 4.2, 0.2)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box5/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box6" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, -17.1, 7.2, 0.1)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box6/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box3" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -17.1, 5.67, 1.6)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box3/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box4" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -17.1, 5.7, -1.4)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box4/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box7" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, -18.9, 6.2, 0.1)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box7/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box8" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -18.9, 5.67, 1.6)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box8/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box9" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -18.9, 5.7, -1.4)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box9/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Box2" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 5, 2.5, -5)
+mesh = SubResource("BoxMesh_jk82s")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2n61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Box2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Box2/StaticBody3D"]
+shape = SubResource("BoxShape3D_drsnm")
+
+[node name="Ramp" type="MeshInstance3D" parent="NavigationRegion3D2/Stage"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -11)
+mesh = SubResource("PrismMesh_l2d6l")
+surface_material_override/0 = SubResource("StandardMaterial3D_b7ftg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Stage/Ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Ramp/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3qn58")
+
 [node name="Player" parent="." instance=ExtResource("1_8nv5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 

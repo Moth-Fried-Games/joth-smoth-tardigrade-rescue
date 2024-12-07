@@ -32,6 +32,12 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/SimpleDungeons/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg", "res://addons/editor-scripts/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
 
+[importer_defaults]
+
+texture={
+"mipmaps/generate": true
+}
+
 [input]
 
 move_forward={
