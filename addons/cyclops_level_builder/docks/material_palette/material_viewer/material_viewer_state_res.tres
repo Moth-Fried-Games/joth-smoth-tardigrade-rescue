@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_3sifp")
+<<<<<<< HEAD
 active_material_path = "res://addons/cyclops_level_builder/materials/grid.tres"
+=======
+active_material_path = "res://assets/materials/7dfps_texture_test.tres"
+>>>>>>> main
