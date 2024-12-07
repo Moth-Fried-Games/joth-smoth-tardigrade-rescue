@@ -1,22 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://tnuqejnj1a8b"]
+[gd_scene load_steps=6 format=3 uid="uid://tnuqejnj1a8b"]
 
 [ext_resource type="Script" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="1_sc1qo"]
-[ext_resource type="PackedScene" uid="uid://p0pnjftk0uda" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/bridge_room.tscn" id="2_s5ttd"]
 [ext_resource type="PackedScene" uid="uid://cf13frjr2u0oe" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/entrance_room.tscn" id="3_nm834"]
-[ext_resource type="PackedScene" uid="uid://b6t2tduxk8tfn" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/living_room.tscn" id="4_mi05s"]
+[ext_resource type="PackedScene" uid="uid://bsvhllycm8t4i" path="res://addons/SimpleDungeons/sample_dungeons/terrarium/corridor.tscn" id="4_42qr3"]
 [ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player_test.tscn" id="5_4jcvb"]
-[ext_resource type="PackedScene" uid="uid://b0m7fmmvtfcnk" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/spike_hallway.tscn" id="5_rjx4x"]
-[ext_resource type="PackedScene" uid="uid://c5lo6wkhhg76p" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/stair.tscn" id="6_bl706"]
-[ext_resource type="PackedScene" uid="uid://bicoj8112x1ra" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/trap_room.tscn" id="7_b5eag"]
-[ext_resource type="PackedScene" uid="uid://b1c7nsr0vdiq" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/treasure_room.tscn" id="8_w5j6o"]
-[ext_resource type="PackedScene" uid="uid://dvdly7xo8rxig" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/corridor.tscn" id="9_pj645"]
 
 [sub_resource type="Environment" id="Environment_u60y3"]
 
 [node name="DungeonGenerator3D" type="Node3D"]
 script = ExtResource("1_sc1qo")
-room_scenes = Array[PackedScene]([ExtResource("2_s5ttd"), ExtResource("3_nm834"), ExtResource("4_mi05s"), ExtResource("5_rjx4x"), ExtResource("6_bl706"), ExtResource("7_b5eag"), ExtResource("8_w5j6o")])
-corridor_room_scene = ExtResource("9_pj645")
+corridor_room_scene = ExtResource("4_42qr3")
 max_retries = 5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

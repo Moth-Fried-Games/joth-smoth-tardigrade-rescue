@@ -8,6 +8,8 @@ var ui_transitions: UITransitions = (
 	preload("res://scenes/ui/ui_transitions.tscn").instantiate()
 )
 
+var ui_player: UIPlayer = preload("res://scenes/ui/ui_player.tscn").instantiate()
+
 func _ready() -> void:
 	layer = 128
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -17,3 +19,6 @@ func _ready() -> void:
 
 	ui_transitions.layer = 98
 	add_child(ui_transitions)
+	
+	ui_player.layer = 97
+	add_child(ui_player)

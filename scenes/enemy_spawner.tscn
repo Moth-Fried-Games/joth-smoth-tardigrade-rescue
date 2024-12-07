@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbwrgkhx2gujr"]
+
+[ext_resource type="Script" path="res://scenes/enemy_spawner.gd" id="1_0jkbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dgru"]
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="TextMesh" id="TextMesh_4s0b2"]
+material = SubResource("StandardMaterial3D_8dgru")
+text = "Enemy Spawner"
+depth = 0.0
+width = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0cd2l"]
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_0jkbo")
+
+[node name="TextMeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+mesh = SubResource("TextMesh_4s0b2")
+
+[node name="BodyMeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_0cd2l")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true

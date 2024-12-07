@@ -1,0 +1,311 @@
+[gd_scene load_steps=16 format=3 uid="uid://cq65futumwc7q"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
+
+[sub_resource type="Gradient" id="Gradient_e546u"]
+offsets = PackedFloat32Array(0, 0.3, 0.8, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gfp42"]
+gradient = SubResource("Gradient_e546u")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_b3m2f"]
+colors = PackedColorArray(1, 0, 0, 1, 0.501961, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ve8k"]
+gradient = SubResource("Gradient_b3m2f")
+width = 1200
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_tpsas"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bsbvy"]
+gradient = SubResource("Gradient_tpsas")
+width = 100
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_fdqre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.610865]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.610865]
+}
+
+[sub_resource type="Animation" id="Animation_2o6m2"]
+resource_name = "shoot"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunLeft:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.436332, 0.610865]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"gun_check"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ij8s0"]
+resource_name = "shoot_right"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunRight:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.436332, -0.610865]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"gun_check"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umrd6"]
+_data = {
+"RESET": SubResource("Animation_fdqre"),
+"shoot_left": SubResource("Animation_2o6m2"),
+"shoot_right": SubResource("Animation_ij8s0")
+}
+
+[sub_resource type="Animation" id="Animation_moc4t"]
+resource_name = "punch_left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PunchLeft:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(180, 600), Vector2(212, 568), Vector2(180, 600)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"punch_check"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vmpfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PunchLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(180, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PunchRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1100, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_g0to4"]
+resource_name = "punch_right"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PunchRight:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1100, 600), Vector2(1068, 568), Vector2(1100, 600)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"punch_check"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_so6ox"]
+_data = {
+"RESET": SubResource("Animation_vmpfp"),
+"punch_left": SubResource("Animation_moc4t"),
+"punch_right": SubResource("Animation_g0to4")
+}
+
+[node name="UIPlayer" type="CanvasLayer"]
+script = ExtResource("1_ut2mg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrosshairTextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_gfp42")
+
+[node name="StressTextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 20.0
+offset_right = 600.0
+offset_bottom = 36.0
+grow_horizontal = 2
+step = 0.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_5ve8k")
+
+[node name="Weapons" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PunchLeft" type="Sprite2D" parent="Control/Weapons"]
+position = Vector2(180, 600)
+rotation = 0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="PunchRight" type="Sprite2D" parent="Control/Weapons"]
+position = Vector2(1100, 600)
+rotation = -0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="GunLeft" type="Sprite2D" parent="Control/Weapons"]
+position = Vector2(360, 700)
+rotation = 0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="GunRight" type="Sprite2D" parent="Control/Weapons"]
+position = Vector2(920, 700)
+rotation = -0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="GunsAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
+libraries = {
+"": SubResource("AnimationLibrary_umrd6")
+}
+
+[node name="PunchesAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
+libraries = {
+"": SubResource("AnimationLibrary_so6ox")
+}
+
+[node name="Petting" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcs8dhiyq2odr"]
+
+[ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_054ho"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvcdu"]
+radius = 0.125
+
+[sub_resource type="Gradient" id="Gradient_ij6sf"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e7hmq"]
+gradient = SubResource("Gradient_ij6sf")
+width = 25
+height = 25
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Curve" id="Curve_17g76"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2vrs6"]
+curve = SubResource("Curve_17g76")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_18oyj"]
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_2vrs6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va2qk"]
+transparency = 4
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_e7hmq")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vwudo"]
+material = SubResource("StandardMaterial3D_va2qk")
+size = Vector2(0.25, 0.25)
+
+[node name="EnemyBulletArea3D" type="Area3D"]
+script = ExtResource("1_054ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_rvcdu")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+alpha_cut = 2
+texture = SubResource("GradientTexture2D_e7hmq")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Sprite3D"]
+amount = 10
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_18oyj")
+draw_pass_1 = SubResource("QuadMesh_vwudo")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true

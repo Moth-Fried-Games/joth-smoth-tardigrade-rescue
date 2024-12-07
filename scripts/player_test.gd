@@ -38,14 +38,15 @@ var dive_distance: Vector3 = Vector3()
 @onready var dash_timer: Timer = $DashTimer
 @onready var stairs_down_ray_cast_3d: RayCast3D = $StairsDownRayCast3D
 @onready var stairs_up_ray_cast_3d: RayCast3D = $StairsUpRayCast3D
+@onready var melee_area_3d: Area3D = $HeadNode3D/MeleeArea3D
+@onready var left_bullet_marker_3d: Marker3D = $HeadNode3D/LeftBulletMarker3D
+@onready var right_bullet_marker_3d: Marker3D = $HeadNode3D/RightBulletMarker3D
+@onready var target_marker_3d: Marker3D = $HeadNode3D/TargetMarker3D
 
 var world_node: Node3D = null
 
 # UI
-@onready var ui_control: Control = $CanvasLayer/Control
-@onready var ui_color_rect: ColorRect = $CanvasLayer/Control/ColorRect
-@onready var ui_texture_rect: TextureRect = $CanvasLayer/Control/TextureRect
-
+var ui_player: UIPlayer = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -56,6 +57,8 @@ func _ready() -> void:
 		world_node.camera_node = camera_3d
 	if not is_in_group("players"):
 		add_to_group("players")
+	ui_player = UiMain.ui_player
+	ui_player.player_node = self
 
 
 func _input(event):
@@ -81,19 +84,39 @@ func _handle_camera_rotation(event: InputEvent):
 	head_node_3d.rotation.x = clamp(head_node_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 
-func hurt_screen() -> void:
-	ui_color_rect.color.a = 1
+func process_hit() -> void:
+	UiMain.ui_player.increase_stress(1)
+	#ui_color_rect.color.a = 1
 
+func gun_check(gun_side: bool) -> void:
+	var player_bullet = GameGlobals.player_bullet.instantiate()
+	if gun_side:
+		player_bullet.direction = right_bullet_marker_3d.global_position.direction_to(target_marker_3d.global_position)
+		player_bullet.starting_position = right_bullet_marker_3d.global_position
+	else:
+		player_bullet.direction = left_bullet_marker_3d.global_position.direction_to(target_marker_3d.global_position)
+		player_bullet.starting_position = left_bullet_marker_3d.global_position
+	world_node.add_child(player_bullet)
+	
+
+func punch_check() -> void:
+	if melee_area_3d.has_overlapping_bodies():
+		var bodies := melee_area_3d.get_overlapping_bodies()
+		if bodies.size() > 0:
+			for body in bodies:
+				if body.is_in_group("enemies"):
+					if not body.dead:
+						body.process_hit()
 
 func _physics_process(delta: float) -> void:
 	process_input(delta)
+	process_stress(delta)
 	process_movement(delta)
+	
+	#if ui_color_rect.color.a != 0.0:
+		#ui_color_rect.color.a = lerpf(ui_color_rect.color.a, 0, 0.25)
 
-	if ui_color_rect.color.a != 0.0:
-		ui_color_rect.color.a = lerpf(ui_color_rect.color.a, 0, 0.25)
-
-
-func process_input(delta: float):
+func process_input(delta: float) -> void:
 	direction = Vector3()
 
 	# Movement directions
@@ -134,9 +157,16 @@ func process_input(delta: float):
 				dive_attempt = true
 		if dive_attempt:
 			dive_window += delta
+	
+	if Input.is_action_pressed("action_shoot"):
+		ui_player.fire_guns()
+	if Input.is_action_pressed("action_punch"):
+		ui_player.throw_punch()
 
+func process_stress(delta: float) -> void:
+	UiMain.ui_player.increase_stress(delta)
 
-func process_movement(delta: float):
+func process_movement(delta: float) -> void:
 	# Get the normalized input direction so that we don't move faster on diagonals
 	var wish_dir: Vector3 = direction.normalized()
 

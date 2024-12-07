@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3pyy37xkklbi"]
+[gd_scene load_steps=6 format=3 uid="uid://d3pyy37xkklbi"]
 
 [ext_resource type="Script" path="res://scripts/player_test.gd" id="1_m5cep"]
 
@@ -16,17 +16,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="Gradient" id="Gradient_akulp"]
-offsets = PackedFloat32Array(0, 0.2, 0.8, 0.9, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4wxdm"]
-gradient = SubResource("Gradient_akulp")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="SphereShape3D" id="SphereShape3D_q8iyy"]
 
 [node name="Player" type="CharacterBody3D"]
 platform_on_leave = 2
@@ -59,41 +49,21 @@ spot_angle = 60.0
 
 [node name="Camera3D" type="Camera3D" parent="HeadNode3D"]
 
+[node name="LeftBulletMarker3D" type="Marker3D" parent="HeadNode3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.25, -1)
+
+[node name="RightBulletMarker3D" type="Marker3D" parent="HeadNode3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.25, -1)
+
+[node name="TargetMarker3D" type="Marker3D" parent="HeadNode3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
+[node name="MeleeArea3D" type="Area3D" parent="HeadNode3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadNode3D/MeleeArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
+shape = SubResource("SphereShape3D_q8iyy")
+
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0, 0, 0.5)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(16, 16)
-texture = SubResource("GradientTexture2D_4wxdm")

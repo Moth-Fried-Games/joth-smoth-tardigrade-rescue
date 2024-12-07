@@ -24,9 +24,13 @@ script = ExtResource("1_tdclj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_a0fj0")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="MeleeRayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 target_position = Vector3(0, 0, -1)
+
+[node name="RangeRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+target_position = Vector3(0, 0, -100)
 
 [node name="PlaceholderSprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -34,6 +38,17 @@ billboard = 2
 alpha_cut = 2
 texture = SubResource("GradientTexture2D_8jexa")
 
+[node name="BulletMarker3D" type="Marker3D" parent="PlaceholderSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.8)
+
+[node name="TelegraphTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="MeleeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="RangeTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
