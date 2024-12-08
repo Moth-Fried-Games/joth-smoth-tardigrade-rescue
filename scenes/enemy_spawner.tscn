@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbwrgkhx2gujr"]
 
-[ext_resource type="Script" path="res://scenes/enemy_spawner.gd" id="1_0jkbo"]
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_0jkbo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dgru"]
 shading_mode = 0

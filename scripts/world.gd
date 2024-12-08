@@ -10,6 +10,7 @@ var dungeon_ready: bool = false
 var rooms_list: Dictionary = {}
 var rooms_ready: bool = false
 var navigation_ready: bool = false
+var world_ready: bool = false
 
 
 func _ready() -> void:
@@ -28,11 +29,15 @@ func _process(delta: float) -> void:
 			for room in rooms_list.keys():
 				if not rooms_list[room]:
 					rooms_ready = false
+			if rooms_ready:
+				navigation_region_3d.bake_navigation_mesh()
+	if not world_ready:
+		if dungeon_ready and rooms_ready and navigation_ready:
+			world_ready = true
 
 
 func _on_dungeon_generator_3d_done_generating() -> void:
 	dungeon_ready = true
-	navigation_region_3d.bake_navigation_mesh()
 
 
 func _on_dungeon_generator_3d_generating_failed() -> void:

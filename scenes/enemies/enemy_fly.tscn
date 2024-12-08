@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://sjvu3pfum0ou"]
 
-[ext_resource type="Script" path="res://scripts/enemy_fly_test.gd" id="1_is0u8"]
+[ext_resource type="Script" path="res://scripts/enemy_fly.gd" id="1_is0u8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dg45j"]
 height = 1.0

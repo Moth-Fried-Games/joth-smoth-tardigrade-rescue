@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg6bem5ocftx0"]
 
-[ext_resource type="Script" path="res://scripts/enemy_test.gd" id="1_lxi6o"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_ixyqq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0fj0"]
 
@@ -18,7 +18,7 @@ fill_to = Vector2(0.5, 0)
 
 [node name="Enemy" type="CharacterBody3D"]
 wall_min_slide_angle = 0.0
-script = ExtResource("1_lxi6o")
+script = ExtResource("1_ixyqq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
