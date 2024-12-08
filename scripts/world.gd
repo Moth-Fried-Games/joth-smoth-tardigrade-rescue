@@ -7,6 +7,7 @@ var player_node: CharacterBody3D = null
 var camera_node: Camera3D = null
 
 var dungeon_ready: bool = false
+var rooms_list: Dictionary = {}
 var rooms_ready: bool = false
 var navigation_ready: bool = false
 
@@ -18,6 +19,15 @@ func _ready() -> void:
 		dungeon_generator_3d.done_generating.connect(_on_dungeon_generator_3d_done_generating)
 		dungeon_generator_3d.generating_failed.connect(_on_dungeon_generator_3d_generating_failed)
 		dungeon_generator_3d.generate()
+
+
+func _process(delta: float) -> void:
+	if dungeon_ready:
+		while not rooms_ready:
+			rooms_ready = true
+			for room in rooms_list.keys():
+				if not rooms_list[room]:
+					rooms_ready = false
 
 
 func _on_dungeon_generator_3d_done_generating() -> void:
@@ -32,3 +42,11 @@ func _on_dungeon_generator_3d_generating_failed() -> void:
 
 func _on_navigation_region_3d_bake_finished() -> void:
 	navigation_ready = true
+
+
+func add_room(room_path: String) -> void:
+	rooms_list[room_path] = false
+
+
+func finish_room(room_path: String) -> void:
+	rooms_list[room_path] = true

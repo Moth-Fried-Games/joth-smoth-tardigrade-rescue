@@ -20,12 +20,13 @@ script/source = "extends Node3D
 @onready var wall_r: Node3D = $RIGHT/WALL_R
 @onready var door__r: Node3D = $\"RIGHT/DOOR?_R\"
 
-
-var room_ready: bool = false
+var world_node: Node3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room.dungeon_done_generating.connect(setup_room)
+	world_node = get_tree().current_scene
+	world_node.add_room(get_path())
 
 func setup_room() -> void:
 	if room.get_door_by_node(door__f).get_room_leads_to() != null: 
@@ -44,6 +45,7 @@ func setup_room() -> void:
 		wall_r.queue_free()
 	else: 
 		door__r.queue_free()
+	world_node.finish_room(get_path())
 "
 
 [sub_resource type="Resource" id="Resource_p6d55"]
