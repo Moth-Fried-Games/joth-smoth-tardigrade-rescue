@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c76xn5stygcb0"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_w5epn"]
+[ext_resource type="Script" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="2_5wsjh"]
+
+[sub_resource type="Environment" id="Environment_jujls"]
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_r0pdg"]
+agent_height = 2.0
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_w5epn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jujls")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_r0pdg")
+
+[node name="DungeonGenerator3D" type="Node3D" parent="NavigationRegion3D"]
+script = ExtResource("2_5wsjh")
+dungeon_size = Vector3i(10, 6, 20)
+generate_on_ready = false
+max_retries = 3

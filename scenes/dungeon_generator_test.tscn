@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="1_sc1qo"]
 [ext_resource type="PackedScene" uid="uid://cf13frjr2u0oe" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/entrance_room.tscn" id="3_nm834"]
 [ext_resource type="PackedScene" uid="uid://bsvhllycm8t4i" path="res://addons/SimpleDungeons/sample_dungeons/terrarium/corridor.tscn" id="4_42qr3"]
-[ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player_test.tscn" id="5_4jcvb"]
+[ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player.tscn" id="5_4jcvb"]
 
 [sub_resource type="Environment" id="Environment_u60y3"]
 

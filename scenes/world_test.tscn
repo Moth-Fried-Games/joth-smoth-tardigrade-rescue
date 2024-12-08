@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://dg0mx11xpegnj"]
 
-[ext_resource type="Script" path="res://scripts/world_test.gd" id="1_2u64q"]
-[ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player_test.tscn" id="1_8nv5v"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_2u64q"]
+[ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player.tscn" id="1_8nv5v"]
 [ext_resource type="PackedScene" uid="uid://d1c5ker3gajbn" path="res://scenes/pet_pickup.tscn" id="3_0evou"]
-[ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemies/enemy_test.tscn" id="3_qmsji"]
-[ext_resource type="PackedScene" uid="uid://sjvu3pfum0ou" path="res://scenes/enemies/enemy_fly_test.tscn" id="4_llnvl"]
+[ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemies/enemy.tscn" id="3_qbru8"]
+[ext_resource type="PackedScene" uid="uid://sjvu3pfum0ou" path="res://scenes/enemies/enemy_fly.tscn" id="4_5eg8a"]
 [ext_resource type="PackedScene" uid="uid://cbwrgkhx2gujr" path="res://scenes/enemy_spawner.tscn" id="5_t1yb5"]
 
 [sub_resource type="Environment" id="Environment_kp4ou"]
@@ -59,7 +59,7 @@ albedo_texture = SubResource("NoiseTexture2D_ld4ws")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3qn58"]
 data = PackedVector3Array(-1, 0.5, 1, 1, -0.5, 1, -1, -0.5, 1, -1, 0.5, -1, -1, -0.5, -1, 1, -0.5, -1, -1, 0.5, 1, -1, 0.5, -1, 1, -0.5, 1, -1, 0.5, -1, 1, -0.5, -1, 1, -0.5, 1, -1, 0.5, -1, -1, 0.5, 1, -1, -0.5, -1, -1, 0.5, 1, -1, -0.5, 1, -1, -0.5, -1, -1, -0.5, 1, 1, -0.5, 1, -1, -0.5, -1, 1, -0.5, 1, 1, -0.5, -1, -1, -0.5, -1)
 
-[node name="World" type="Node3D"]
+[node name="World Test" type="Node3D"]
 script = ExtResource("1_2u64q")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -313,10 +313,10 @@ end_position = Vector3(0, 1, -30)
 [node name="Player" parent="." instance=ExtResource("1_8nv5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 33.2)
 
-[node name="Enemy" parent="." instance=ExtResource("3_qmsji")]
+[node name="Enemy" parent="." instance=ExtResource("3_qbru8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 0.5, -4)
 
-[node name="Enemy Fly" parent="." instance=ExtResource("4_llnvl")]
+[node name="Enemy Fly" parent="." instance=ExtResource("4_5eg8a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, -5)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_t1yb5")]

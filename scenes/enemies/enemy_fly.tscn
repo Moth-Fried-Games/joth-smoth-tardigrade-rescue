@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://sjvu3pfum0ou"]
 
-[ext_resource type="Script" path="res://scripts/enemy_fly_test.gd" id="1_glh4g"]
+[ext_resource type="Script" path="res://scripts/enemy_fly_test.gd" id="1_is0u8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dg45j"]
 height = 1.0
@@ -20,7 +20,7 @@ fill_to = Vector2(0.5, 0)
 [node name="Enemy Fly" type="CharacterBody3D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_glh4g")
+script = ExtResource("1_is0u8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

@@ -11,15 +11,16 @@ var player_bullet: Resource = preload("res://scenes/player_bullet.tscn")
 var enemy_bullet: Resource = preload("res://scenes/enemy_bullet.tscn")
 
 var enemy_resources: Dictionary = {
-	"Ground Melee": preload("res://scenes/enemies/enemy_test.tscn"),
-	"Ground Ranged": preload("res://scenes/enemies/enemy_test.tscn"),
-	"Floating Melee": preload("res://scenes/enemies/enemy_fly_test.tscn"),
-	"Floating Ranged": preload("res://scenes/enemies/enemy_fly_test.tscn"),
-	"Boss": preload("res://scenes/enemies/enemy_test.tscn"),
+	"Ground Melee": preload("res://scenes/enemies/enemy.tscn"),
+	"Ground Ranged": preload("res://scenes/enemies/enemy.tscn"),
+	"Floating Melee": preload("res://scenes/enemies/enemy_fly.tscn"),
+	"Floating Ranged": preload("res://scenes/enemies/enemy_fly.tscn"),
+	"Boss": preload("res://scenes/enemies/enemy.tscn"),
 }
 
 var in_title_screen: bool = false
 var loading_screen: bool = false
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
