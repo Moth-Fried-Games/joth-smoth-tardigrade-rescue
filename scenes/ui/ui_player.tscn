@@ -79,15 +79,15 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jhgc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7llnl"]
 atlas = ExtResource("2_ifkk2")
 region = Rect2(0, 0, 160, 160)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ldjn6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dx3d"]
 atlas = ExtResource("2_ifkk2")
 region = Rect2(160, 0, 160, 160)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uru7y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc5f2"]
 atlas = ExtResource("2_ifkk2")
 region = Rect2(320, 0, 160, 160)
 
@@ -95,7 +95,7 @@ region = Rect2(320, 0, 160, 160)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8jhgc")
+"texture": SubResource("AtlasTexture_7llnl")
 }],
 "loop": true,
 "name": &"idle",
@@ -103,31 +103,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ldjn6")
+"texture": SubResource("AtlasTexture_7dx3d")
 }, {
 "duration": 2.0,
-"texture": SubResource("AtlasTexture_uru7y")
+"texture": SubResource("AtlasTexture_mc5f2")
 }],
 "loop": false,
 "name": &"punch",
 "speed": 16.0
 }]
-
-[sub_resource type="Animation" id="Animation_wou78"]
-resource_name = "equip"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 400), Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_s22nu"]
 length = 0.001
@@ -144,8 +128,8 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_f6a3s"]
-resource_name = "uneqip"
+[sub_resource type="Animation" id="Animation_wou78"]
+resource_name = "equip"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -157,7 +141,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 400)]
+"values": [Vector2(0, 400), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vtkmn"]
@@ -194,6 +178,22 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(-5, 0), Vector2(-10, -5), Vector2(-5, 0), Vector2(0, 0), Vector2(5, 0), Vector2(10, -5), Vector2(5, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_f6a3s"]
+resource_name = "uneqip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 400)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57qyq"]
 _data = {
 "RESET": SubResource("Animation_s22nu"),
@@ -227,6 +227,21 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Animation" id="Animation_8oupg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/PunchLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.610865]
+}
+
 [sub_resource type="Animation" id="Animation_cj33u"]
 resource_name = "pet"
 length = 0.2
@@ -257,25 +272,25 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_8oupg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fx20"]
+_data = {
+"RESET": SubResource("Animation_8oupg"),
+"pet": SubResource("Animation_cj33u")
+}
+
+[sub_resource type="Animation" id="Animation_4gwb7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PunchLeft:rotation")
+tracks/0/path = NodePath("Control2/PunchRight:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.610865]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fx20"]
-_data = {
-"RESET": SubResource("Animation_8oupg"),
-"pet": SubResource("Animation_cj33u")
+"values": [-0.610865]
 }
 
 [sub_resource type="Animation" id="Animation_ctj3o"]
@@ -308,41 +323,10 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_4gwb7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control2/PunchRight:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.610865]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggwek"]
 _data = {
 "RESET": SubResource("Animation_4gwb7"),
 "pet": SubResource("Animation_ctj3o")
-}
-
-[sub_resource type="Animation" id="Animation_18ime"]
-resource_name = "pet"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control5/Pet:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.2, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8o1bj"]
@@ -388,6 +372,22 @@ tracks/1/keys = {
 "args": [],
 "method": &"switch_to_weapon"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_18ime"]
+resource_name = "pet"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control5/Pet:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5fk7"]
@@ -615,3 +615,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_ohs4v")
 }
+
+[node name="PetTimer" type="Timer" parent="."]
+one_shot = true

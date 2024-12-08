@@ -44,11 +44,11 @@ var dive_distance: Vector3 = Vector3()
 @onready var target_marker_3d: Marker3D = $HeadNode3D/TargetMarker3D
 @onready var pickup_area_3d: Area3D = $HeadNode3D/PickupArea3D
 
-
 var world_node: Node3D = null
 
 # UI
 var ui_player: UIPlayer = null
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -88,19 +88,24 @@ func _handle_camera_rotation(event: InputEvent):
 
 func process_hit() -> void:
 	if not ui_player.petting_equipped:
-		UiMain.ui_player.increase_stress(1)
+		ui_player.increase_stress(1)
 	#ui_color_rect.color.a = 1
+
 
 func gun_check(gun_side: bool) -> void:
 	var player_bullet = GameGlobals.player_bullet.instantiate()
 	if gun_side:
-		player_bullet.direction = right_bullet_marker_3d.global_position.direction_to(target_marker_3d.global_position)
+		player_bullet.direction = right_bullet_marker_3d.global_position.direction_to(
+			target_marker_3d.global_position
+		)
 		player_bullet.starting_position = right_bullet_marker_3d.global_position
 	else:
-		player_bullet.direction = left_bullet_marker_3d.global_position.direction_to(target_marker_3d.global_position)
+		player_bullet.direction = left_bullet_marker_3d.global_position.direction_to(
+			target_marker_3d.global_position
+		)
 		player_bullet.starting_position = left_bullet_marker_3d.global_position
 	world_node.add_child(player_bullet)
-	
+
 
 func punch_check() -> void:
 	if melee_area_3d.has_overlapping_bodies():
@@ -111,14 +116,16 @@ func punch_check() -> void:
 					if not body.dead:
 						body.process_hit()
 
+
 func _physics_process(delta: float) -> void:
 	process_input(delta)
 	process_stress(delta)
 	process_pickup()
 	process_movement(delta)
-	
+
 	#if ui_color_rect.color.a != 0.0:
-		#ui_color_rect.color.a = lerpf(ui_color_rect.color.a, 0, 0.25)
+	#ui_color_rect.color.a = lerpf(ui_color_rect.color.a, 0, 0.25)
+
 
 func process_input(delta: float) -> void:
 	direction = Vector3()
@@ -161,21 +168,24 @@ func process_input(delta: float) -> void:
 				dive_attempt = true
 		if dive_attempt:
 			dive_window += delta
-	
+
 	if ui_player.weapons_equipped:
 		if Input.is_action_pressed("action_shoot"):
 			ui_player.fire_guns()
 		if Input.is_action_pressed("action_punch"):
 			ui_player.throw_punch()
-	
+
 	if ui_player.petting_animation_player:
 		if Input.is_action_just_pressed("action_shoot"):
 			ui_player.pet_left()
 		if Input.is_action_just_pressed("action_punch"):
 			ui_player.pet_right()
 
+
 func process_stress(delta: float) -> void:
-	UiMain.ui_player.increase_stress(delta)
+	if not ui_player.durability >= 666:
+		ui_player.increase_stress(delta)
+
 
 func process_pickup() -> void:
 	if pickup_area_3d.has_overlapping_areas():
@@ -189,6 +199,7 @@ func process_pickup() -> void:
 						else:
 							ui_player.switch_to_pet_real()
 						area.queue_free()
+
 
 func process_movement(delta: float) -> void:
 	# Get the normalized input direction so that we don't move faster on diagonals
