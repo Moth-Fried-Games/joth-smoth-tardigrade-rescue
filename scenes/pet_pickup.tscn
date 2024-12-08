@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1c5ker3gajbn"]
+
+[ext_resource type="Script" path="res://scripts/pet_pickup.gd" id="1_6t0vt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_17tu0"]
+
+[sub_resource type="Gradient" id="Gradient_rant5"]
+offsets = PackedFloat32Array(0, 0.9, 0.99, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_80bjv"]
+gradient = SubResource("Gradient_rant5")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="PetPickup" type="Area3D"]
+script = ExtResource("1_6t0vt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_17tu0")
+
+[node name="PlaceholderSprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 2
+alpha_cut = 2
+texture = SubResource("GradientTexture2D_80bjv")

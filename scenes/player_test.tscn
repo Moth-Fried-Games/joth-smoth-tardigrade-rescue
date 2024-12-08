@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3pyy37xkklbi"]
+[gd_scene load_steps=7 format=3 uid="uid://d3pyy37xkklbi"]
 
 [ext_resource type="Script" path="res://scripts/player_test.gd" id="1_m5cep"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkgq8"]
 
-[sub_resource type="Gradient" id="Gradient_rant5"]
+[sub_resource type="Gradient" id="Gradient_qw6ej"]
 offsets = PackedFloat32Array(0, 0.9, 0.99, 1)
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_q5qri"]
-gradient = SubResource("Gradient_rant5")
+gradient = SubResource("Gradient_qw6ej")
 width = 100
 height = 200
 fill = 1
@@ -17,6 +17,10 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q8iyy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tlv25"]
+height = 0.5
+radius = 1.0
 
 [node name="Player" type="CharacterBody3D"]
 platform_on_leave = 2
@@ -63,6 +67,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadNode3D/MeleeArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
 shape = SubResource("SphereShape3D_q8iyy")
+
+[node name="PickupArea3D" type="Area3D" parent="HeadNode3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadNode3D/PickupArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+shape = SubResource("CylinderShape3D_tlv25")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.25

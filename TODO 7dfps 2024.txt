@@ -2,11 +2,11 @@ Coding Tasks
 
 - Make Ranged enemies pause to aim and shoot if they have line of sight. (partially done)
 - Make Melee enemies try to jump at you if close enough.
-- Make enemies only chase you if they have seen you once, otherwise, make them do nothing.
-- Make enemies navigate to find you if you are no longer in their line of sight.
+- Make enemies only chase you if they have seen you once, otherwise, make them do nothing. (done)
+- Make enemies navigate to find you if you are no longer in their line of sight. (done)
 - Make some basic main menu.
 - Make a game over.
-- Make the Petting Minigame.
+- Make the Petting Minigame. (done)
 - Make a Boss.
 - Update the Audio Manager to support 3D Sound Streams.
 
@@ -18,6 +18,14 @@ Level Design Tasks
 - Make Some Vertical Rooms (2).
 - Make the Starting Room.
 - Make the Boss Room.
+
+Enemy Sprites
+
+- Idle (use a walk sprite with no animation?)
+- Walk (2)
+- Telegraph (1)
+- Attack (1)
+- Knockout (1)
 
 Audio Tasks
 

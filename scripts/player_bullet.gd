@@ -4,6 +4,8 @@ const SPEED: float = 64.0
 var direction: Vector3 = Vector3()
 var starting_position: Vector3 = Vector3()
 
+var bullet_hit: bool = false
+
 @onready var life_timer: Timer = $LifeTimer
 
 # Called when the node enters the scene tree for the first time.
@@ -26,5 +28,13 @@ func _physics_process(delta: float) -> void:
 		if bodies.size() > 0:
 			for body in bodies:
 				if body.is_in_group("enemies"):
-					body.process_hit()
-		queue_free()
+					if not bullet_hit:
+						bullet_hit = true
+						body.process_hit()
+				elif body.is_in_group("players"):
+					pass
+				else:
+					if not bullet_hit:
+						bullet_hit = true
+		if bullet_hit:
+			queue_free()

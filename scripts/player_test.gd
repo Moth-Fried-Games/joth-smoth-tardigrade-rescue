@@ -42,6 +42,8 @@ var dive_distance: Vector3 = Vector3()
 @onready var left_bullet_marker_3d: Marker3D = $HeadNode3D/LeftBulletMarker3D
 @onready var right_bullet_marker_3d: Marker3D = $HeadNode3D/RightBulletMarker3D
 @onready var target_marker_3d: Marker3D = $HeadNode3D/TargetMarker3D
+@onready var pickup_area_3d: Area3D = $HeadNode3D/PickupArea3D
+
 
 var world_node: Node3D = null
 
@@ -85,7 +87,8 @@ func _handle_camera_rotation(event: InputEvent):
 
 
 func process_hit() -> void:
-	UiMain.ui_player.increase_stress(1)
+	if not ui_player.petting_equipped:
+		UiMain.ui_player.increase_stress(1)
 	#ui_color_rect.color.a = 1
 
 func gun_check(gun_side: bool) -> void:
@@ -111,6 +114,7 @@ func punch_check() -> void:
 func _physics_process(delta: float) -> void:
 	process_input(delta)
 	process_stress(delta)
+	process_pickup()
 	process_movement(delta)
 	
 	#if ui_color_rect.color.a != 0.0:
@@ -158,13 +162,33 @@ func process_input(delta: float) -> void:
 		if dive_attempt:
 			dive_window += delta
 	
-	if Input.is_action_pressed("action_shoot"):
-		ui_player.fire_guns()
-	if Input.is_action_pressed("action_punch"):
-		ui_player.throw_punch()
+	if ui_player.weapons_equipped:
+		if Input.is_action_pressed("action_shoot"):
+			ui_player.fire_guns()
+		if Input.is_action_pressed("action_punch"):
+			ui_player.throw_punch()
+	
+	if ui_player.petting_animation_player:
+		if Input.is_action_just_pressed("action_shoot"):
+			ui_player.pet_left()
+		if Input.is_action_just_pressed("action_punch"):
+			ui_player.pet_right()
 
 func process_stress(delta: float) -> void:
 	UiMain.ui_player.increase_stress(delta)
+
+func process_pickup() -> void:
+	if pickup_area_3d.has_overlapping_areas():
+		var areas = pickup_area_3d.get_overlapping_areas()
+		if areas.size() > 0:
+			for area in areas:
+				if area.is_in_group("pets"):
+					if ui_player.weapons_equipped:
+						if area.plushie:
+							ui_player.switch_to_pet_plushie()
+						else:
+							ui_player.switch_to_pet_real()
+						area.queue_free()
 
 func process_movement(delta: float) -> void:
 	# Get the normalized input direction so that we don't move faster on diagonals

@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq65futumwc7q"]
+[gd_scene load_steps=41 format=3 uid="uid://cq65futumwc7q"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
+[ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
+[ext_resource type="Texture2D" uid="uid://2vcvadm840jy" path="res://assets/textures/player/7dfps_hud_punch.png" id="2_ifkk2"]
 
 [sub_resource type="Gradient" id="Gradient_e546u"]
-offsets = PackedFloat32Array(0, 0.3, 0.8, 0.9, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.8, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gfp42"]
 gradient = SubResource("Gradient_e546u")
@@ -22,9 +24,188 @@ gradient = SubResource("Gradient_b3m2f")
 width = 1200
 height = 16
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_661ff"]
+atlas = ExtResource("2_5xdao")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c85t"]
+atlas = ExtResource("2_5xdao")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31fa5"]
+atlas = ExtResource("2_5xdao")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a5up"]
+atlas = ExtResource("2_5xdao")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7ndj"]
+atlas = ExtResource("2_5xdao")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyj2m"]
+atlas = ExtResource("2_5xdao")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfehf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_661ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c85t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31fa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a5up")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_c7ndj")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_gyj2m")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 16.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jhgc"]
+atlas = ExtResource("2_ifkk2")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldjn6"]
+atlas = ExtResource("2_ifkk2")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uru7y"]
+atlas = ExtResource("2_ifkk2")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6alb1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jhgc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldjn6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_uru7y")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 16.0
+}]
+
+[sub_resource type="Animation" id="Animation_wou78"]
+resource_name = "equip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 400), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s22nu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f6a3s"]
+resource_name = "uneqip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_vtkmn"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_463xt"]
+resource_name = "move"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-5, 0), Vector2(-10, -5), Vector2(-5, 0), Vector2(0, 0), Vector2(5, 0), Vector2(10, -5), Vector2(5, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_57qyq"]
+_data = {
+"RESET": SubResource("Animation_s22nu"),
+"equip": SubResource("Animation_wou78"),
+"idle": SubResource("Animation_vtkmn"),
+"move": SubResource("Animation_463xt"),
+"unequip": SubResource("Animation_f6a3s")
+}
+
 [sub_resource type="Gradient" id="Gradient_tpsas"]
-offsets = PackedFloat32Array(0, 0.9, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.9, 0.95, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bsbvy"]
 gradient = SubResource("Gradient_tpsas")
@@ -34,12 +215,54 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="Animation" id="Animation_fdqre"]
+[sub_resource type="Gradient" id="Gradient_0pwsp"]
+offsets = PackedFloat32Array(0, 0.9, 0.95, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rub6n"]
+gradient = SubResource("Gradient_0pwsp")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_cj33u"]
+resource_name = "pet"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/PunchLeft:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.610865, 0.959931, 0.610865]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pet_the_thing"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8oupg"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control3/GunLeft:rotation")
+tracks/0/path = NodePath("Control/PunchLeft:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,127 +271,109 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.610865]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control4/GunRight:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.610865]
-}
 
-[sub_resource type="Animation" id="Animation_2o6m2"]
-resource_name = "shoot"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control3/GunLeft:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.436332, 0.610865]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"gun_check"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_ij8s0"]
-resource_name = "shoot_right"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control4/GunRight:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.436332, -0.610865]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"gun_check"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_umrd6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fx20"]
 _data = {
-"RESET": SubResource("Animation_fdqre"),
-"shoot_left": SubResource("Animation_2o6m2"),
-"shoot_right": SubResource("Animation_ij8s0")
+"RESET": SubResource("Animation_8oupg"),
+"pet": SubResource("Animation_cj33u")
 }
 
-[sub_resource type="Animation" id="Animation_vmpfp"]
+[sub_resource type="Animation" id="Animation_ctj3o"]
+resource_name = "pet"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/PunchRight:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.610865, -0.959931, -0.610865]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pet_the_thing"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4gwb7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PunchLeft:position")
+tracks/0/path = NodePath("Control2/PunchRight:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(180, 600)]
+"values": [-0.610865]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control2/PunchRight:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggwek"]
+_data = {
+"RESET": SubResource("Animation_4gwb7"),
+"pet": SubResource("Animation_ctj3o")
+}
+
+[sub_resource type="Animation" id="Animation_18ime"]
+resource_name = "pet"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control5/Pet:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8o1bj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control5/Pet:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1100, 600)]
+"values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_moc4t"]
-resource_name = "punch_left"
-length = 0.2
+[sub_resource type="Animation" id="Animation_he6xn"]
+resource_name = "break"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PunchLeft:position")
+tracks/0/path = NodePath("Control5/Pet:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(180, 600), Vector2(212, 568), Vector2(180, 600)]
+"values": [Vector2(1, 1), Vector2(0, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -181,45 +386,39 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"punch_check"
+"method": &"switch_to_weapon"
 }]
 }
 
-[sub_resource type="Animation" id="Animation_g0to4"]
-resource_name = "punch_right"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control2/PunchRight:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1100, 600), Vector2(1068, 568), Vector2(1100, 600)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"punch_check"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_so6ox"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5fk7"]
 _data = {
-"RESET": SubResource("Animation_vmpfp"),
-"punch_left": SubResource("Animation_moc4t"),
-"punch_right": SubResource("Animation_g0to4")
+"RESET": SubResource("Animation_8o1bj"),
+"break": SubResource("Animation_he6xn"),
+"pet": SubResource("Animation_18ime")
+}
+
+[sub_resource type="Animation" id="Animation_q5x65"]
+resource_name = "new"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ohs4v"]
+_data = {
+"RESET": SubResource("Animation_s22nu"),
+"equip": SubResource("Animation_wou78"),
+"new": SubResource("Animation_q5x65"),
+"unequip": SubResource("Animation_f6a3s")
 }
 
 [node name="UIPlayer" type="CanvasLayer"]
@@ -242,10 +441,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_gfp42")
@@ -272,37 +471,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/Weapons"]
-layout_mode = 1
-anchors_preset = 0
-
-[node name="PunchLeft" type="Sprite2D" parent="Control/Weapons/Control"]
-position = Vector2(180, 600)
-rotation = 0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
-
-[node name="Control2" type="Control" parent="Control/Weapons"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1280.0
-offset_right = -1280.0
-grow_horizontal = 0
-
-[node name="PunchRight" type="Sprite2D" parent="Control/Weapons/Control2"]
-position = Vector2(1100, 600)
-rotation = -0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
-
 [node name="Control3" type="Control" parent="Control/Weapons"]
 layout_mode = 1
 anchors_preset = 0
 
-[node name="GunLeft" type="Sprite2D" parent="Control/Weapons/Control3"]
-position = Vector2(360, 700)
-rotation = 0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
+[node name="GunL" type="AnimatedSprite2D" parent="Control/Weapons/Control3"]
+position = Vector2(392, 607)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kfehf")
+animation = &"idle"
+flip_h = true
 
 [node name="Control4" type="Control" parent="Control/Weapons"]
 layout_mode = 1
@@ -313,19 +491,41 @@ offset_left = -1280.0
 offset_right = -1280.0
 grow_horizontal = 0
 
-[node name="GunRight" type="Sprite2D" parent="Control/Weapons/Control4"]
-position = Vector2(920, 700)
-rotation = -0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
+[node name="GunR" type="AnimatedSprite2D" parent="Control/Weapons/Control4"]
+position = Vector2(888, 607)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kfehf")
+animation = &"idle"
 
-[node name="GunsAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
-libraries = {
-"": SubResource("AnimationLibrary_umrd6")
-}
+[node name="Control" type="Control" parent="Control/Weapons"]
+layout_mode = 1
+anchors_preset = 0
 
-[node name="PunchesAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
+[node name="PunchL" type="AnimatedSprite2D" parent="Control/Weapons/Control"]
+position = Vector2(272, 447)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_6alb1")
+animation = &"idle"
+flip_h = true
+
+[node name="Control2" type="Control" parent="Control/Weapons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1280.0
+offset_right = -1280.0
+grow_horizontal = 0
+
+[node name="PunchR" type="AnimatedSprite2D" parent="Control/Weapons/Control2"]
+position = Vector2(1008, 447)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_6alb1")
+animation = &"idle"
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
 libraries = {
-"": SubResource("AnimationLibrary_so6ox")
+"": SubResource("AnimationLibrary_57qyq")
 }
 
 [node name="Petting" type="Control" parent="Control"]
@@ -335,3 +535,83 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Control3" type="Control" parent="Control/Petting"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GunLeft" type="Sprite2D" parent="Control/Petting/Control3"]
+position = Vector2(440, 700)
+rotation = 0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="Control4" type="Control" parent="Control/Petting"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1280.0
+offset_right = -1280.0
+grow_horizontal = 0
+
+[node name="GunRight" type="Sprite2D" parent="Control/Petting/Control4"]
+position = Vector2(840, 700)
+rotation = -0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="Control5" type="Control" parent="Control/Petting"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pet" type="Sprite2D" parent="Control/Petting/Control5"]
+position = Vector2(0, 200)
+texture = SubResource("GradientTexture2D_rub6n")
+
+[node name="Control" type="Control" parent="Control/Petting"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PunchLeft" type="Sprite2D" parent="Control/Petting/Control"]
+position = Vector2(436, 576)
+rotation = 0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="Control2" type="Control" parent="Control/Petting"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1280.0
+offset_right = -1280.0
+grow_horizontal = 0
+
+[node name="PunchRight" type="Sprite2D" parent="Control/Petting/Control2"]
+position = Vector2(844, 576)
+rotation = -0.610865
+texture = SubResource("GradientTexture2D_bsbvy")
+
+[node name="PetLeftAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
+libraries = {
+"": SubResource("AnimationLibrary_1fx20")
+}
+
+[node name="PetRightAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
+libraries = {
+"": SubResource("AnimationLibrary_ggwek")
+}
+
+[node name="PetThingAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
+libraries = {
+"": SubResource("AnimationLibrary_b5fk7")
+}
+
+[node name="PettingAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
+libraries = {
+"": SubResource("AnimationLibrary_ohs4v")
+}

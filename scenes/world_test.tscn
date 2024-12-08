@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dg0mx11xpegnj"]
+[gd_scene load_steps=24 format=3 uid="uid://dg0mx11xpegnj"]
 
 [ext_resource type="Script" path="res://scripts/world_test.gd" id="1_2u64q"]
 [ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player_test.tscn" id="1_8nv5v"]
+[ext_resource type="PackedScene" uid="uid://d1c5ker3gajbn" path="res://scenes/pet_pickup.tscn" id="3_0evou"]
 [ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemies/enemy_test.tscn" id="3_qmsji"]
 [ext_resource type="PackedScene" uid="uid://sjvu3pfum0ou" path="res://scenes/enemies/enemy_fly_test.tscn" id="4_llnvl"]
 [ext_resource type="PackedScene" uid="uid://cbwrgkhx2gujr" path="res://scenes/enemy_spawner.tscn" id="5_t1yb5"]
@@ -10,8 +11,9 @@
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0prut"]
-vertices = PackedVector3Array(-4.75, 1, -6, -3.25, 1, -6, -1.5, 1, -11, -1.5, 1, -12.25, -24.5, 1, -4.75, -5, 1, -4.75, 0, 1, -12.5, 0, 1, -24.5, -24.5, 1, -24.5, 1.75, 1, -11, 4.5, 1, -6, 6, 1, -6, 1.5, 1, -12.5, 24.5, 1, -5, 24.5, 1, -24.5, 6.25, 1, -5, 0.5, 1.75, -11.5, -0.5, 1.75, -11.5, -0.5, 1.25, -10.75, 0.75, 1.25, -10.5, 4, 1, -5.75, 1.5, 1, -10.5, -2.75, 1, -5.75, -2.75, 1, -5, 4, 1, -4.75, 4, 1, -4, -3.25, 1, -3.75, -4, 1, 24.5, 5, 1, 24.5, 5, 1, -3.75, -4, 1, -3.75, 5.75, 1, -3.75, 24.5, 1, 24.5, -5, 1, -4, -24.5, 1, 24.5, -16, 5, 0.75, -16, 5, 2.25, -15.5, 5, 2.25, -16.25, 5, -0.25, -17.75, 5, -0.25, -17.75, 5, 0.5, -15.5, 5, -2, -16, 5, -2)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(0, 5, 4), PackedInt32Array(7, 6, 3), PackedInt32Array(3, 0, 7), PackedInt32Array(7, 0, 4), PackedInt32Array(7, 4, 8), PackedInt32Array(11, 10, 9), PackedInt32Array(9, 12, 11), PackedInt32Array(11, 12, 7), PackedInt32Array(11, 7, 13), PackedInt32Array(13, 7, 14), PackedInt32Array(12, 6, 7), PackedInt32Array(13, 15, 11), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(1, 2, 22), PackedInt32Array(22, 2, 18), PackedInt32Array(20, 21, 10), PackedInt32Array(10, 21, 9), PackedInt32Array(22, 18, 23), PackedInt32Array(23, 18, 19), PackedInt32Array(23, 19, 20), PackedInt32Array(23, 20, 24), PackedInt32Array(23, 24, 25), PackedInt32Array(23, 25, 26), PackedInt32Array(26, 25, 29), PackedInt32Array(26, 29, 28), PackedInt32Array(26, 28, 27), PackedInt32Array(27, 30, 26), PackedInt32Array(15, 13, 31), PackedInt32Array(31, 13, 32), PackedInt32Array(31, 32, 28), PackedInt32Array(28, 29, 31), PackedInt32Array(4, 5, 33), PackedInt32Array(33, 30, 4), PackedInt32Array(4, 30, 27), PackedInt32Array(4, 27, 34), PackedInt32Array(37, 36, 35), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 35), PackedInt32Array(42, 41, 38), PackedInt32Array(38, 41, 35), PackedInt32Array(35, 41, 37)]
+vertices = PackedVector3Array(-4.75, 1, -6, -3.25, 1, -6, -1.5, 1, -11, -1.5, 1, -12.25, -24.5, 1, -4.75, -5, 1, -4.75, 0, 1, -12.5, 0, 1, -24.5, -24.5, 1, -24.5, 1.75, 1, -11, 4.5, 1, -6, 6, 1, -6, 1.5, 1, -12.5, 24.5, 1, -5, 24.5, 1, -24.5, 6.25, 1, -5, 0.5, 1.75, -11.5, -0.5, 1.75, -11.5, -0.5, 1.25, -10.75, 0.75, 1.25, -10.5, 4, 1, -5.75, 1.5, 1, -10.5, -2.75, 1, -5.75, -2.75, 1, -5, 4, 1, -4.75, 4, 1, -4, -3.25, 1, -3.75, -4, 1, 24.5, 5, 1, 24.5, 5, 1, -3.75, -4, 1, -3.75, 5.75, 1, -3.75, 24.5, 1, 24.5, -5, 1, -4, -24.5, 1, 24.5, -16, 5, -2, -16, 5, 2.25, -15.5, 5, 2.25, -15.5, 5, -2)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(0, 5, 4), PackedInt32Array(7, 6, 3), PackedInt32Array(3, 0, 7), PackedInt32Array(7, 0, 4), PackedInt32Array(7, 4, 8), PackedInt32Array(11, 10, 9), PackedInt32Array(9, 12, 11), PackedInt32Array(11, 12, 7), PackedInt32Array(11, 7, 13), PackedInt32Array(13, 7, 14), PackedInt32Array(12, 6, 7), PackedInt32Array(13, 15, 11), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(1, 2, 22), PackedInt32Array(22, 2, 18), PackedInt32Array(20, 21, 10), PackedInt32Array(10, 21, 9), PackedInt32Array(22, 18, 23), PackedInt32Array(23, 18, 19), PackedInt32Array(23, 19, 20), PackedInt32Array(23, 20, 24), PackedInt32Array(23, 24, 25), PackedInt32Array(23, 25, 26), PackedInt32Array(26, 25, 29), PackedInt32Array(26, 29, 28), PackedInt32Array(26, 28, 27), PackedInt32Array(27, 30, 26), PackedInt32Array(15, 13, 31), PackedInt32Array(31, 13, 32), PackedInt32Array(31, 32, 28), PackedInt32Array(28, 29, 31), PackedInt32Array(4, 5, 33), PackedInt32Array(33, 30, 4), PackedInt32Array(4, 30, 27), PackedInt32Array(4, 27, 34), PackedInt32Array(38, 37, 35), PackedInt32Array(35, 37, 36)]
+agent_height = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_ujw1f"]
 size = Vector3(50, 1, 50)
@@ -181,6 +183,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b7ftg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Stage/Ramp/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3qn58")
 
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D"]
+start_position = Vector3(0, 1, 20)
+end_position = Vector3(0, 1, 30)
+
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 navigation_mesh = SubResource("NavigationMesh_0prut")
@@ -300,8 +306,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b7ftg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Stage/Ramp/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3qn58")
 
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D2"]
+start_position = Vector3(0, 1, -20)
+end_position = Vector3(0, 1, -30)
+
 [node name="Player" parent="." instance=ExtResource("1_8nv5v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 33.2)
 
 [node name="Enemy" parent="." instance=ExtResource("3_qmsji")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 0.5, -4)
@@ -311,5 +321,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, -5)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_t1yb5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1283, 0.594706, 4.22056)
-spawn_once = false
 spawn_time = 5.0
+
+[node name="PetPickup" parent="." instance=ExtResource("3_0evou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 27.9)

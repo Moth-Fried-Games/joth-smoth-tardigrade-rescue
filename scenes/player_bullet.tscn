@@ -33,7 +33,7 @@ scale_curve = SubResource("CurveTexture_2vrs6")
 transparency = 4
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_vmg2i")
-billboard_mode = 2
+billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_vwudo"]
@@ -47,7 +47,7 @@ script = ExtResource("1_gwcua")
 shape = SubResource("SphereShape3D_rvcdu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-billboard = 2
+billboard = 1
 alpha_cut = 2
 texture = SubResource("GradientTexture2D_vmg2i")
 
