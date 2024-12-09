@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
 [ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
 [ext_resource type="Texture2D" uid="uid://2vcvadm840jy" path="res://assets/textures/player/7dfps_hud_punch.png" id="2_ifkk2"]
+[ext_resource type="Texture2D" uid="uid://co6wgh5ogjbvv" path="res://assets/textures/player/7dfps_hud_petplush_lower.png" id="4_bs5mu"]
+[ext_resource type="Texture2D" uid="uid://c4iboehf81h6u" path="res://assets/textures/player/7dfps_hud_petplush_upper.png" id="5_r8sdg"]
 
 [sub_resource type="Gradient" id="Gradient_e546u"]
 offsets = PackedFloat32Array(0, 0.8, 0.9, 1)
@@ -23,6 +25,40 @@ colors = PackedColorArray(1, 0, 0, 1, 0.501961, 0, 1, 1)
 gradient = SubResource("Gradient_b3m2f")
 width = 1200
 height = 16
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7llnl"]
+atlas = ExtResource("2_ifkk2")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dx3d"]
+atlas = ExtResource("2_ifkk2")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc5f2"]
+atlas = ExtResource("2_ifkk2")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6alb1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7llnl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dx3d")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_mc5f2")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 16.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_661ff"]
 atlas = ExtResource("2_5xdao")
@@ -79,40 +115,6 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7llnl"]
-atlas = ExtResource("2_ifkk2")
-region = Rect2(0, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7dx3d"]
-atlas = ExtResource("2_ifkk2")
-region = Rect2(160, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mc5f2"]
-atlas = ExtResource("2_ifkk2")
-region = Rect2(320, 0, 160, 160)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6alb1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7llnl")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 16.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7dx3d")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_mc5f2")
-}],
-"loop": false,
-"name": &"punch",
-"speed": 16.0
-}]
-
 [sub_resource type="Animation" id="Animation_s22nu"]
 length = 0.001
 tracks/0/type = "value"
@@ -141,7 +143,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 400), Vector2(0, 0)]
+"values": [Vector2(0, 500), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vtkmn"]
@@ -191,7 +193,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 400)]
+"values": [Vector2(0, 0), Vector2(0, 500)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57qyq"]
@@ -203,199 +205,111 @@ _data = {
 "unequip": SubResource("Animation_f6a3s")
 }
 
-[sub_resource type="Gradient" id="Gradient_tpsas"]
-offsets = PackedFloat32Array(0, 0.9, 0.95, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nss1f"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(0, 0, 320, 160)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bsbvy"]
-gradient = SubResource("Gradient_tpsas")
-width = 100
-height = 400
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee64q"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(320, 0, 320, 160)
 
-[sub_resource type="Gradient" id="Gradient_0pwsp"]
-offsets = PackedFloat32Array(0, 0.9, 0.95, 1)
-colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_esu8k"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(640, 0, 320, 160)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rub6n"]
-gradient = SubResource("Gradient_0pwsp")
-width = 200
-height = 200
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfdln"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(1280, 0, 320, 160)
 
-[sub_resource type="Animation" id="Animation_8oupg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PunchLeft:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.610865]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_wktcr"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(1600, 0, 320, 160)
 
-[sub_resource type="Animation" id="Animation_cj33u"]
-resource_name = "pet"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PunchLeft:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.610865, 0.959931, 0.610865]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"pet_the_thing"
+[sub_resource type="SpriteFrames" id="SpriteFrames_ad8cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nss1f")
+}],
+"loop": true,
+"name": &"idle_plush",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee64q")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_esu8k")
+}],
+"loop": false,
+"name": &"pet_left_plush",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfdln")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wktcr")
+}],
+"loop": false,
+"name": &"pet_right_plush",
+"speed": 16.0
 }]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fx20"]
-_data = {
-"RESET": SubResource("Animation_8oupg"),
-"pet": SubResource("Animation_cj33u")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpvdh"]
+atlas = ExtResource("5_r8sdg")
+region = Rect2(0, 0, 320, 160)
 
-[sub_resource type="Animation" id="Animation_4gwb7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control2/PunchRight:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.610865]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeu28"]
+atlas = ExtResource("5_r8sdg")
+region = Rect2(320, 0, 320, 160)
 
-[sub_resource type="Animation" id="Animation_ctj3o"]
-resource_name = "pet"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control2/PunchRight:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.610865, -0.959931, -0.610865]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"pet_the_thing"
+[sub_resource type="AtlasTexture" id="AtlasTexture_oisyf"]
+atlas = ExtResource("5_r8sdg")
+region = Rect2(640, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u78l"]
+atlas = ExtResource("5_r8sdg")
+region = Rect2(1280, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6s57"]
+atlas = ExtResource("5_r8sdg")
+region = Rect2(1600, 0, 320, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js5q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpvdh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeu28")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_oisyf")
+}],
+"loop": false,
+"name": &"pet_left",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u78l")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_t6s57")
+}],
+"loop": false,
+"name": &"pet_right",
+"speed": 16.0
 }]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggwek"]
-_data = {
-"RESET": SubResource("Animation_4gwb7"),
-"pet": SubResource("Animation_ctj3o")
-}
-
-[sub_resource type="Animation" id="Animation_8o1bj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control5/Pet:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_he6xn"]
-resource_name = "break"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control5/Pet:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"switch_to_weapon"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_18ime"]
-resource_name = "pet"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control5/Pet:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5fk7"]
-_data = {
-"RESET": SubResource("Animation_8o1bj"),
-"break": SubResource("Animation_he6xn"),
-"pet": SubResource("Animation_18ime")
-}
 
 [sub_resource type="Animation" id="Animation_q5x65"]
 resource_name = "new"
@@ -410,7 +324,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 360)]
+"values": [Vector2(0, 500)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohs4v"]
@@ -471,32 +385,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control3" type="Control" parent="Control/Weapons"]
-layout_mode = 1
-anchors_preset = 0
-
-[node name="GunL" type="AnimatedSprite2D" parent="Control/Weapons/Control3"]
-position = Vector2(392, 607)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_kfehf")
-animation = &"idle"
-flip_h = true
-
-[node name="Control4" type="Control" parent="Control/Weapons"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1280.0
-offset_right = -1280.0
-grow_horizontal = 0
-
-[node name="GunR" type="AnimatedSprite2D" parent="Control/Weapons/Control4"]
-position = Vector2(888, 607)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_kfehf")
-animation = &"idle"
-
 [node name="Control" type="Control" parent="Control/Weapons"]
 layout_mode = 1
 anchors_preset = 0
@@ -523,6 +411,32 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_6alb1")
 animation = &"idle"
 
+[node name="Control3" type="Control" parent="Control/Weapons"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="GunL" type="AnimatedSprite2D" parent="Control/Weapons/Control3"]
+position = Vector2(392, 607)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kfehf")
+animation = &"idle"
+flip_h = true
+
+[node name="Control4" type="Control" parent="Control/Weapons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1280.0
+offset_right = -1280.0
+grow_horizontal = 0
+
+[node name="GunR" type="AnimatedSprite2D" parent="Control/Weapons/Control4"]
+position = Vector2(888, 607)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kfehf")
+animation = &"idle"
+
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
 libraries = {
 "": SubResource("AnimationLibrary_57qyq")
@@ -536,30 +450,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control3" type="Control" parent="Control/Petting"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="GunLeft" type="Sprite2D" parent="Control/Petting/Control3"]
-position = Vector2(440, 700)
-rotation = 0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
-
-[node name="Control4" type="Control" parent="Control/Petting"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1280.0
-offset_right = -1280.0
-grow_horizontal = 0
-
-[node name="GunRight" type="Sprite2D" parent="Control/Petting/Control4"]
-position = Vector2(840, 700)
-rotation = -0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
-
-[node name="Control5" type="Control" parent="Control/Petting"]
+[node name="Control" type="Control" parent="Control/Petting"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -569,47 +460,27 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Pet" type="Sprite2D" parent="Control/Petting/Control5"]
-position = Vector2(0, 200)
-texture = SubResource("GradientTexture2D_rub6n")
-
-[node name="Control" type="Control" parent="Control/Petting"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="PunchLeft" type="Sprite2D" parent="Control/Petting/Control"]
-position = Vector2(436, 576)
-rotation = 0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
+[node name="PetL" type="AnimatedSprite2D" parent="Control/Petting/Control"]
+position = Vector2(0, 50)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ad8cd")
+animation = &"idle_plush"
 
 [node name="Control2" type="Control" parent="Control/Petting"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1280.0
-offset_right = -1280.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PunchRight" type="Sprite2D" parent="Control/Petting/Control2"]
-position = Vector2(844, 576)
-rotation = -0.610865
-texture = SubResource("GradientTexture2D_bsbvy")
-
-[node name="PetLeftAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
-libraries = {
-"": SubResource("AnimationLibrary_1fx20")
-}
-
-[node name="PetRightAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
-libraries = {
-"": SubResource("AnimationLibrary_ggwek")
-}
-
-[node name="PetThingAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
-libraries = {
-"": SubResource("AnimationLibrary_b5fk7")
-}
+[node name="PetU" type="AnimatedSprite2D" parent="Control/Petting/Control2"]
+position = Vector2(0, 50)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_js5q0")
+animation = &"idle"
 
 [node name="PettingAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
 libraries = {

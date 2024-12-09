@@ -50,7 +50,6 @@ texture = SubResource("GradientTexture2D_8jexa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.8)
 
 [node name="TelegraphTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="MeleeTimer" type="Timer" parent="."]

@@ -3,15 +3,14 @@ class_name UIPlayer
 
 @onready var crosshair_texture_rect: TextureRect = $Control/CrosshairTextureRect
 @onready var stress_texture_progress_bar: TextureProgressBar = $Control/StressTextureProgressBar
-@onready var pet_left_animation_player: AnimationPlayer = $Control/Petting/PetLeftAnimationPlayer
-@onready var pet_right_animation_player: AnimationPlayer = $Control/Petting/PetRightAnimationPlayer
-@onready var pet_thing_animation_player: AnimationPlayer = $Control/Petting/PetThingAnimationPlayer
 @onready var weapon_animation_player: AnimationPlayer = $Control/Weapons/WeaponAnimationPlayer
 @onready var petting_animation_player: AnimationPlayer = $Control/Petting/PettingAnimationPlayer
 @onready var punch_l: AnimatedSprite2D = $Control/Weapons/Control/PunchL
 @onready var punch_r: AnimatedSprite2D = $Control/Weapons/Control2/PunchR
 @onready var gun_l: AnimatedSprite2D = $Control/Weapons/Control3/GunL
 @onready var gun_r: AnimatedSprite2D = $Control/Weapons/Control4/GunR
+@onready var pet_l: AnimatedSprite2D = $Control/Petting/Control/PetL
+@onready var pet_u: AnimatedSprite2D = $Control/Petting/Control2/PetU
 @onready var pet_timer: Timer = $PetTimer
 
 var player_node: CharacterBody3D = null
@@ -34,6 +33,8 @@ func _ready() -> void:
 	petting_animation_player.animation_finished.connect(
 		_on_petting_animation_player_animation_finished
 	)
+	pet_l.animation_finished.connect(_on_pet_l_animation_finished)
+	pet_u.animation_finished.connect(_on_pet_u_animation_finished)
 	punch_l.animation_finished.connect(_on_punch_l_animation_finished)
 	punch_r.animation_finished.connect(_on_punch_r_animation_finished)
 	gun_l.animation_finished.connect(_on_gun_l_animation_finished)
@@ -68,7 +69,7 @@ func decrease_stress(value: float) -> void:
 func switch_to_pet_plushie() -> void:
 	weapon_animation_player.play("unequip")
 	weapons_equipped = false
-	durability = randf_range(1, 4)
+	durability = randf_range(2, 4)
 
 
 func switch_to_pet_real() -> void:
@@ -83,26 +84,44 @@ func switch_to_weapon() -> void:
 
 
 func pet_left() -> void:
-	if petting_equipped and durability > 0:
-		if not pet_left_animation_player.is_playing():
-			pet_left_animation_player.play("pet")
+	if petting_equipped:
+		if durability < 666:
+			if pet_l.animation == "idle_plush" and pet_u.animation == "idle":
+				pet_l.play("pet_left_plush")
+				pet_u.play("pet_left")
+		else: 
+			if pet_l.animation == "idle_real" and pet_u.animation == "idle":
+				pet_l.play("pet_left_real")
+				pet_u.play("pet_left")
+				
 
 
 func pet_right() -> void:
-	if petting_equipped and durability > 0:
-		if not pet_right_animation_player.is_playing():
-			pet_right_animation_player.play("pet")
+	if petting_equipped:
+		if durability < 666:
+			if pet_l.animation == "idle_plush" and pet_u.animation == "idle":
+				pet_l.play("pet_right_plush")
+				pet_u.play("pet_right")
+		else: 
+			if pet_l.animation == "idle_real" and pet_u.animation == "idle":
+				pet_l.play("pet_right_real")
+				pet_u.play("pet_right")
 
+func _on_pet_l_animation_finished() -> void:
+	if durability < 666:
+		pet_l.play("idle_plush")
+	else:
+		pet_l.play("idle_real")
+	pet_the_thing()
+
+func _on_pet_u_animation_finished() -> void:
+	pet_u.play("idle")
 
 func pet_the_thing() -> void:
 	decrease_stress(1)
-	if not pet_timer.is_stopped():
-		pet_thing_animation_player.play("pet")
-	else:
+	if pet_timer.is_stopped():
 		if durability < 666:
-			pet_thing_animation_player.play("break")
-		else:
-			pet_thing_animation_player.play("pet")
+			switch_to_weapon()
 
 
 func fire_guns() -> void:

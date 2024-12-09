@@ -22,7 +22,7 @@ func _ready() -> void:
 		dungeon_generator_3d.generate()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if dungeon_ready:
 		while not rooms_ready:
 			rooms_ready = true
@@ -30,7 +30,9 @@ func _process(delta: float) -> void:
 				if not rooms_list[room]:
 					rooms_ready = false
 			if rooms_ready:
+				#await get_tree().create_timer(0.1).timeout
 				navigation_region_3d.bake_navigation_mesh()
+			await get_tree().process_frame
 	if not world_ready:
 		if dungeon_ready and rooms_ready and navigation_ready:
 			world_ready = true

@@ -1,37 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://sjvu3pfum0ou"]
+[gd_scene load_steps=5 format=3 uid="uid://b136cqpv3heu8"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_fly.gd" id="1_is0u8"]
+[ext_resource type="Script" path="res://scripts/enemies/boss.gd" id="1_grp3v"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dg45j"]
-height = 1.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0fj0"]
 
-[sub_resource type="Gradient" id="Gradient_78wca"]
+[sub_resource type="Gradient" id="Gradient_q3tdc"]
 offsets = PackedFloat32Array(0, 0.9, 0.99, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5skfs"]
-gradient = SubResource("Gradient_78wca")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dbdab"]
+gradient = SubResource("Gradient_q3tdc")
 width = 100
-height = 100
+height = 200
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="Enemy Fly" type="CharacterBody3D"]
-motion_mode = 1
+[node name="Boss" type="CharacterBody3D"]
 wall_min_slide_angle = 0.0
-script = ExtResource("1_is0u8")
+script = ExtResource("1_grp3v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_dg45j")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_a0fj0")
 
 [node name="MeleeRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 target_position = Vector3(0, 0, -1)
 
 [node name="RangeRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 target_position = Vector3(0, 0, -100)
 
 [node name="PlayerRayCast3D" type="RayCast3D" parent="."]
@@ -39,24 +37,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, -1000)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_height_offset = -1.0
 path_postprocessing = 1
 avoidance_enabled = true
 
 [node name="PlaceholderSprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 2
 alpha_cut = 2
-texture = SubResource("GradientTexture2D_5skfs")
+texture = SubResource("GradientTexture2D_dbdab")
 
 [node name="BulletMarker3D" type="Marker3D" parent="PlaceholderSprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.8)
 
 [node name="TelegraphTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="MeleeTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="RangeTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true

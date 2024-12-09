@@ -10,12 +10,14 @@ var audio_manager: AudioManager = AudioManager.new()
 var player_bullet: Resource = preload("res://scenes/player_bullet.tscn")
 var enemy_bullet: Resource = preload("res://scenes/enemy_bullet.tscn")
 
+var water_bear: Resource = preload("res://scenes/pet_pickup.tscn")
+
 var enemy_resources: Dictionary = {
 	"Ground Melee": preload("res://scenes/enemies/enemy.tscn"),
 	"Ground Ranged": preload("res://scenes/enemies/enemy.tscn"),
 	"Floating Melee": preload("res://scenes/enemies/enemy_fly.tscn"),
 	"Floating Ranged": preload("res://scenes/enemies/enemy_fly.tscn"),
-	"Boss": preload("res://scenes/enemies/enemy.tscn"),
+	"Boss": preload("res://scenes/enemies/boss.tscn"),
 }
 
 var in_title_screen: bool = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg0mx11xpegnj"]
+[gd_scene load_steps=25 format=3 uid="uid://dg0mx11xpegnj"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_2u64q"]
 [ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player.tscn" id="1_8nv5v"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemies/enemy.tscn" id="3_qbru8"]
 [ext_resource type="PackedScene" uid="uid://sjvu3pfum0ou" path="res://scenes/enemies/enemy_fly.tscn" id="4_5eg8a"]
 [ext_resource type="PackedScene" uid="uid://cbwrgkhx2gujr" path="res://scenes/enemy_spawner.tscn" id="5_t1yb5"]
+[ext_resource type="PackedScene" uid="uid://b136cqpv3heu8" path="res://scenes/enemies/boss.tscn" id="7_h1xns"]
 
 [sub_resource type="Environment" id="Environment_kp4ou"]
 glow_enabled = true
@@ -316,12 +317,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 33.2)
 [node name="Enemy" parent="." instance=ExtResource("3_qbru8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 0.5, -4)
 
-[node name="Enemy Fly" parent="." instance=ExtResource("4_5eg8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, -5)
-
 [node name="EnemySpawner" parent="." instance=ExtResource("5_t1yb5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1283, 0.594706, 4.22056)
 spawn_time = 5.0
 
 [node name="PetPickup" parent="." instance=ExtResource("3_0evou")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 27.9)
+
+[node name="Boss" parent="." instance=ExtResource("7_h1xns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -7)
+
+[node name="Enemy Fly" parent="." instance=ExtResource("4_5eg8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -9)

@@ -9,6 +9,7 @@ extends Node3D
 @export var ground_range: bool = true
 @export var floating_melee: bool = true
 @export var floating_ranged: bool = true
+@export var boss: bool = false
 
 var enemy_spawns: Array[Resource] = []
 
@@ -32,12 +33,23 @@ func _ready() -> void:
 		enemy_spawns.append(GameGlobals.enemy_resources["Floating Melee"])
 	if floating_ranged:
 		enemy_spawns.append(GameGlobals.enemy_resources["Floating Ranged"])
-	spawn_timer.start()
+	if boss:
+		enemy_spawns.append(GameGlobals.enemy_resources["Boss"])
+
+func spawn_enemy() -> void:
+	if spawn_time > 0:
+		spawn_timer.start(spawn_time)
+	else:
+		spawn_timer_timeout()
 
 func spawn_timer_timeout() -> void:
 	var spawn_selection: Resource = enemy_spawns.pick_random()
 	var enemy_node = spawn_selection.instantiate()
 	enemy_node.starting_position = global_position
+	enemy_node.starting_position.x += randf_range(-2.5,2.5)
+	enemy_node.starting_position.z += randf_range(-2.5,2.5)
 	world_node.add_child(enemy_node)
 	if not spawn_once:
 		spawn_timer.start()
+	else:
+		queue_free()
