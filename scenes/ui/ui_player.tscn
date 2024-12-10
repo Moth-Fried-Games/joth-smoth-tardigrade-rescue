@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cq65futumwc7q"]
+[gd_scene load_steps=58 format=3 uid="uid://cq65futumwc7q"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
 [ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
@@ -157,8 +157,24 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_463xt"]
+[sub_resource type="Animation" id="Animation_al03o"]
 resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y8sf4"]
+resource_name = "move_2"
 length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -195,7 +211,8 @@ _data = {
 "RESET": SubResource("Animation_s22nu"),
 "equip": SubResource("Animation_wou78"),
 "idle": SubResource("Animation_vtkmn"),
-"move": SubResource("Animation_463xt"),
+"move": SubResource("Animation_al03o"),
+"move_2": SubResource("Animation_y8sf4"),
 "unequip": SubResource("Animation_f6a3s")
 }
 

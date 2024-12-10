@@ -14,23 +14,28 @@ var loading_sounds: AudioStreamPlayer = null
 var scene_path: String = ""
 var loading_bar: bool = false
 
+
 func _ready() -> void:
 	control_node.visible = false
 	loading_timer.connect("timeout", _loading_timeout)
 	animation_player.animation_finished.connect(_on_fade_finished)
 
+
 func _on_fade_finished(anim_name: String) -> void:
 	if anim_name == "fade_in":
 		if loading_bar:
 			toggle_transition(true)
+		await get_tree().process_frame
 		get_tree().change_scene_to_file(scene_path)
 	if anim_name == "fade_out":
 		GameGlobals.loading_screen = false
+
 
 func change_scene(new_scene_path: String) -> void:
 	scene_path = new_scene_path
 	loading_bar = false
 	animation_player.play("fade_in")
+
 
 func change_scene_with_loading(new_scene_path: String) -> void:
 	scene_path = new_scene_path
@@ -51,8 +56,11 @@ func toggle_transition(new_transition_toggle: bool) -> void:
 		GameGlobals.loading_screen = true
 		#loading_sounds = GameGlobals.audio_manager.create_persistent_audio("ui_loading")
 	else:
-		if loading_timer.is_stopped():
-			loading_timer.start()
+		if control_node.visible:
+			control_node.visible = false
+		update_progress_value(0)
+		animation_player.play("fade_out")
+
 
 func _loading_timeout() -> void:
 	if control_node.visible:

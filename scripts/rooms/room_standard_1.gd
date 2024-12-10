@@ -72,23 +72,27 @@ func setup_room() -> void:
 		wall_r2.queue_free()
 	else:
 		door__r2.queue_free()
-	
-	if randf_range(0,1) >= 0.5:
+
+	if randf_range(0, 1) >= 0.2:
+		enemy_spawner.spawn_amount = randi_range(1, 2)
 		enemy_spawner.spawn_enemy()
 	else:
 		enemy_spawner.queue_free()
-	if randf_range(0,1) >= 0.5:
+	if randf_range(0, 1) >= 0.2:
+		enemy_spawner_2.spawn_amount = randi_range(1, 2)
 		enemy_spawner_2.spawn_enemy()
 	else:
 		enemy_spawner_2.queue_free()
-	if randf_range(0,1) >= 0.5:
+	if randf_range(0, 1) >= 0.2:
+		enemy_spawner_3.spawn_amount = randi_range(1, 2)
 		enemy_spawner_3.spawn_enemy()
 	else:
 		enemy_spawner_3.queue_free()
-	if randf_range(0,1) >= 0.5:
+	if randf_range(0, 1) >= 0.2:
+		enemy_spawner_4.spawn_amount = randi_range(1, 2)
 		enemy_spawner_4.spawn_enemy()
 	else:
 		enemy_spawner_4.queue_free()
-	if randf_range(0,1) >= 0.4:
+	if randf_range(0, 1) >= 0.4:
 		pet_pickup.queue_free()
 	world_node.finish_room(get_path())
