@@ -255,7 +255,9 @@ func _physics_process(delta: float) -> void:
 					return
 
 				var next_path_position: Vector3 = navigation_agent_3d.get_next_path_position()
-				var direction := global_position.direction_to(next_path_position)
+				var direction: Vector3 = Vector3.ZERO
+				if not dead:
+					direction = global_position.direction_to(next_path_position)
 				if direction and not attacking:
 					velocity.x = direction.x * SPEED
 					velocity.z = direction.z * SPEED
