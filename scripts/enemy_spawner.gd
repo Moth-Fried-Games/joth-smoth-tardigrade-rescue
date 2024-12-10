@@ -3,7 +3,9 @@ extends Node3D
 ## Spawn Enemies only once, otherwise, Spawn enemies on a Timer. True by Default.
 @export var spawn_once: bool = true
 ## Amount of Time before spawning the next enemy.
-@export var spawn_time: float = 3
+@export var spawn_time: float = 0
+## Amount of enemies to Spawn.
+@export var spawn_amount: int = 2
 
 @export var ground_melee: bool = true
 @export var ground_range: bool = true
@@ -43,12 +45,13 @@ func spawn_enemy() -> void:
 		spawn_timer_timeout()
 
 func spawn_timer_timeout() -> void:
-	var spawn_selection: Resource = enemy_spawns.pick_random()
-	var enemy_node = spawn_selection.instantiate()
-	enemy_node.starting_position = global_position
-	enemy_node.starting_position.x += randf_range(-2.5,2.5)
-	enemy_node.starting_position.z += randf_range(-2.5,2.5)
-	world_node.add_child(enemy_node)
+	for i in randi_range(1, spawn_amount):
+		var spawn_selection: Resource = enemy_spawns.pick_random()
+		var enemy_node = spawn_selection.instantiate()
+		enemy_node.starting_position = global_position
+		enemy_node.starting_position.x += randf_range(-2.5,2.5)
+		enemy_node.starting_position.z += randf_range(-2.5,2.5)
+		world_node.add_child(enemy_node)
 	if not spawn_once:
 		spawn_timer.start()
 	else:

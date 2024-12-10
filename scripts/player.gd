@@ -16,9 +16,6 @@ var friction: float = 4.0
 var direction: Vector3 = Vector3()
 var dash_dir: Vector3 = Vector3()
 
-# Camera
-var mouse_sensitivity: float = 0.5
-
 # Inputs
 var wish_jump: bool = false
 var wish_crouch: bool = false
@@ -79,8 +76,8 @@ func _input(event):
 
 func _handle_camera_rotation(event: InputEvent):
 	# Rotate the camera based on the mouse movement
-	rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
-	head_node_3d.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
+	rotate_y(deg_to_rad(-event.relative.x * GameGlobals.game_settings.mouse_sensitivity))
+	head_node_3d.rotate_x(deg_to_rad(-event.relative.y * GameGlobals.game_settings.mouse_sensitivity))
 
 	# Stop the head from rotating to far up or down
 	head_node_3d.rotation.x = clamp(head_node_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
@@ -88,6 +85,7 @@ func _handle_camera_rotation(event: InputEvent):
 
 func process_hit() -> void:
 	if not ui_player.petting_equipped:
+		ui_player.hurt_effect()
 		ui_player.increase_stress(1)
 	#ui_color_rect.color.a = 1
 

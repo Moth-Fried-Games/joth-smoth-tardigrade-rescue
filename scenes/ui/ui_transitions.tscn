@@ -1,6 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt58ok2qwcjln"]
+[gd_scene load_steps=9 format=3 uid="uid://bt58ok2qwcjln"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_transitions.gd" id="1_0bwdo"]
+
+[sub_resource type="Animation" id="Animation_oudmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cwsfi"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eb803"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrhr2"]
+_data = {
+"RESET": SubResource("Animation_oudmt"),
+"fade_in": SubResource("Animation_cwsfi"),
+"fade_out": SubResource("Animation_eb803")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_oua5h"]
 font_size = 24
@@ -19,7 +73,7 @@ bg_color = Color(1, 1, 1, 1)
 [node name="UITransitions" type="CanvasLayer"]
 script = ExtResource("1_0bwdo")
 
-[node name="Control" type="Control" parent="."]
+[node name="Fade" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,14 +82,29 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Fade"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+"": SubResource("AnimationLibrary_wrhr2")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="LoadingVBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
@@ -50,6 +119,7 @@ offset_right = 54.5
 offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/LoadingVBoxContainer"]
 layout_mode = 2
@@ -61,6 +131,7 @@ vertical_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="Control/LoadingVBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/background = SubResource("StyleBoxFlat_bcti1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7426f")

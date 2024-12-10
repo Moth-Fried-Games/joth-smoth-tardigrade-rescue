@@ -23,7 +23,7 @@ script = ExtResource("1_6t0vt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_17tu0")
 
-[node name="PlaceholderSprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 2
 alpha_cut = 2

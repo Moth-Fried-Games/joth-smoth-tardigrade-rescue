@@ -16,7 +16,6 @@ width = 1.0
 
 [node name="EnemySpawner" type="Node3D"]
 script = ExtResource("1_0jkbo")
-spawn_time = 0.0
 
 [node name="TextMeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)

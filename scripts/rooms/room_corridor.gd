@@ -25,21 +25,25 @@ func _ready() -> void:
 func setup_room() -> void:
 	if room.get_door_by_node(door__f).get_room_leads_to() != null:
 		wall_f.queue_free()
+		door__f.queue_free()
 	else:
 		door__f.queue_free()
 	if room.get_door_by_node(door__b).get_room_leads_to() != null:
 		wall_b.queue_free()
+		door__b.queue_free()
 	else:
 		door__b.queue_free()
 	if room.get_door_by_node(door__l).get_room_leads_to() != null:
 		wall_l.queue_free()
+		door__l.queue_free()
 	else:
 		door__l.queue_free()
 	if room.get_door_by_node(door__r).get_room_leads_to() != null:
 		wall_r.queue_free()
+		door__r.queue_free()
 	else:
 		door__r.queue_free()
-	if randf_range(0,1) >= 0.6:
+	if randf_range(0,1) >= 0.5:
 		enemy_spawner.spawn_enemy()
 	else:
 		enemy_spawner.queue_free()

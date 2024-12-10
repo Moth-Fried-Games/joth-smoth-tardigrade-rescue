@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
-const SPEED: float  = 10.0
-const JUMP_VELOCITY: float  = 4.5
+const SPEED: float  = 12.0
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var placeholder_sprite_3d: Sprite3D = $PlaceholderSprite3D
@@ -21,8 +20,6 @@ var starting_position: Vector3 = Vector3.INF
 
 var dead: bool = false
 var health: int = 20
-var melee: bool = true
-var ranged: bool = true
 var stress_award: int = 0
 
 var attacking: bool = false
@@ -36,15 +33,11 @@ func _ready() -> void:
 	camera_node = world_node.camera_node
 	if starting_position != Vector3.INF:
 		global_position = starting_position
+	navigation_agent_3d.avoidance_enabled = false
 	navigation_agent_3d.velocity_computed.connect(_on_velocity_computed)
 	navigation_agent_3d.max_speed = SPEED
 	navigation_agent_3d.height = collision_shape_3d.shape.height
 	navigation_agent_3d.radius = collision_shape_3d.shape.radius
-	if not melee and not ranged:
-		if randi_range(0,1) == 0:
-			melee = true
-		else:
-			ranged = true
 	if not is_in_group("enemies"):
 		add_to_group("enemies")
 
@@ -63,7 +56,7 @@ func brand() -> float:
 	return randf_range(-1,1)
 
 func _physics_process(delta: float) -> void:
-	if global_position.distance_to(player_node.global_position) < 30:
+	if global_position.distance_to(player_node.global_position) < 10 or chasing:
 		if player_ray_cast_3d.is_colliding():
 			var collided_with := player_ray_cast_3d.get_collider()
 			if is_instance_valid(collided_with):
@@ -83,99 +76,104 @@ func _physics_process(delta: float) -> void:
 						navigation_agent_3d.target_position = player_node.global_position
 					
 	
-	if chasing:
-		# Melee Player if close.
-		if not range_timer.is_stopped():
-			if melee_ray_cast_3d.is_colliding():
-				var collided_with := melee_ray_cast_3d.get_collider()
-				if is_instance_valid(collided_with):
-					if collided_with.is_in_group("players"):
-						if not attacking and telegraph_timer.is_stopped() and melee_timer.is_stopped():
-							telegraph_timer.start()
-							attacking = true
-						if attacking and telegraph_timer.is_stopped() and melee_timer.is_stopped():
-							attacking = false
-							melee_timer.start(randf_range(1,3))
-							player_node.process_hit()
-		# Shoot if the Player is in sight.
-		else:
-			if range_ray_cast_3d.is_colliding():
-				var collided_with := range_ray_cast_3d.get_collider()
-				if is_instance_valid(collided_with):
-					if collided_with.is_in_group("players"):
-						if not attacking and telegraph_timer.is_stopped() and range_timer.is_stopped():
-							telegraph_timer.start()
-							attacking = true
-						if attacking and telegraph_timer.is_stopped() and range_timer.is_stopped():
-							attacking = false
-							for i in randi_range(8,16):
-								await get_tree().create_timer(0.1).timeout
-								shoot_player()
-							range_timer.start(randf_range(3,5))
-							
-
-	# Make sprite look at camera.
-	if camera_node.global_transform.origin != Vector3(0, 1, 0):
-		placeholder_sprite_3d.look_at(camera_node.global_transform.origin, Vector3(0, 1, 0))
-	if player_node.wish_crouch:
-		if player_node.global_transform.origin + Vector3(0, 0.5, 0) != Vector3(0, 1, 0):
-			if chasing:
-				melee_ray_cast_3d.look_at(
-					player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
-				)
-				range_ray_cast_3d.look_at(
-					player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
-				)
-			player_ray_cast_3d.look_at(
-				player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
-			)
-	else:
-		if player_node.global_transform.origin + Vector3(0, 1, 0) != Vector3(0, 1, 0):
-			if chasing:
-				melee_ray_cast_3d.look_at(
-					player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
-				)
-				range_ray_cast_3d.look_at(
-					player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
-				)
-			player_ray_cast_3d.look_at(
-				player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
-			)
-
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
-	if chasing:
-		if player_in_sight:
-			# Move towards the player.
-			var direction := global_position.direction_to(player_node.global_position)
-			if direction and not attacking:
-				velocity.x = direction.x * SPEED
-				velocity.z = direction.z * SPEED
+		if chasing:
+			# Melee Player if close.
+			if not range_timer.is_stopped():
+				if melee_ray_cast_3d.is_colliding():
+					var collided_with := melee_ray_cast_3d.get_collider()
+					if is_instance_valid(collided_with):
+						if collided_with.is_in_group("players"):
+							if not attacking and telegraph_timer.is_stopped() and melee_timer.is_stopped():
+								telegraph_timer.start(0.5)
+								attacking = true
+							if attacking and telegraph_timer.is_stopped() and melee_timer.is_stopped():
+								attacking = false
+								melee_timer.start(0.25)
+								player_node.process_hit()
+				else:
+					if attacking and telegraph_timer.is_stopped() and melee_timer.is_stopped():
+						attacking = false
+						melee_timer.start(0.25)
+			# Shoot if the Player is in sight.
 			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.z = move_toward(velocity.z, 0, SPEED)
-			
-			move_and_slide()
+				if range_ray_cast_3d.is_colliding():
+					var collided_with := range_ray_cast_3d.get_collider()
+					if is_instance_valid(collided_with):
+						if collided_with.is_in_group("players"):
+							if not attacking and telegraph_timer.is_stopped() and range_timer.is_stopped():
+								telegraph_timer.start(1)
+								attacking = true
+							if attacking and telegraph_timer.is_stopped() and range_timer.is_stopped():
+								attacking = false
+								for i in randi_range(8,12):
+									await get_tree().create_timer(0.1).timeout
+									shoot_player()
+								range_timer.start(randf_range(3,5))
+								
+								
+
+		# Make sprite look at camera.
+		if camera_node.global_transform.origin != Vector3(0, 1, 0):
+			placeholder_sprite_3d.look_at(camera_node.global_transform.origin, Vector3(0, 1, 0))
+		if player_node.wish_crouch:
+			if player_node.global_transform.origin + Vector3(0, 0.5, 0) != Vector3(0, 1, 0):
+				if chasing:
+					melee_ray_cast_3d.look_at(
+						player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
+					)
+					range_ray_cast_3d.look_at(
+						player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
+					)
+				player_ray_cast_3d.look_at(
+					player_node.global_transform.origin + Vector3(0, 0.5, 0), Vector3(0, 1, 0)
+				)
 		else:
-			if NavigationServer3D.map_get_iteration_id(navigation_agent_3d.get_navigation_map()) == 0:
-				return
-			if navigation_agent_3d.is_navigation_finished():
-				return
+			if player_node.global_transform.origin + Vector3(0, 1, 0) != Vector3(0, 1, 0):
+				if chasing:
+					melee_ray_cast_3d.look_at(
+						player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
+					)
+					range_ray_cast_3d.look_at(
+						player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
+					)
+				player_ray_cast_3d.look_at(
+					player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
+				)
+
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		
+		if chasing:
+			if player_in_sight:
+				# Move towards the player.
+				var direction := global_position.direction_to(player_node.global_position)
+				if direction and not attacking:
+					velocity.x = direction.x * SPEED
+					velocity.z = direction.z * SPEED
+				else:
+					velocity.x = move_toward(velocity.x, 0, SPEED)
+					velocity.z = move_toward(velocity.z, 0, SPEED)
 				
-			var next_path_position: Vector3 = navigation_agent_3d.get_next_path_position()
-			var direction := global_position.direction_to(next_path_position)
-			if direction and not attacking:
-				velocity.x = direction.x * SPEED
-				velocity.z = direction.z * SPEED
+				move_and_slide()
 			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.z = move_toward(velocity.z, 0, SPEED)
-			if navigation_agent_3d.avoidance_enabled:
-				navigation_agent_3d.set_velocity(velocity)
-			else:
-				_on_velocity_computed(velocity)
+				if NavigationServer3D.map_get_iteration_id(navigation_agent_3d.get_navigation_map()) == 0:
+					return
+				if navigation_agent_3d.is_navigation_finished():
+					return
+					
+				var next_path_position: Vector3 = navigation_agent_3d.get_next_path_position()
+				var direction := global_position.direction_to(next_path_position)
+				if direction and not attacking:
+					velocity.x = direction.x * SPEED
+					velocity.z = direction.z * SPEED
+				else:
+					velocity.x = move_toward(velocity.x, 0, SPEED)
+					velocity.z = move_toward(velocity.z, 0, SPEED)
+				if navigation_agent_3d.avoidance_enabled:
+					navigation_agent_3d.set_velocity(velocity)
+				else:
+					_on_velocity_computed(velocity)
 		
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
@@ -194,5 +192,6 @@ func process_hit() -> void:
 
 func spawn_pet() -> void:
 	var water_bear = GameGlobals.water_bear.instantiate()
+	water_bear.plushie = false
 	water_bear.starting_position = global_position
 	world_node.add_child(water_bear)

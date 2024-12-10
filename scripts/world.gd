@@ -36,6 +36,9 @@ func _process(_delta: float) -> void:
 	if not world_ready:
 		if dungeon_ready and rooms_ready and navigation_ready:
 			world_ready = true
+			GameGlobals.in_world = true
+			UiMain.ui_transitions.toggle_transition(false)
+			UiMain.ui_player.initialize()
 
 
 func _on_dungeon_generator_3d_done_generating() -> void:

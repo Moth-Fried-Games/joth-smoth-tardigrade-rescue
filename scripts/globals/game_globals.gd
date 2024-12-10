@@ -20,7 +20,13 @@ var enemy_resources: Dictionary = {
 	"Boss": preload("res://scenes/enemies/boss.tscn"),
 }
 
-var in_title_screen: bool = false
+var menu_scene: String = "res://scenes/menu.tscn"
+var world_scene: String = "res://scenes/world.tscn"
+var game_over_scene: String = "res://scenes/game_over.tscn"
+
+var in_menu: bool = false
+var in_world: bool = false
+var in_game_over: bool = false
 var loading_screen: bool = false
 
 

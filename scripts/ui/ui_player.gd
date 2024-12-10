@@ -1,6 +1,7 @@
 extends CanvasLayer
 class_name UIPlayer
 
+@onready var control: Control = $Control
 @onready var crosshair_texture_rect: TextureRect = $Control/CrosshairTextureRect
 @onready var stress_texture_progress_bar: TextureProgressBar = $Control/StressTextureProgressBar
 @onready var weapon_animation_player: AnimationPlayer = $Control/Weapons/WeaponAnimationPlayer
@@ -12,6 +13,9 @@ class_name UIPlayer
 @onready var pet_l: AnimatedSprite2D = $Control/Petting/Control/PetL
 @onready var pet_u: AnimatedSprite2D = $Control/Petting/Control2/PetU
 @onready var pet_timer: Timer = $PetTimer
+@onready var game_over_texture_rect: TextureRect = $Control/GameOverTextureRect
+@onready var hurt_texture_rect: TextureRect = $Control/HurtTextureRect
+@onready var pet_hearts: GPUParticles2D = $Control/Petting/Control2/PetHearts
 
 var player_node: CharacterBody3D = null
 
@@ -24,6 +28,8 @@ var durability: float = 0
 
 var weapons_equipped: bool = false
 var petting_equipped: bool = false
+
+var game_over: bool = false
 
 
 func _ready() -> void:
@@ -39,21 +45,57 @@ func _ready() -> void:
 	punch_r.animation_finished.connect(_on_punch_r_animation_finished)
 	gun_l.animation_finished.connect(_on_gun_l_animation_finished)
 	gun_r.animation_finished.connect(_on_gun_r_animation_finished)
+	initialize()
+
+func initialize() -> void:
+	gun_side = false
+	punch_side = false
+	stress = 0
+	durability = 0
+	weapons_equipped = false
+	petting_equipped = false
+	game_over = false
+	control.visible = false
 	weapon_animation_player.play("equip")
+	punch_l.play("idle")
+	punch_r.play("idle")
+	gun_l.play("idle")
+	gun_r.play("idle")
 	petting_animation_player.play("new")
+	pet_l.play("idle_plush")
+	pet_u.play("idle")
+	hurt_texture_rect.modulate.a = 0
+	game_over_texture_rect.scale = Vector2.ONE * 3
+	pet_hearts.visible = false
 
-
-func _process(_delta: float) -> void:
-	var stress_percent: float = (stress / 60.0) * 100.0
-	stress_texture_progress_bar.value = stress_percent
-
-	if weapons_equipped:
-		if player_node.velocity == Vector3.ZERO:
-			weapon_animation_player.play("idle")
-		elif player_node.velocity != Vector3.ZERO and player_node.is_on_floor():
-			weapon_animation_player.play("move")
-		else:
-			weapon_animation_player.play("RESET")
+func _process(delta: float) -> void:
+	if GameGlobals.in_world:
+		if not control.visible:
+			control.visible = true
+			
+		var stress_percent: float = (stress / 60.0)
+		stress_texture_progress_bar.value = (stress_percent * 100.0)
+		
+		game_over_texture_rect.scale.x = (1.1 + ((1-stress_percent)*4))
+		game_over_texture_rect.scale.y = (1.1 + ((1-stress_percent)*4))
+		
+		if hurt_texture_rect.modulate.a != 0:
+			hurt_texture_rect.modulate.a -= 2 * delta
+		
+		if weapons_equipped:
+			if player_node.velocity == Vector3.ZERO:
+				weapon_animation_player.play("idle")
+			elif player_node.velocity != Vector3.ZERO and player_node.is_on_floor():
+				weapon_animation_player.play("move")
+			else:
+				weapon_animation_player.play("RESET")
+		
+		if stress == 60:
+			if not game_over:
+				game_over = true
+				GameGlobals.in_world = false
+				UiMain.ui_transitions.change_scene(GameGlobals.game_over_scene)
+				
 
 
 func increase_stress(value: float) -> void:
@@ -65,15 +107,21 @@ func decrease_stress(value: float) -> void:
 	stress -= value
 	stress = clampf(stress, 0, 60)
 
+func hurt_effect() -> void:
+	hurt_texture_rect.modulate.a = 1
 
 func switch_to_pet_plushie() -> void:
 	weapon_animation_player.play("unequip")
+	pet_l.play("idle_plush")
+	pet_u.play("idle")
 	weapons_equipped = false
 	durability = randf_range(2, 4)
 
 
 func switch_to_pet_real() -> void:
 	weapon_animation_player.play("unequip")
+	pet_l.play("idle_real")
+	pet_u.play("idle")
 	weapons_equipped = false
 	durability = 666
 
@@ -93,7 +141,6 @@ func pet_left() -> void:
 			if pet_l.animation == "idle_real" and pet_u.animation == "idle":
 				pet_l.play("pet_left_real")
 				pet_u.play("pet_left")
-				
 
 
 func pet_right() -> void:
@@ -109,19 +156,31 @@ func pet_right() -> void:
 
 func _on_pet_l_animation_finished() -> void:
 	if durability < 666:
-		pet_l.play("idle_plush")
+		if pet_l.animation != "explode_plush":
+			pet_l.play("idle_plush")
+			pet_the_thing()
+		else:
+			if petting_equipped:
+				switch_to_weapon()
 	else:
 		pet_l.play("idle_real")
-	pet_the_thing()
+		pet_the_thing()
 
 func _on_pet_u_animation_finished() -> void:
 	pet_u.play("idle")
 
 func pet_the_thing() -> void:
 	decrease_stress(1)
+	if not pet_hearts.visible:
+		pet_hearts.visible = true
+	pet_hearts.emitting = true
 	if pet_timer.is_stopped():
 		if durability < 666:
-			switch_to_weapon()
+			if pet_l.animation != "explode_plush":
+				pet_l.play("explode_plush")
+				if pet_hearts.visible:
+					pet_hearts.visible = false
+				pet_hearts.emitting = false
 
 
 func fire_guns() -> void:

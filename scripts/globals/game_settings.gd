@@ -12,6 +12,8 @@ var music_volume: float = 0.5
 var sound_volume: float = 0.5
 var ui_volume: float = 0.5
 
+var mouse_sensitivity: float = 0.5
+
 var last_viewport_size: Vector2 = Vector2.ZERO
 
 
@@ -93,3 +95,6 @@ func update_sound_volume(new_sound_volume: float) -> void:
 func update_ui_volume(new_ui_volume: float) -> void:
 	ui_volume = new_ui_volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI"), linear_to_db(ui_volume))
+
+func update_mouse_sensitivity(new_mouse_sensitivity: float) -> void:
+	mouse_sensitivity = new_mouse_sensitivity

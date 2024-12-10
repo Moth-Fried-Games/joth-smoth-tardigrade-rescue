@@ -1336,3 +1336,4 @@ mesh_vector_data = SubResource("Resource_5hd4c")
 
 [node name="EnemySpawner" parent="ROOM" instance=ExtResource("8_knt18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+spawn_amount = 2

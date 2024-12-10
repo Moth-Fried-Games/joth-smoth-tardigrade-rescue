@@ -1,10 +1,12 @@
-[gd_scene load_steps=41 format=3 uid="uid://cq65futumwc7q"]
+[gd_scene load_steps=57 format=3 uid="uid://cq65futumwc7q"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
 [ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
 [ext_resource type="Texture2D" uid="uid://2vcvadm840jy" path="res://assets/textures/player/7dfps_hud_punch.png" id="2_ifkk2"]
 [ext_resource type="Texture2D" uid="uid://co6wgh5ogjbvv" path="res://assets/textures/player/7dfps_hud_petplush_lower.png" id="4_bs5mu"]
+[ext_resource type="Texture2D" uid="uid://dlm0orow8feoi" path="res://assets/textures/player/7dfps_hud_petreal_lower.png" id="5_eph05"]
 [ext_resource type="Texture2D" uid="uid://c4iboehf81h6u" path="res://assets/textures/player/7dfps_hud_petplush_upper.png" id="5_r8sdg"]
+[ext_resource type="Texture2D" uid="uid://w1cphk7vhkmr" path="res://assets/textures/player/7dfps_sprites_particles_heart.png" id="7_nu2qq"]
 
 [sub_resource type="Gradient" id="Gradient_e546u"]
 offsets = PackedFloat32Array(0, 0.8, 0.9, 1)
@@ -17,14 +19,6 @@ height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
-
-[sub_resource type="Gradient" id="Gradient_b3m2f"]
-colors = PackedColorArray(1, 0, 0, 1, 0.501961, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ve8k"]
-gradient = SubResource("Gradient_b3m2f")
-width = 1200
-height = 16
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7llnl"]
 atlas = ExtResource("2_ifkk2")
@@ -57,7 +51,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch",
-"speed": 16.0
+"speed": 24.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_661ff"]
@@ -107,12 +101,12 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_c7ndj")
 }, {
-"duration": 2.0,
+"duration": 2.5,
 "texture": SubResource("AtlasTexture_gyj2m")
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 16.0
+"speed": 24.0
 }]
 
 [sub_resource type="Animation" id="Animation_s22nu"]
@@ -205,8 +199,20 @@ _data = {
 "unequip": SubResource("Animation_f6a3s")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0he6"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(1600, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jmnq"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(1920, 0, 320, 160)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nss1f"]
 atlas = ExtResource("4_bs5mu")
+region = Rect2(0, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amaes"]
+atlas = ExtResource("5_eph05")
 region = Rect2(0, 0, 320, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ee64q"]
@@ -217,22 +223,57 @@ region = Rect2(320, 0, 320, 160)
 atlas = ExtResource("4_bs5mu")
 region = Rect2(640, 0, 320, 160)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfdln"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1j2y"]
+atlas = ExtResource("5_eph05")
+region = Rect2(320, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llwsc"]
+atlas = ExtResource("5_eph05")
+region = Rect2(640, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6u6x"]
+atlas = ExtResource("4_bs5mu")
+region = Rect2(960, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p030k"]
 atlas = ExtResource("4_bs5mu")
 region = Rect2(1280, 0, 320, 160)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wktcr"]
-atlas = ExtResource("4_bs5mu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2lec"]
+atlas = ExtResource("5_eph05")
+region = Rect2(1280, 0, 320, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghd4g"]
+atlas = ExtResource("5_eph05")
 region = Rect2(1600, 0, 320, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ad8cd"]
 animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_b0he6")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_6jmnq")
+}],
+"loop": false,
+"name": &"explode_plush",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nss1f")
 }],
 "loop": true,
 "name": &"idle_plush",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amaes")
+}],
+"loop": true,
+"name": &"idle_real",
 "speed": 16.0
 }, {
 "frames": [{
@@ -248,13 +289,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfdln")
+"texture": SubResource("AtlasTexture_q1j2y")
 }, {
 "duration": 2.0,
-"texture": SubResource("AtlasTexture_wktcr")
+"texture": SubResource("AtlasTexture_llwsc")
+}],
+"loop": false,
+"name": &"pet_left_real",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6u6x")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_p030k")
 }],
 "loop": false,
 "name": &"pet_right_plush",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2lec")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ghd4g")
+}],
+"loop": false,
+"name": &"pet_right_real",
 "speed": 16.0
 }]
 
@@ -311,6 +374,24 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="Curve" id="Curve_gndjp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4hgb8"]
+curve = SubResource("Curve_gndjp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ie4io"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, -98, 0)
+alpha_curve = SubResource("CurveTexture_4hgb8")
+
 [sub_resource type="Animation" id="Animation_q5x65"]
 resource_name = "new"
 length = 0.001
@@ -335,6 +416,38 @@ _data = {
 "unequip": SubResource("Animation_f6a3s")
 }
 
+[sub_resource type="Gradient" id="Gradient_l7fa7"]
+offsets = PackedFloat32Array(0.8, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lsy8e"]
+gradient = SubResource("Gradient_l7fa7")
+width = 1280
+height = 1280
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_8cdsf"]
+offsets = PackedFloat32Array(0.8, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6d4if"]
+gradient = SubResource("Gradient_8cdsf")
+width = 1280
+height = 720
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_b3m2f"]
+colors = PackedColorArray(1, 0, 0, 1, 0.501961, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ve8k"]
+gradient = SubResource("Gradient_b3m2f")
+width = 1200
+height = 16
+
 [node name="UIPlayer" type="CanvasLayer"]
 script = ExtResource("1_ut2mg")
 
@@ -347,6 +460,7 @@ offset_top = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CrosshairTextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -361,21 +475,8 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_gfp42")
-
-[node name="StressTextureProgressBar" type="TextureProgressBar" parent="Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -600.0
-offset_top = 20.0
-offset_right = 600.0
-offset_bottom = 36.0
-grow_horizontal = 2
-step = 0.0
-value = 100.0
-texture_progress = SubResource("GradientTexture2D_5ve8k")
 
 [node name="Weapons" type="Control" parent="Control"]
 layout_mode = 1
@@ -384,10 +485,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="Control/Weapons"]
 layout_mode = 1
 anchors_preset = 0
+mouse_filter = 2
 
 [node name="PunchL" type="AnimatedSprite2D" parent="Control/Weapons/Control"]
 position = Vector2(272, 447)
@@ -404,6 +507,7 @@ anchor_right = 1.0
 offset_left = -1280.0
 offset_right = -1280.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="PunchR" type="AnimatedSprite2D" parent="Control/Weapons/Control2"]
 position = Vector2(1008, 447)
@@ -414,6 +518,7 @@ animation = &"idle"
 [node name="Control3" type="Control" parent="Control/Weapons"]
 layout_mode = 1
 anchors_preset = 0
+mouse_filter = 2
 
 [node name="GunL" type="AnimatedSprite2D" parent="Control/Weapons/Control3"]
 position = Vector2(392, 607)
@@ -430,6 +535,7 @@ anchor_right = 1.0
 offset_left = -1280.0
 offset_right = -1280.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="GunR" type="AnimatedSprite2D" parent="Control/Weapons/Control4"]
 position = Vector2(888, 607)
@@ -449,6 +555,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="Control/Petting"]
 layout_mode = 1
@@ -459,6 +566,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PetL" type="AnimatedSprite2D" parent="Control/Petting/Control"]
 position = Vector2(0, 50)
@@ -475,6 +583,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PetU" type="AnimatedSprite2D" parent="Control/Petting/Control2"]
 position = Vector2(0, 50)
@@ -482,10 +591,63 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_js5q0")
 animation = &"idle"
 
+[node name="PetHearts" type="GPUParticles2D" parent="Control/Petting/Control2"]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ie4io")
+texture = ExtResource("7_nu2qq")
+lifetime = 0.2
+one_shot = true
+fixed_fps = 60
+
 [node name="PettingAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
 libraries = {
 "": SubResource("AnimationLibrary_ohs4v")
 }
+
+[node name="GameOverTextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_lsy8e")
+expand_mode = 1
+
+[node name="HurtTextureRect" type="TextureRect" parent="Control"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_6d4if")
+
+[node name="StressTextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 20.0
+offset_right = 600.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_filter = 2
+step = 0.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_5ve8k")
 
 [node name="PetTimer" type="Timer" parent="."]
 one_shot = true
