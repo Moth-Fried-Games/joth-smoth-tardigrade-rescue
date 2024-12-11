@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var room: DungeonRoom3D = null
+var room: DungeonRoom3D = null
 
 var world_node: Node3D = null
 

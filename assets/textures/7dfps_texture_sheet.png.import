@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jbfv24ino28"
-path="res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"
+uid="uid://c7t05kueomei2"
+path.s3tc="res://.godot/imported/7dfps_texture_sheet.png-fd45ada3d234257e635fd95d200a76d4.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/textures/7dfps_texture_test.png"
-dest_files=["res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"]
+source_file="res://assets/textures/7dfps_texture_sheet.png"
+dest_files=["res://.godot/imported/7dfps_texture_sheet.png-fd45ada3d234257e635fd95d200a76d4.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -41,3 +41,4 @@ func update_dictionaries() -> void:
 	for audio_setting_file in GameUtils.get_all_files("res://assets/audio/","tres"):
 		audio_resource_paths[audio_setting_file.get_file().get_basename()] = audio_setting_file
 	save_dictionary("audio_resource_paths.json", audio_resource_paths)
+	print("Dictionaries Updated")

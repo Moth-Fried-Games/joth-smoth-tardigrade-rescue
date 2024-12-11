@@ -20,6 +20,9 @@ background_mode = 2
 sky = SubResource("Sky_6w5lq")
 tonemap_mode = 2
 glow_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_r0pdg"]
 agent_height = 2.0

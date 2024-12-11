@@ -1,24 +1,259 @@
-[gd_scene load_steps=5 format=3 uid="uid://sjvu3pfum0ou"]
+[gd_scene load_steps=24 format=3 uid="uid://sjvu3pfum0ou"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_fly.gd" id="1_is0u8"]
+[ext_resource type="Texture2D" uid="uid://b51krwx8slry6" path="res://assets/textures/enemies/7dfps_sprites_fly.png" id="2_1wxbg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dg45j"]
 height = 1.0
 
-[sub_resource type="Gradient" id="Gradient_78wca"]
-offsets = PackedFloat32Array(0, 0.9, 0.99, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5poul"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(256, 128, 128, 128)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5skfs"]
-gradient = SubResource("Gradient_78wca")
-width = 100
-height = 100
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vudp"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsfdq"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgst7"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wcp2"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csuh5"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71mr6"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_falh8"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8csgc"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yic66"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jauhx"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr2wt"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k2j7"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgxfe"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfngo"]
+atlas = ExtResource("2_1wxbg")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilcsv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5poul")
+}],
+"loop": true,
+"name": &"attack_melee_left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vudp")
+}],
+"loop": true,
+"name": &"attack_melee_right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsfdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgst7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wcp2")
+}],
+"loop": true,
+"name": &"attack_ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csuh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71mr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_falh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8csgc")
+}],
+"loop": true,
+"name": &"idle_melee",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yic66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jauhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr2wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k2j7")
+}],
+"loop": true,
+"name": &"idle_ranged",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgxfe")
+}],
+"loop": true,
+"name": &"telegraph_melee_left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfngo")
+}],
+"loop": true,
+"name": &"telegraph_melee_right",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_omotb"]
+resource_name = "damage"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h245i"]
+resource_name = "dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.25, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disable_enemy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4x53o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_350q7"]
+_data = {
+"RESET": SubResource("Animation_4x53o"),
+"damage": SubResource("Animation_omotb"),
+"dead": SubResource("Animation_h245i")
+}
 
 [node name="Enemy Fly" type="CharacterBody3D"]
-motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_is0u8")
 
@@ -43,14 +278,20 @@ path_height_offset = -1.0
 path_postprocessing = 1
 avoidance_enabled = true
 
-[node name="PlaceholderSprite3D" type="Sprite3D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 2
-alpha_cut = 2
-texture = SubResource("GradientTexture2D_5skfs")
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_ilcsv")
+animation = &"idle_ranged"
 
-[node name="BulletMarker3D" type="Marker3D" parent="PlaceholderSprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+[node name="BulletMarker3D" type="Marker3D" parent="AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
+libraries = {
+"": SubResource("AnimationLibrary_350q7")
+}
 
 [node name="TelegraphTimer" type="Timer" parent="."]
 one_shot = true

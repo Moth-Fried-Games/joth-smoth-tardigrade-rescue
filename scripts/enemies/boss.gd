@@ -66,6 +66,7 @@ func _physics_process(delta: float) -> void:
 						player_in_sight = true
 					if not chasing:
 						chasing = true
+						UiMain.ui_player.play_boss_music()
 				else:
 					if player_in_sight:
 						navigation_agent_3d.avoidance_enabled = true
@@ -182,6 +183,7 @@ func _on_velocity_computed(safe_velocity: Vector3):
 func process_hit() -> void:
 	if not chasing:
 		chasing = true
+		UiMain.ui_player.play_boss_music()
 	if not dead:
 		health -= 1
 		if health <= 0:

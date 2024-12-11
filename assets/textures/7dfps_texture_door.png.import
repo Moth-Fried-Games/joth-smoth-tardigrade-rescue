@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jbfv24ino28"
-path="res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"
+uid="uid://dap8dyyffuw1i"
+path="res://.godot/imported/7dfps_texture_door.png-f4f9b3741a22a4d34ad871db63c166c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/7dfps_texture_test.png"
-dest_files=["res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"]
+source_file="res://assets/textures/7dfps_texture_door.png"
+dest_files=["res://.godot/imported/7dfps_texture_door.png-f4f9b3741a22a4d34ad871db63c166c6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jbfv24ino28"
-path="res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"
+uid="uid://fkj23gii2a1h"
+path="res://.godot/imported/7dfps_texture_ceiling.png-fe20207b129cc6da57bcb55e62c58f88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/7dfps_texture_test.png"
-dest_files=["res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"]
+source_file="res://assets/textures/7dfps_texture_ceiling.png"
+dest_files=["res://.godot/imported/7dfps_texture_ceiling.png-fe20207b129cc6da57bcb55e62c58f88.ctex"]
 
 [params]
 

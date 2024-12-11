@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://duy7quoh4dbld"]
+[gd_scene load_steps=18 format=3 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_p4cgt"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
 
 [sub_resource type="Gradient" id="Gradient_jxbq4"]
 offsets = PackedFloat32Array(0)
@@ -13,6 +14,92 @@ height = 720
 
 [sub_resource type="LabelSettings" id="LabelSettings_uwulw"]
 font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_6potn"]
+font_size = 24
+
+[sub_resource type="Texture2D" id="Texture2D_rkead"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "move_forward"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5nkes"]
+font_size = 24
+
+[sub_resource type="Texture2D" id="Texture2D_if1mb"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "move_backwards"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_yk014"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "move_left"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_5mpqt"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "move_right"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_8nnsj"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "action_crouch"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_qrflr"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "action_shoot"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_olndw"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "action_punch"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_cvn3j"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "action_jump"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_p6e8m"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "action_dash"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_2iua7"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_israh")
+path = "action_crouch"
+show_mode = 0
+force_type = 0
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource("1_p4cgt")
@@ -36,7 +123,22 @@ texture = SubResource("GradientTexture2D_wea3c")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="TabContainer" type="TabContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+
+[node name="Main" type="Control" parent="Control/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,26 +146,435 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -147.5
-offset_top = -122.5
+offset_top = -217.0
 offset_right = 147.5
-offset_bottom = 122.5
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "JOTH SMOTH'S
 VERY BAD DAY"
 label_settings = SubResource("LabelSettings_uwulw")
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="Control/VBoxContainer"]
+[node name="StartButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "START"
 
-[node name="QuitButton" type="Button" parent="Control/VBoxContainer"]
+[node name="HowButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "HOW TO PLAY"
+
+[node name="SettingsButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
+
+[node name="HowTo" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -161.5
+offset_right = 198.5
+offset_bottom = 161.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer"]
+layout_mode = 2
+text = "HOW TO PLAY"
+label_settings = SubResource("LabelSettings_uwulw")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_rkead")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Forward"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_if1mb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Backwards"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_yk014")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Left"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_5mpqt")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Right"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_8nnsj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Crouch"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_qrflr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+text = "Shoot"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_olndw")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+layout_mode = 2
+text = "Punch"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_cvn3j")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+text = "Jump"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer8"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_p6e8m")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer8"]
+layout_mode = 2
+text = "Dash"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_2iua7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_2iua7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
+layout_mode = 2
+text = "(Air) Dive"
+label_settings = SubResource("LabelSettings_5nkes")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "OBJECTIVE"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+text = "Help Joth Smoth recover their kidnapped pet.
+
+Joth Smoth's anger will build up over time and when they take damage, if anger reaches the limit, Joth Smoth will destroy the world.
+
+Defeat everything in your way and find the Boss before Joth Smoth can't contain their anger anymore."
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ReturnButton" type="Button" parent="Control/TabContainer/HowTo/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RETURN"
+
+[node name="Settings" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_uwulw")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="MusicLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sounds Volume"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MouseHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="Control/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RETURN"
+
+[node name="Credits" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_uwulw")
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b]Art[/b]
+Atlas / Explorermoo
+
+[b]Programming[/b]
+Myr the Moth
+
+[b]Music[/b]
+
+[b]Sounds[/b]
+
+[b]Tools[/b]"
+
+[node name="ReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RETURN"

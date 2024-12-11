@@ -48,7 +48,6 @@ var ui_player: UIPlayer = null
 
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	placeholder_sprite_3d.visible = false
 	world_node = get_tree().current_scene
 	if "player_node" in world_node:
@@ -113,6 +112,14 @@ func punch_check() -> void:
 				if body.is_in_group("enemies"):
 					if not body.dead:
 						body.process_hit()
+	if melee_area_3d.has_overlapping_areas():
+		var areas := melee_area_3d.get_overlapping_areas()
+		if areas.size() > 0:
+			for area in areas:
+				if area.is_in_group("doors"):
+					if is_instance_valid(area):
+						if not area.destroyed:
+							area.destroy_door()
 
 
 func _physics_process(delta: float) -> void:
@@ -149,7 +156,12 @@ func process_input(delta: float) -> void:
 	if wish_dash and dash_timer.is_stopped():
 		dash_dir = direction.normalized()
 		dash_timer.start()
-
+	if dash_timer.is_stopped():	
+		if camera_3d.fov != 80:
+			camera_3d.fov = lerpf(camera_3d.fov,80,0.25)
+	else:
+		if camera_3d.fov != 90:
+			camera_3d.fov = lerpf(camera_3d.fov,90,0.25)
 	# Diving
 	if not is_on_floor():
 		if not wish_dive and Input.is_action_just_pressed("action_crouch"):

@@ -30,7 +30,10 @@ var weapons_equipped: bool = false
 var petting_equipped: bool = false
 
 var game_over: bool = false
+var victory: bool = false
 
+var gameplay_music: AudioStreamPlayer = null
+var boss_music: AudioStreamPlayer = null
 
 func _ready() -> void:
 	weapon_animation_player.animation_finished.connect(
@@ -67,6 +70,14 @@ func initialize() -> void:
 	hurt_texture_rect.modulate.a = 0
 	game_over_texture_rect.scale = Vector2.ONE * 3
 	pet_hearts.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func play_gameplay_music() -> void:
+	gameplay_music = GameGlobals.audio_manager.create_persistent_audio("music_gameplay")
+
+func play_boss_music() -> void:
+	GameGlobals.audio_manager.fade_audio_out_and_destroy("music_gameplay",gameplay_music,1)
+	boss_music = GameGlobals.audio_manager.create_persistent_audio("music_boss")
 
 func _process(delta: float) -> void:
 	if GameGlobals.in_world:
@@ -95,6 +106,20 @@ func _process(delta: float) -> void:
 				game_over = true
 				GameGlobals.in_world = false
 				UiMain.ui_transitions.change_scene(GameGlobals.game_over_scene)
+				if is_instance_valid(gameplay_music):
+					GameGlobals.audio_manager.fade_audio_out_and_destroy("music_gameplay",gameplay_music,1)
+				if is_instance_valid(boss_music):
+					GameGlobals.audio_manager.fade_audio_out_and_destroy("music_boss",boss_music,1)
+		
+		if stress == 0 and petting_equipped and durability == 666:
+			if not victory:
+				victory = true
+				GameGlobals.in_world = false
+				UiMain.ui_transitions.change_scene(GameGlobals.victory_scene)
+				if is_instance_valid(gameplay_music):
+					GameGlobals.audio_manager.fade_audio_out_and_destroy("music_gameplay",gameplay_music,1)
+				if is_instance_valid(boss_music):
+					GameGlobals.audio_manager.fade_audio_out_and_destroy("music_boss",boss_music,1)
 				
 
 

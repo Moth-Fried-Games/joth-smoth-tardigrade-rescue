@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 			GameGlobals.in_world = true
 			UiMain.ui_transitions.toggle_transition(false)
 			UiMain.ui_player.initialize()
-
+			UiMain.ui_player.play_gameplay_music()
 
 func _on_dungeon_generator_3d_done_generating() -> void:
 	dungeon_ready = true

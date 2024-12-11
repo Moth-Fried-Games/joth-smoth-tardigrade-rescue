@@ -23,10 +23,12 @@ var enemy_resources: Dictionary = {
 var menu_scene: String = "res://scenes/menu.tscn"
 var world_scene: String = "res://scenes/world.tscn"
 var game_over_scene: String = "res://scenes/game_over.tscn"
+var victory_scene: String = "res://scenes/victory.tscn"
 
 var in_menu: bool = false
 var in_world: bool = false
 var in_game_over: bool = false
+var in_victory: bool = false
 var loading_screen: bool = false
 
 

@@ -38,7 +38,7 @@ func _ready() -> void:
 			melee = true
 		else:
 			ranged = true
-	stress_award = 1
+	stress_award = 2
 	if melee:
 		SPEED += 4
 		animated_sprite_3d.play("idle_melee")
@@ -282,7 +282,7 @@ func _physics_process(delta: float) -> void:
 					_on_velocity_computed(velocity)
 
 	if disabled:
-		if velocity == Vector3.ZERO:
+		if is_on_floor() and velocity == Vector3.ZERO:
 			process_mode = PROCESS_MODE_DISABLED
 
 

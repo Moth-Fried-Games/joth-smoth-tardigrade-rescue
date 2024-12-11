@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://gtbt77kjrgwr"]
+
+[ext_resource type="AudioStream" uid="uid://bf66dv0hivswv" path="res://assets/audio/music/gameover.wav" id="1_pr8fl"]
+[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_4ncav"]
+
+[resource]
+script = ExtResource("2_4ncav")
+limit = 1
+audio_name = ""
+audio_type = 0
+audio_stream = ExtResource("1_pr8fl")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+reverb_tail = 0.0

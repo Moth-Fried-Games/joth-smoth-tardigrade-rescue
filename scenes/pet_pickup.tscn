@@ -1,20 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1c5ker3gajbn"]
+[gd_scene load_steps=4 format=3 uid="uid://d1c5ker3gajbn"]
 
 [ext_resource type="Script" path="res://scripts/pet_pickup.gd" id="1_6t0vt"]
+[ext_resource type="Texture2D" uid="uid://dm8ksubcwhcrx" path="res://assets/textures/enemies/7dfps_sprites_plush.png" id="2_4hhc4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_17tu0"]
-
-[sub_resource type="Gradient" id="Gradient_rant5"]
-offsets = PackedFloat32Array(0, 0.9, 0.99, 1)
-colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_80bjv"]
-gradient = SubResource("Gradient_rant5")
-width = 100
-height = 100
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
 
 [node name="PetPickup" type="Area3D"]
 script = ExtResource("1_6t0vt")
@@ -24,7 +13,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_17tu0")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 billboard = 2
-alpha_cut = 2
-texture = SubResource("GradientTexture2D_80bjv")
+texture_filter = 2
+texture = ExtResource("2_4hhc4")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)

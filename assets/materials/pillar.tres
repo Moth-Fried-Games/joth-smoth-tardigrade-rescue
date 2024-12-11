@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clv3b2kgfjndm"]
+
+[ext_resource type="Texture2D" uid="uid://onhmk3b15bgw" path="res://assets/textures/7dfps_texture_pillar.png" id="1_1rly8"]
+
+[resource]
+albedo_texture = ExtResource("1_1rly8")
+texture_filter = 2

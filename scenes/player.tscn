@@ -48,6 +48,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="HeadNode3D"]
 
+[node name="SpotLight3D" type="SpotLight3D" parent="HeadNode3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+spot_range = 20.0
+spot_angle = 60.0
+
 [node name="LeftBulletMarker3D" type="Marker3D" parent="HeadNode3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.25, -1)
 

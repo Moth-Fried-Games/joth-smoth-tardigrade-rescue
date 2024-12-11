@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jbfv24ino28"
-path="res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"
+uid="uid://dm8ksubcwhcrx"
+path="res://.godot/imported/7dfps_sprites_plush.png-9f9d0e3d385ee71bc81215ed072347f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/7dfps_texture_test.png"
-dest_files=["res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"]
+source_file="res://assets/textures/enemies/7dfps_sprites_plush.png"
+dest_files=["res://.godot/imported/7dfps_sprites_plush.png-9f9d0e3d385ee71bc81215ed072347f6.ctex"]
 
 [params]
 

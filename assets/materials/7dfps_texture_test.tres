@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://rpkcua3xcg4t"]
-
-[ext_resource type="Texture2D" uid="uid://d3jbfv24ino28" path="res://assets/textures/7dfps_texture_test.png" id="1_nhncb"]
-
-[resource]
-albedo_texture = ExtResource("1_nhncb")
-texture_filter = 2

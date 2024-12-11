@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jbfv24ino28"
-path="res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"
+uid="uid://sjiy3be4fihr"
+path="res://.godot/imported/7dfps_texture_wallbottom.png-b3ba846d6c1904c0f57ab5d51b35ae0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/7dfps_texture_test.png"
-dest_files=["res://.godot/imported/7dfps_texture_test.png-b7ab081c0a97ca1571e3952aa19c5c97.ctex"]
+source_file="res://assets/textures/7dfps_texture_wallbottom.png"
+dest_files=["res://.godot/imported/7dfps_texture_wallbottom.png-b3ba846d6c1904c0f57ab5d51b35ae0e.ctex"]
 
 [params]
 
