@@ -39,22 +39,28 @@ func _ready() -> void:
 	GameGlobals.in_menu = true
 	UiMain.ui_transitions.toggle_transition(false)
 	menu_music = GameGlobals.audio_manager.create_persistent_audio("music_menu")
-
-
-func main_menu() -> void:
 	tab_container.current_tab = 0
 
 
-func howto_menu() -> void:
+func _input(_event: InputEvent) -> void:
+	if Input.is_anything_pressed() and tab_container.current_tab == 0:
+		main_menu()
+
+
+func main_menu() -> void:
 	tab_container.current_tab = 1
 
 
-func settings_menu() -> void:
+func howto_menu() -> void:
 	tab_container.current_tab = 2
 
 
-func credits_menu() -> void:
+func settings_menu() -> void:
 	tab_container.current_tab = 3
+
+
+func credits_menu() -> void:
+	tab_container.current_tab = 4
 
 
 func credits_click_link(meta: Variant) -> void:

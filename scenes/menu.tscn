@@ -1,18 +1,58 @@
-[gd_scene load_steps=18 format=3 uid="uid://duy7quoh4dbld"]
+[gd_scene load_steps=21 format=3 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_p4cgt"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
 
 [sub_resource type="Gradient" id="Gradient_jxbq4"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wea3c"]
 gradient = SubResource("Gradient_jxbq4")
-width = 1280
-height = 720
+width = 1920
+height = 1080
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
+
+[sub_resource type="Animation" id="Animation_fwjgn"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_riul6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0kw5f"]
+_data = {
+"RESET": SubResource("Animation_riul6"),
+"blink": SubResource("Animation_fwjgn")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_6potn"]
 font_size = 24
@@ -121,7 +161,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wea3c")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 6
 
 [node name="TabContainer" type="TabContainer" parent="Control"]
 layout_mode = 1
@@ -132,13 +172,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 2
+current_tab = 3
 tabs_visible = false
+
+[node name="Start" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Start"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -78.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]PRESS ANY KEY TO START"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/TabContainer/Start/Label"]
+libraries = {
+"": SubResource("AnimationLibrary_0kw5f")
+}
+autoplay = "blink"
 
 [node name="Main" type="Control" parent="Control/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 0
+metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Main"]
 layout_mode = 1
@@ -192,7 +259,7 @@ text = "QUIT"
 [node name="HowTo" type="Control" parent="Control/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo"]
 layout_mode = 1
@@ -432,7 +499,7 @@ text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer"]
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings"]
 layout_mode = 1
@@ -609,7 +676,7 @@ selected = 0
 item_count = 2
 popup/item_0/text = "NO"
 popup/item_1/text = "YES"
-popup/item_1/id = 3
+popup/item_1/id = 1
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
@@ -619,7 +686,7 @@ text = "RETURN"
 [node name="Credits" type="Control" parent="Control/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Credits"]
 layout_mode = 1
@@ -667,7 +734,6 @@ text = "[center][b]Art[/b]
 [url=https://github.com/blackears/cyclopsLevelBuilder]cyclopsLevelBuilder[/url]
 [url=https://github.com/rsubtil/controller_icons]Controller Icons[/url]
 [url=https://github.com/ryan-haskell/gdformat-on-save]Format on Save[/url]"
-scroll_following = true
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer"]
 layout_mode = 2
