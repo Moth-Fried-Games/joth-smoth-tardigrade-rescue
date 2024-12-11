@@ -1,19 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://duy7quoh4dbld"]
+[gd_scene load_steps=29 format=3 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_p4cgt"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
-
-[sub_resource type="Gradient" id="Gradient_jxbq4"]
-offsets = PackedFloat32Array(0, 0.8, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wea3c"]
-gradient = SubResource("Gradient_jxbq4")
-width = 1920
-height = 1080
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[ext_resource type="Texture2D" uid="uid://cs2h3u7v8p28r" path="res://assets/ui/shekgylrioh31.jpg" id="2_whp3v"]
+[ext_resource type="FontFile" uid="uid://sgk0df4qqy85" path="res://assets/ui/Barrio-Regular.ttf" id="3_ba2wb"]
+[ext_resource type="Texture2D" uid="uid://cfjdscvblci3w" path="res://assets/ui/7dfps_logo.png" id="5_wi5ge"]
+[ext_resource type="Theme" uid="uid://gohx0myooook" path="res://assets/ui/joth_theme.tres" id="6_fu6ku"]
+[ext_resource type="Texture2D" uid="uid://qlw4nsn6l7y2" path="res://assets/ui/7dfps_ui.png" id="7_qsv77"]
+[ext_resource type="FontFile" uid="uid://u4wpp2aq57lr" path="res://assets/ui/Silkscreen-Bold.ttf" id="8_wgkgx"]
+[ext_resource type="FontFile" uid="uid://bkqdmdrfnprgc" path="res://assets/ui/Silkscreen-Regular.ttf" id="10_ylcr3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
@@ -54,8 +49,16 @@ _data = {
 "blink": SubResource("Animation_fwjgn")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1gg1q"]
+texture = ExtResource("7_qsv77")
+expand_margin_left = 65.0
+expand_margin_top = 50.0
+expand_margin_right = 65.0
+expand_margin_bottom = 90.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_6potn"]
-font_size = 24
+font = ExtResource("10_ylcr3")
+font_size = 21
 
 [sub_resource type="Texture2D" id="Texture2D_rkead"]
 resource_local_to_scene = false
@@ -66,7 +69,7 @@ show_mode = 0
 force_type = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_5nkes"]
-font_size = 24
+font_size = 21
 
 [sub_resource type="Texture2D" id="Texture2D_if1mb"]
 resource_local_to_scene = false
@@ -140,6 +143,20 @@ path = "action_crouch"
 show_mode = 0
 force_type = 0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lerck"]
+texture = ExtResource("7_qsv77")
+expand_margin_left = 75.0
+expand_margin_top = 50.0
+expand_margin_right = 75.0
+expand_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_doqmv"]
+texture = ExtResource("7_qsv77")
+expand_margin_left = 75.0
+expand_margin_top = 60.0
+expand_margin_right = 75.0
+expand_margin_bottom = 60.0
+
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_p4cgt")
@@ -159,7 +176,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_wea3c")
+texture = ExtResource("2_whp3v")
 expand_mode = 1
 stretch_mode = 6
 
@@ -172,25 +189,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="Label" type="RichTextLabel" parent="Control/TabContainer/Start"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -78.0
-offset_bottom = -20.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = 26.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_ba2wb")
+theme_override_fonts/bold_font = ExtResource("8_wgkgx")
 theme_override_font_sizes/bold_font_size = 42
 bbcode_enabled = true
 text = "[center][b]PRESS ANY KEY TO START"
@@ -207,52 +225,61 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="Panel" type="MarginContainer" parent="Control/TabContainer/Main"]
+layout_mode = 2
+offset_left = 421.5
+offset_top = 70.5
+offset_right = 859.0
+offset_bottom = 300.5
+theme_override_constants/margin_bottom = 30
+
+[node name="Logo" type="TextureRect" parent="Control/TabContainer/Main/Panel"]
+custom_minimum_size = Vector2(437.5, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_wi5ge")
+expand_mode = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Main"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -147.5
-offset_top = -217.0
-offset_right = 147.5
-offset_bottom = 217.0
+layout_mode = 2
+offset_left = 495.5
+offset_top = 304.5
+offset_right = 783.5
+offset_bottom = 649.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 10
-
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Main/VBoxContainer"]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-theme_override_font_sizes/bold_font_size = 42
-bbcode_enabled = true
-text = "[center][b]JOTH SMOTH'S 
-VERY BAD DAY"
-fit_content = true
 
 [node name="StartButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "START"
 
 [node name="HowButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "HOW TO PLAY"
 
 [node name="SettingsButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "SETTINGS"
 
 [node name="CreditsButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
@@ -268,220 +295,248 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -198.5
-offset_top = -161.5
-offset_right = 198.5
-offset_bottom = 161.5
+offset_left = -539.5
+offset_top = -265.0
+offset_right = 539.5
+offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 90
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/bold_font_size = 42
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_1gg1q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/bold_font = ExtResource("8_wgkgx")
+theme_override_font_sizes/bold_font_size = 38
 bbcode_enabled = true
 text = "[center][b]HOW TO PLAY"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
+theme_override_fonts/font = ExtResource("8_wgkgx")
 text = "CONTROLS"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_rkead")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Forward"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_if1mb")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Backwards"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_yk014")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Left"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_5mpqt")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Right"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 
-[node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_8nnsj")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Crouch"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_qrflr")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Shoot"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_olndw")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Punch"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_cvn3j")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Jump"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer8" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer8" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer8"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer8"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_p6e8m")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer8"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer8"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Dash"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_2iua7")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_2iua7")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer9"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "(Air) Dive"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("8_wgkgx")
 text = "OBJECTIVE"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(600, 0)
+[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ylcr3")
 text = "Help Joth Smoth recover their kidnapped pet.
 
 Joth Smoth's anger will build up over time and when they take damage, if anger reaches the limit, Joth Smoth will destroy the world.
@@ -494,6 +549,8 @@ autowrap_mode = 3
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/HowTo/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
@@ -509,134 +566,143 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -213.5
+offset_top = -243.0
+offset_right = 213.5
+offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 60
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Settings/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lerck")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/bold_font = ExtResource("8_wgkgx")
 theme_override_font_sizes/bold_font_size = 42
 bbcode_enabled = true
 text = "[center][b]SETTINGS"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Master Volume"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MasterHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Music Volume"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="MusicLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MusicLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sounds Volume"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SoundHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="SoundHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="SoundLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="SoundLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mouse Sensitivity"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MouseHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="MouseHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = 1.0
 value = 1.0
 
-[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 1
+theme_override_constants/separation = 10
 
-[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Display"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 item_count = 2
 popup/item_0/text = "FULLSCREEN"
 popup/item_1/text = "WINDOWED"
 popup/item_1/id = 1
 
-[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "VSync"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "DISABLED"
@@ -647,13 +713,13 @@ popup/item_2/id = 2
 popup/item_3/text = "MAILBOX"
 popup/item_3/id = 3
 
-[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Frame Cap"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 item_count = 4
 popup/item_0/text = "UNCAPPED"
@@ -664,13 +730,13 @@ popup/item_2/id = 2
 popup/item_3/text = "AUTO"
 popup/item_3/id = 3
 
-[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Show Frames"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="FrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 item_count = 2
 popup/item_0/text = "NO"
@@ -679,10 +745,13 @@ popup/item_1/id = 1
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -693,23 +762,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -300.0
+offset_top = -290.0
+offset_right = 300.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 60
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Credits/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_doqmv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/bold_font = ExtResource("8_wgkgx")
 theme_override_font_sizes/bold_font_size = 42
 bbcode_enabled = true
 text = "[center][b]CREDITS"
 fit_content = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("10_ylcr3")
+theme_override_fonts/bold_font = ExtResource("8_wgkgx")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
@@ -735,5 +819,7 @@ text = "[center][b]Art[/b]
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_fu6ku")
 theme_override_font_sizes/font_size = 32
 text = "RETURN"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cq65futumwc7q"]
+[gd_scene load_steps=60 format=3 uid="uid://cq65futumwc7q"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
 [ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dlm0orow8feoi" path="res://assets/textures/player/7dfps_hud_petreal_lower.png" id="5_eph05"]
 [ext_resource type="Texture2D" uid="uid://c4iboehf81h6u" path="res://assets/textures/player/7dfps_hud_petplush_upper.png" id="5_r8sdg"]
 [ext_resource type="Texture2D" uid="uid://w1cphk7vhkmr" path="res://assets/textures/player/7dfps_sprites_particles_heart.png" id="7_nu2qq"]
+[ext_resource type="FontFile" uid="uid://u4wpp2aq57lr" path="res://assets/ui/Silkscreen-Bold.ttf" id="8_mrxjf"]
+[ext_resource type="Theme" uid="uid://gohx0myooook" path="res://assets/ui/joth_theme.tres" id="9_fc2nl"]
 
 [sub_resource type="Gradient" id="Gradient_e546u"]
 offsets = PackedFloat32Array(0, 0.8, 0.9, 1)
@@ -701,20 +703,30 @@ offset_right = 108.5
 offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 35
 
 [node name="Label" type="RichTextLabel" parent="Control2/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/bold_font = ExtResource("8_mrxjf")
 theme_override_font_sizes/bold_font_size = 42
 bbcode_enabled = true
 text = "[center][b]PAUSED"
 fit_content = true
 
-[node name="ResumeButton" type="Button" parent="Control2/Panel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ResumeButton" type="Button" parent="Control2/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_fc2nl")
 theme_override_font_sizes/font_size = 32
 text = "RESUME"
 
-[node name="TitleButton" type="Button" parent="Control2/Panel/VBoxContainer"]
+[node name="TitleButton" type="Button" parent="Control2/Panel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("9_fc2nl")
 theme_override_font_sizes/font_size = 32
 text = "TITLE SCREEN"

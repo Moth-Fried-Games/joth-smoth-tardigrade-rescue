@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt58ok2qwcjln"]
+[gd_scene load_steps=10 format=3 uid="uid://bt58ok2qwcjln"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_transitions.gd" id="1_0bwdo"]
+[ext_resource type="FontFile" uid="uid://bkqdmdrfnprgc" path="res://assets/ui/Silkscreen-Regular.ttf" id="2_65n51"]
 
 [sub_resource type="Animation" id="Animation_oudmt"]
 length = 0.001
@@ -123,6 +124,7 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/LoadingVBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_65n51")
 text = "LOADING"
 label_settings = SubResource("LabelSettings_oua5h")
 horizontal_alignment = 1
