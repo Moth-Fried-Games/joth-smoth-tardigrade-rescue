@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://l3tmrlouia8x"
+path="res://.godot/imported/squeak toy - squeak5.wav-ff726fee92a1f9a888b7a100b2bbfc56.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/squeaks/squeak toy - squeak5.wav"
+dest_files=["res://.godot/imported/squeak toy - squeak5.wav-ff726fee92a1f9a888b7a100b2bbfc56.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxl11qbcukvfp"
+path="res://.godot/imported/alienshoot1.wav-e5f6e00ad5aa69acdceda7652a325dd2.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/player shoot/alienshoot1.wav"
+dest_files=["res://.godot/imported/alienshoot1.wav-e5f6e00ad5aa69acdceda7652a325dd2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

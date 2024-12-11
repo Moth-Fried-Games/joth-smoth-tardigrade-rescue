@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
 
 [sub_resource type="Gradient" id="Gradient_jxbq4"]
-offsets = PackedFloat32Array(0, 0.5, 1)
+offsets = PackedFloat32Array(0, 0.8, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wea3c"]
@@ -16,6 +16,21 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
+
+[sub_resource type="Animation" id="Animation_riul6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fwjgn"]
 resource_name = "blink"
@@ -31,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_riul6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0kw5f"]
@@ -172,7 +172,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 3
+current_tab = 4
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer"]
@@ -498,6 +498,7 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -579,12 +580,12 @@ horizontal_alignment = 1
 [node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="SoundHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="SoundLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_6potn")
@@ -603,6 +604,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+min_value = 1.0
+value = 1.0
 
 [node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -622,7 +625,6 @@ horizontal_alignment = 1
 
 [node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-selected = 0
 item_count = 2
 popup/item_0/text = "FULLSCREEN"
 popup/item_1/text = "WINDOWED"
@@ -636,7 +638,6 @@ horizontal_alignment = 1
 
 [node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-selected = 0
 item_count = 4
 popup/item_0/text = "DISABLED"
 popup/item_1/text = "ENABLED"
@@ -654,14 +655,13 @@ horizontal_alignment = 1
 
 [node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-selected = 0
 item_count = 4
-popup/item_0/text = "AUTO"
+popup/item_0/text = "UNCAPPED"
 popup/item_1/text = "30"
 popup/item_1/id = 1
 popup/item_2/text = "60"
 popup/item_2/id = 2
-popup/item_3/text = "UNCAPPED"
+popup/item_3/text = "AUTO"
 popup/item_3/id = 3
 
 [node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
@@ -670,9 +670,8 @@ text = "Show Frames"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="FrameCapOptionButton2" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-selected = 0
 item_count = 2
 popup/item_0/text = "NO"
 popup/item_1/text = "YES"
@@ -684,7 +683,6 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -710,7 +708,7 @@ text = "[center][b]CREDITS"
 fit_content = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer"]
-custom_minimum_size = Vector2(500, 400)
+custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 32
@@ -728,7 +726,7 @@ text = "[center][b]Art[/b]
 
 [b]Resources[/b]
 [url=https://github.com/Aarimous/AudioManager]AudioManager[/url]
-[url=https://aneacsu.com/blog/2023-04-09-quake-movement-godot]Recreating Quake / GoldSrc Movement in Godot 4.0[/url]
+[url=https://aneacsu.com/blog/2023-04-09-quake-movement-godot]Recreating Quake/GoldSrc Movement in Godot 4[/url]
 [url=https://github.com/majikayogames/SimpleFPSController]SimpleFPSController[/url]
 [url=https://github.com/majikayogames/SimpleDungeons]SimpleDungeons[/url]
 [url=https://github.com/blackears/cyclopsLevelBuilder]cyclopsLevelBuilder[/url]

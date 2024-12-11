@@ -11,6 +11,7 @@ func _ready() -> void:
 	title_button.pressed.connect(change_to_menu)
 	GameGlobals.in_victory = true
 	UiMain.ui_transitions.toggle_transition(false)
+	GameGlobals.audio_manager.create_audio("music_gameover")
 
 func change_to_game() -> void:
 	GameGlobals.in_victory = false

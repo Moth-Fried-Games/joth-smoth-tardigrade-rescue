@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://daviem15p6bou"
+path="res://.godot/imported/hit16.mp3.wav-daf6db9d797400668076c9e787a578ba.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/bullet hit/hit16.mp3.wav"
+dest_files=["res://.godot/imported/hit16.mp3.wav-daf6db9d797400668076c9e787a578ba.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

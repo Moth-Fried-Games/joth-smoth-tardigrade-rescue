@@ -3,8 +3,8 @@ class_name GameSettings
 
 var display_mode: DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
-var frame_rate_cap: int = 0
-var show_fps: bool = true
+var frame_rate_cap: int = 3
+var show_fps: bool = false
 
 var master_volume: float = 0.5
 var music_volume: float = 0.5
@@ -94,3 +94,4 @@ func update_ui_volume(new_ui_volume: float) -> void:
 
 func update_mouse_sensitivity(new_mouse_sensitivity: float) -> void:
 	mouse_sensitivity = new_mouse_sensitivity
+	mouse_sensitivity = clampf(mouse_sensitivity,0.01,1)

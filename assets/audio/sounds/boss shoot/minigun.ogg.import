@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tlc63pd83kcc"
+path="res://.godot/imported/minigun.ogg-db045a538c450ac4d72123f5ee25e59d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sounds/boss shoot/minigun.ogg"
+dest_files=["res://.godot/imported/minigun.ogg-db045a538c450ac4d72123f5ee25e59d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
