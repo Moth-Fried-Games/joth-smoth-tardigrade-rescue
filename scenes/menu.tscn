@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://duy7quoh4dbld"]
+[gd_scene load_steps=19 format=3 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_p4cgt"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
@@ -11,6 +11,8 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_jxbq4")
 width = 1280
 height = 720
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uwulw"]
 font_size = 42
@@ -130,6 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
 current_tab = 0
 tabs_visible = false

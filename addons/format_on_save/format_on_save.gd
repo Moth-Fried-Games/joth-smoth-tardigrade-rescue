@@ -29,6 +29,7 @@ func on_resource_saved(resource: Resource):
 		# Prevents other unsaved scripts from overwriting the active one
 		if current_script == script:
 			var filepath: String = ProjectSettings.globalize_path(resource.resource_path)
+			print("GDFormatting: ", filepath)
 
 			# Run gdformat
 			var exit_code = OS.execute("gdformat", [filepath])

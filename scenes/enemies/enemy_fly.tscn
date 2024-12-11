@@ -72,7 +72,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5poul")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_melee_left",
 "speed": 6.0
 }, {
@@ -80,7 +80,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3vudp")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_melee_right",
 "speed": 6.0
 }, {
@@ -94,9 +94,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4wcp2")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_ranged",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lgxfe")
 }],
-"loop": true,
+"loop": false,
 "name": &"telegraph_melee_left",
 "speed": 6.0
 }, {
@@ -144,7 +144,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xfngo")
 }],
-"loop": true,
+"loop": false,
 "name": &"telegraph_melee_right",
 "speed": 6.0
 }]
@@ -283,10 +283,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_ilcsv")
-animation = &"idle_ranged"
+animation = &"attack_melee_left"
 
 [node name="BulletMarker3D" type="Marker3D" parent="AnimatedSprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
 libraries = {

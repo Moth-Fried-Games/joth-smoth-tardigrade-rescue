@@ -14,7 +14,6 @@ var SPEED: float = 8.0
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var animation_player: AnimationPlayer = $AnimatedSprite3D/AnimationPlayer
 
-
 var world_node: Node3D = null
 var player_node: CharacterBody3D = null
 var camera_node: Camera3D = null
@@ -78,9 +77,11 @@ func shoot_player() -> void:
 func brand() -> float:
 	return randf_range(-1, 1)
 
+
 func disable_enemy() -> void:
 	disabled = true
 	attacking = false
+
 
 func _physics_process(delta: float) -> void:
 	if global_position.distance_to(player_node.global_position) < 50 or chasing:
@@ -174,13 +175,13 @@ func _physics_process(delta: float) -> void:
 								and range_timer.is_stopped()
 								and not dead
 							):
-								attacking = false
-								for i in randi_range(2, 4):
-									if animated_sprite_3d.animation != "attack_ranged":
-										animated_sprite_3d.play("attack_ranged")
-									shoot_player()
-									await get_tree().create_timer(0.1).timeout
-								range_timer.start(randf_range(1, 2))
+								if animated_sprite_3d.animation != "attack_ranged":
+									animated_sprite_3d.play("attack_ranged")
+									for i in randi_range(2, 3):
+										shoot_player()
+									await get_tree().create_timer(0.5).timeout
+									attacking = false
+									range_timer.start(randf_range(1, 2))
 
 		# Make sprite look at camera.
 		if camera_node.global_transform.origin != Vector3(0, 1, 0):
@@ -209,26 +210,28 @@ func _physics_process(delta: float) -> void:
 				player_ray_cast_3d.look_at(
 					player_node.global_transform.origin + Vector3(0, 1, 0), Vector3(0, 1, 0)
 				)
-		
+
 		# Add the gravity.
 		if dead and not is_on_floor():
 			velocity += get_gravity() * delta
-		
+
 		if chasing:
 			if player_in_sight:
 				# Move towards the player.
 				var direction: Vector3 = Vector3.ZERO
 				if not dead:
-					direction = global_position.direction_to(player_node.global_position + Vector3(0, 1, 0))
+					direction = global_position.direction_to(
+						player_node.global_position + Vector3(0, 1, 0)
+					)
 				if direction:
-					if not attacking:
-						velocity.y = direction.y * SPEED
-					velocity.x = direction.x * SPEED
-					velocity.z = direction.z * SPEED
+					velocity.y = direction.y * SPEED
+					if not attacking and melee_timer.is_stopped():
+						velocity.x = direction.x * SPEED
+						velocity.z = direction.z * SPEED
 					if melee and telegraph_timer.is_stopped() and melee_timer.is_stopped():
 						if animated_sprite_3d.animation != "idle_melee":
 							animated_sprite_3d.play("idle_melee")
-					if ranged :
+					if ranged and not attacking:
 						if animated_sprite_3d.animation != "idle_ranged":
 							animated_sprite_3d.play("idle_ranged")
 				else:
@@ -239,7 +242,7 @@ func _physics_process(delta: float) -> void:
 					if melee and telegraph_timer.is_stopped() and melee_timer.is_stopped():
 						if animated_sprite_3d.animation != "idle_melee":
 							animated_sprite_3d.play("idle_melee")
-					if ranged :
+					if ranged and not attacking:
 						if animated_sprite_3d.animation != "idle_ranged":
 							animated_sprite_3d.play("idle_ranged")
 
@@ -254,20 +257,20 @@ func _physics_process(delta: float) -> void:
 					return
 				if navigation_agent_3d.is_navigation_finished():
 					return
-				
+
 				var next_path_position: Vector3 = navigation_agent_3d.get_next_path_position()
 				var direction: Vector3 = Vector3.ZERO
 				if not dead:
 					direction = global_position.direction_to(next_path_position)
 				if direction:
-					if not attacking:
-						velocity.y = direction.y * SPEED
-					velocity.x = direction.x * SPEED
-					velocity.z = direction.z * SPEED
+					velocity.y = direction.y * SPEED
+					if not attacking and melee_timer.is_stopped():
+						velocity.x = direction.x * SPEED
+						velocity.z = direction.z * SPEED
 					if melee and telegraph_timer.is_stopped() and melee_timer.is_stopped():
 						if animated_sprite_3d.animation != "idle_melee":
 							animated_sprite_3d.play("idle_melee")
-					if ranged :
+					if ranged and not attacking:
 						if animated_sprite_3d.animation != "idle_ranged":
 							animated_sprite_3d.play("idle_ranged")
 				else:
@@ -278,14 +281,14 @@ func _physics_process(delta: float) -> void:
 					if melee and telegraph_timer.is_stopped() and melee_timer.is_stopped():
 						if animated_sprite_3d.animation != "idle_melee":
 							animated_sprite_3d.play("idle_melee")
-					if ranged :
+					if ranged and not attacking:
 						if animated_sprite_3d.animation != "idle_ranged":
 							animated_sprite_3d.play("idle_ranged")
 				if navigation_agent_3d.avoidance_enabled:
 					navigation_agent_3d.set_velocity(velocity)
 				else:
 					_on_velocity_computed(velocity)
-					
+
 	if disabled:
 		if velocity == Vector3.ZERO:
 			process_mode = PROCESS_MODE_DISABLED

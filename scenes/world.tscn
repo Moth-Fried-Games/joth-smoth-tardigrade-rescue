@@ -47,6 +47,7 @@ corridor_room_scene = ExtResource("3_qklsp")
 dungeon_size = Vector3i(9, 9, 9)
 generate_on_ready = false
 max_retries = 3
+generate_threaded = true
 
 [node name="Start Test" parent="NavigationRegion3D/DungeonGenerator3D" instance=ExtResource("4_8utma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 40)
