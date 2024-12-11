@@ -15,7 +15,7 @@ Moth Project 3: Our submission for 7dfps 2024
 - [Myr the Moth](https://mothfriedgames.neocities.org/)
 
 ### Sounds
-- Bug Alert sounds by [Myr the Moth](https://mothfriedgames.neocities.org/)
+- Enemy Alert Sounds by [Myr the Moth](https://mothfriedgames.neocities.org/)
 - [37 hits/punches by Independent.nu](https://opengameart.org/content/37-hitspunches) 
 - [3 Melee sounds by remaxim](https://opengameart.org/content/3-melee-sounds) 
 - [Space Shoot Sounds by Robin Lamb](https://opengameart.org/content/space-shoot-sounds) 
