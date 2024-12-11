@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://xa1oubigwh7e"]
 
-[ext_resource type="AudioStream" uid="uid://dhhqisojsxn8w" path="res://assets/audio/music/menu_LOOP_1353770.wav" id="1_e8wbm"]
+[ext_resource type="AudioStream" uid="uid://bb43b5vf0oms2" path="res://assets/audio/music/menu_loop_1846048.wav" id="1_e8wbm"]
 [ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_bxb57"]
 
 [resource]

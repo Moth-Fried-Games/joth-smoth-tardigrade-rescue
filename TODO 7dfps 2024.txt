@@ -1,40 +1,25 @@
-Coding Tasks
+Code
+- How to Play in Main Menu
+- Settings in Main Menu
+- Credits in Main Menu
+- Pause Menu during Gameplay
 
-- Make Ranged enemies pause to aim and shoot if they have line of sight. (partially done)
-- Make Melee enemies try to jump at you if close enough.
-- Make enemies only chase you if they have seen you once, otherwise, make them do nothing. (done)
-- Make enemies navigate to find you if you are no longer in their line of sight. (done)
-- Make some basic main menu.
-- Make a game over.
-- Make the Petting Minigame. (done)
-- Make a Boss.
-- Update the Audio Manager to support 3D Sound Streams.
+Art
+- MFG Logo to promote our stuff in Main Menu (like moth planet?)
+- Discord Logo to promote our discord in Main Menu (like moth planet?)
+- Boss Sprites
+- Title Screen Art (Same as Itch page key art?)
+- Game Over Art (Joth Smoth splitting the earth in half as they grow into a cosmic horror?)
+- Victory Art (Joth Smoth snuggling their water bear at home?)
 
-Level Design Tasks
+Audio
+- Victory screen jingle
+- Sound Effects (All)
 
-- Make a Corridor.
-- Make Some Small Rooms (2).
-- Make Some Big Rooms (2).
-- Make Some Vertical Rooms (2).
-- Make the Starting Room.
-- Make the Boss Room.
+Extra:
+- Make more rooms
 
-Enemy Sprites
-
-- Idle (use a walk sprite with no animation?)
-- Walk (2)
-- Telegraph (1)
-- Attack (1)
-- Knockout (1)
-
-Audio Tasks
-
-- Select Music for Main Menu.
-- Select Music for Gameplay.
-- Select Music for Boss.
-- Select Music for Petting Minigame.
-- Select Music for Game Over.
-- Select Music for Winning.
+Sounds to Look For:
 
 - Select Sound for Player Bullet Firing.
 - Select Sound for Player Bullet Impact.
@@ -42,17 +27,9 @@ Audio Tasks
 - Select Sound for Player Punch Impact.
 - Select Sound for Player Dashing.
 - Select Sound for Player Jumping.
-- Select Sound for Player Ground Pound.
 - Select Sound for Player Petting.
 
 - Select Sound for Enemy Bullet Firing.
 - Select Sound for Enemy Bullet Impact.
 - Select Sound for Enemy Melee Throw.
 - Select Sound for Enemy Punch Impact.
-
-Detail Tasks
-
-- Make Speed Lines when you Dash.
-- Make Smoke Particles when you Ground Pound.
-- Make Tentacles Grow from the Corners of the Screen the more Stressed you are.
-- Suggest to Atlas to make a Head of the MC, that gets more disturbing the more stressed they are, use it as a cursor that follows the progress bar.
