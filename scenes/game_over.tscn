@@ -18,6 +18,7 @@ font_size = 42
 font_size = 32
 
 [node name="Game Over" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_nvekp")
 
 [node name="Control" type="Control" parent="."]

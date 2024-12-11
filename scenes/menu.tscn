@@ -104,6 +104,7 @@ show_mode = 0
 force_type = 0
 
 [node name="Menu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_p4cgt")
 
 [node name="Control" type="Control" parent="."]

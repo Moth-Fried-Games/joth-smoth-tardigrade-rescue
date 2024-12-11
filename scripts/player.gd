@@ -63,14 +63,6 @@ func _input(event):
 	# Camera rotation
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_handle_camera_rotation(event)
-	if event is InputEventMouseButton and Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-	if Input.is_action_just_pressed("pause_game"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			get_tree().quit()
 
 
 func _handle_camera_rotation(event: InputEvent):
