@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx0s1pjmq1lvl"]
+[gd_scene load_steps=4 format=3 uid="uid://cx0s1pjmq1lvl"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_nvekp"]
 
@@ -10,12 +10,6 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_jxbq4")
 width = 1280
 height = 720
-
-[sub_resource type="LabelSettings" id="LabelSettings_di5gn"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_3o3go"]
-font_size = 32
 
 [node name="Game Over" type="CanvasLayer"]
 process_mode = 3
@@ -55,19 +49,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_di5gn")
-horizontal_alignment = 1
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]GAME OVER"
+fit_content = true
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+[node name="Label2" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "JOTH SMOTH COULDN'T CONTROL HIS ANGER 
-AND DESTROYED THE WORLD
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]JOTH SMOTH COULDN'T CONTROL HIS ANGER AND DESTROYED THE WORLD
 "
-label_settings = SubResource("LabelSettings_3o3go")
-horizontal_alignment = 1
+fit_content = true
 
 [node name="StartButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2

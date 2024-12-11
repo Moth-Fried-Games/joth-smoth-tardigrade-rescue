@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://duy7quoh4dbld"]
+[gd_scene load_steps=18 format=3 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_p4cgt"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
@@ -13,9 +13,6 @@ width = 1280
 height = 720
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_uwulw"]
-font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_6potn"]
 font_size = 24
@@ -135,10 +132,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="Main" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -157,12 +155,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/TabContainer/Main/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Main/VBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
-text = "JOTH SMOTH'S
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]JOTH SMOTH'S 
 VERY BAD DAY"
-label_settings = SubResource("LabelSettings_uwulw")
-horizontal_alignment = 1
+fit_content = true
 
 [node name="StartButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
 layout_mode = 2
@@ -208,11 +208,12 @@ offset_bottom = 161.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer"]
 layout_mode = 2
-text = "HOW TO PLAY"
-label_settings = SubResource("LabelSettings_uwulw")
-horizontal_alignment = 1
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]HOW TO PLAY"
+fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
 layout_mode = 2
@@ -225,6 +226,7 @@ layout_mode = 2
 text = "CONTROLS"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -246,6 +248,7 @@ layout_mode = 2
 text = "Forward"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -261,6 +264,7 @@ layout_mode = 2
 text = "Backwards"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -276,6 +280,7 @@ layout_mode = 2
 text = "Left"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -306,6 +311,7 @@ layout_mode = 2
 text = "Crouch"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -324,6 +330,7 @@ layout_mode = 2
 text = "Shoot"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -339,6 +346,7 @@ layout_mode = 2
 text = "Punch"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -354,6 +362,7 @@ layout_mode = 2
 text = "Jump"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -369,6 +378,7 @@ layout_mode = 2
 text = "Dash"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -390,6 +400,7 @@ layout_mode = 2
 text = "(Air) Dive"
 label_settings = SubResource("LabelSettings_5nkes")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -399,6 +410,7 @@ layout_mode = 2
 text = "OBJECTIVE"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(600, 0)
@@ -410,6 +422,7 @@ Joth Smoth's anger will build up over time and when they take damage, if anger r
 Defeat everything in your way and find the Boss before Joth Smoth can't contain their anger anymore."
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/HowTo/VBoxContainer"]
@@ -418,7 +431,6 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -436,11 +448,12 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/TabContainer/Settings/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
-text = "SETTINGS"
-label_settings = SubResource("LabelSettings_uwulw")
-horizontal_alignment = 1
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]SETTINGS"
+fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
@@ -448,6 +461,7 @@ theme_override_constants/separation = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -509,28 +523,93 @@ text = "100"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mouse Sensitivity"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MouseHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="MouseHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="MouseLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Display"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "FULLSCREEN"
+popup/item_1/text = "WINDOWED"
+popup/item_1/id = 1
+
+[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "VSync"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "DISABLED"
+popup/item_1/text = "ENABLED"
+popup/item_1/id = 1
+popup/item_2/text = "ADAPTIVE"
+popup/item_2/id = 2
+popup/item_3/text = "MAILBOX"
+popup/item_3/id = 3
+
+[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Frame Cap"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "AUTO"
+popup/item_1/text = "30"
+popup/item_1/id = 1
+popup/item_2/text = "60"
+popup/item_2/id = 2
+popup/item_3/text = "UNCAPPED"
+popup/item_3/id = 3
+
+[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Show Frames"
+label_settings = SubResource("LabelSettings_6potn")
+horizontal_alignment = 1
+
+[node name="FrameCapOptionButton2" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "NO"
+popup/item_1/text = "YES"
+popup/item_1/id = 3
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
@@ -556,27 +635,39 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/TabContainer/Credits/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer"]
 layout_mode = 2
-text = "CREDITS"
-label_settings = SubResource("LabelSettings_uwulw")
-horizontal_alignment = 1
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]CREDITS"
+fit_content = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer"]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "[center][b]Art[/b]
-Atlas / Explorermoo
-
-[b]Programming[/b]
-Myr the Moth
+[url=https://explorermoo.carrd.co/]Atlas[/url]
 
 [b]Music[/b]
+[url=https://erikmcclure.com/]Erik McClure[/url]
+
+[b]Programming[/b]
+[url=https://myrthemoth.neocities.org/]Myr the Moth[/url]
 
 [b]Sounds[/b]
 
-[b]Tools[/b]"
+[b]Resources[/b]
+[url=https://github.com/Aarimous/AudioManager]AudioManager[/url]
+[url=https://aneacsu.com/blog/2023-04-09-quake-movement-godot]Recreating Quake / GoldSrc Movement in Godot 4.0[/url]
+[url=https://github.com/majikayogames/SimpleFPSController]SimpleFPSController[/url]
+[url=https://github.com/majikayogames/SimpleDungeons]SimpleDungeons[/url]
+[url=https://github.com/blackears/cyclopsLevelBuilder]cyclopsLevelBuilder[/url]
+[url=https://github.com/rsubtil/controller_icons]Controller Icons[/url]
+[url=https://github.com/ryan-haskell/gdformat-on-save]Format on Save[/url]"
+scroll_following = true
 
 [node name="ReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer"]
 layout_mode = 2

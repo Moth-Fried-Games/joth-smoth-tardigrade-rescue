@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cq65futumwc7q"]
+[gd_scene load_steps=58 format=3 uid="uid://cq65futumwc7q"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
 [ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
@@ -465,9 +465,6 @@ gradient = SubResource("Gradient_b3m2f")
 width = 1200
 height = 16
 
-[sub_resource type="LabelSettings" id="LabelSettings_0otsb"]
-font_size = 42
-
 [node name="UIPlayer" type="CanvasLayer"]
 script = ExtResource("1_ut2mg")
 
@@ -705,11 +702,12 @@ offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control2/Panel/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control2/Panel/VBoxContainer"]
 layout_mode = 2
-text = "PAUSED"
-label_settings = SubResource("LabelSettings_0otsb")
-horizontal_alignment = 1
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[center][b]PAUSED"
+fit_content = true
 
 [node name="ResumeButton" type="Button" parent="Control2/Panel/VBoxContainer"]
 layout_mode = 2

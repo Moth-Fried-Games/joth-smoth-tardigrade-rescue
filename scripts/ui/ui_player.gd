@@ -107,7 +107,7 @@ func _return_to_title() -> void:
 		GameGlobals.audio_manager.fade_audio_out_and_destroy("music_boss", boss_music, 1)
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if GameGlobals.in_world:
 		if Input.is_action_just_pressed("pause_game"):
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

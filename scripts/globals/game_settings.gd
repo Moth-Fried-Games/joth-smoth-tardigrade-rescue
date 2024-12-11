@@ -5,7 +5,6 @@ var display_mode: DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_EXCLUSIVE
 var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
 var frame_rate_cap: int = 0
 var show_fps: bool = true
-var crt_filter: bool = true
 
 var master_volume: float = 0.5
 var music_volume: float = 0.5
@@ -73,10 +72,6 @@ func update_show_fps(new_show_fps: bool) -> void:
 	show_fps = new_show_fps
 
 
-func update_crt_filter(new_crt_filter: bool) -> void:
-	crt_filter = new_crt_filter
-
-
 func update_master_volume(new_master_volume: float) -> void:
 	master_volume = new_master_volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_volume))
@@ -95,6 +90,7 @@ func update_sound_volume(new_sound_volume: float) -> void:
 func update_ui_volume(new_ui_volume: float) -> void:
 	ui_volume = new_ui_volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI"), linear_to_db(ui_volume))
+
 
 func update_mouse_sensitivity(new_mouse_sensitivity: float) -> void:
 	mouse_sensitivity = new_mouse_sensitivity
