@@ -2,14 +2,23 @@
 Moth Project 3: Our submission for 7dfps 2024
 
 ## Credits
+
 ### Art
-- [Atlas](https://explorermoo.carrd.co/) 
+- [Atlas](https://explorermoo.carrd.co/)
+  
 ### Music
-- [Erik McClure](https://erikmcclure.com/) 
+- [Erik McClure](https://erikmcclure.com/)
+  
 ### Programming
-- [Myr the Moth](https://mothfriedgames.neocities.org/) 
+- [Myr the Moth](https://mothfriedgames.neocities.org/)
+  
 ### Sounds
--
+- [37 hits/punches by Independent.nu](https://opengameart.org/content/37-hitspunches) 
+- [3 Melee sounds by remaxim](https://opengameart.org/content/3-melee-sounds) 
+- [Space Shoot Sounds by Robin Lamb](https://opengameart.org/content/space-shoot-sounds) 
+- [Q009's weapon sounds by Q009](https://opengameart.org/content/q009s-weapon-sounds) 
+- [Squeak toy sounds by bart](https://opengameart.org/content/squeak-toy-sounds)
+  
 ### Resources
 - [AudioManager](https://github.com/Aarimous/AudioManager) 
 - [Recreating Quake / GoldSrc Movement in Godot 4.0](https://aneacsu.com/blog/2023-04-09-quake-movement-godot) 
