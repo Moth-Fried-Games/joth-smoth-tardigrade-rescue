@@ -22,6 +22,7 @@ Moth Project 3: Our submission for 7dfps 2024
 - [Q009's weapon sounds by Q009](https://opengameart.org/content/q009s-weapon-sounds) 
 - [Squeak toy sounds by bart](https://opengameart.org/content/squeak-toy-sounds)
 - [Balloon Sounds by AntumDeluge](https://opengameart.org/content/balloon-sounds)
+- [Large Wings Flap by AntumDeluge](https://opengameart.org/content/large-wings-flap) 
 
 ### Fonts
 - [Silkscreen by Jason Kottke](https://fonts.google.com/?query=Jason+Kottke)
