@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqy2x1s41ypbt"
 path.s3tc="res://.godot/imported/move.svg-ed763a44f715fed1ba9cd0ebb407610b.s3tc.ctex"
+path.etc2="res://.godot/imported/move.svg-ed763a44f715fed1ba9cd0ebb407610b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/cyclops_level_builder/art/icons/move.svg"
-dest_files=["res://.godot/imported/move.svg-ed763a44f715fed1ba9cd0ebb407610b.s3tc.ctex"]
+dest_files=["res://.godot/imported/move.svg-ed763a44f715fed1ba9cd0ebb407610b.s3tc.ctex", "res://.godot/imported/move.svg-ed763a44f715fed1ba9cd0ebb407610b.etc2.ctex"]
 
 [params]
 

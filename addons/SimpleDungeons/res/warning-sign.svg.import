@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://byywkosue8x0q"
 path.s3tc="res://.godot/imported/warning-sign.svg-8e061f920e0c1c369bbe5e6c9df382f2.s3tc.ctex"
+path.etc2="res://.godot/imported/warning-sign.svg-8e061f920e0c1c369bbe5e6c9df382f2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/SimpleDungeons/res/warning-sign.svg"
-dest_files=["res://.godot/imported/warning-sign.svg-8e061f920e0c1c369bbe5e6c9df382f2.s3tc.ctex"]
+dest_files=["res://.godot/imported/warning-sign.svg-8e061f920e0c1c369bbe5e6c9df382f2.s3tc.ctex", "res://.godot/imported/warning-sign.svg-8e061f920e0c1c369bbe5e6c9df382f2.etc2.ctex"]
 
 [params]
 
