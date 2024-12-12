@@ -31,4 +31,6 @@ func _physics_process(delta: float) -> void:
 					if not bullet_hit:
 						bullet_hit = true
 						body.process_hit()
+						GameGlobals.audio_manager.create_audio("sound_bullethit")
+						
 		queue_free()

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var start_button: Button = $Control/VBoxContainer/StartButton
-@onready var title_button: Button = $Control/VBoxContainer/TitleButton
+@onready var start_button: Button = $Control/VBoxContainer/VBoxContainer/StartButton
+@onready var title_button: Button = $Control/VBoxContainer/VBoxContainer/TitleButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +11,7 @@ func _ready() -> void:
 	title_button.pressed.connect(change_to_menu)
 	GameGlobals.in_victory = true
 	UiMain.ui_transitions.toggle_transition(false)
-	GameGlobals.audio_manager.create_audio("music_gameover")
+	GameGlobals.audio_manager.create_audio("music_victory")
 
 func change_to_game() -> void:
 	GameGlobals.in_victory = false

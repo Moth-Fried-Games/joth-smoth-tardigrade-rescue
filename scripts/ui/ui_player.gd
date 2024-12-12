@@ -18,8 +18,8 @@ class_name UIPlayer
 @onready var pet_hearts: GPUParticles2D = $Control/Petting/Control2/PetHearts
 
 @onready var control_2: Control = $Control2
-@onready var resume_button: Button = $Control2/Panel/VBoxContainer/ResumeButton
-@onready var title_button: Button = $Control2/Panel/VBoxContainer/TitleButton
+@onready var resume_button: Button = $Control2/Panel/VBoxContainer/VBoxContainer/ResumeButton
+@onready var title_button: Button = $Control2/Panel/VBoxContainer/VBoxContainer/TitleButton
 
 var player_node: CharacterBody3D = null
 
@@ -88,7 +88,8 @@ func play_gameplay_music() -> void:
 
 
 func play_boss_music() -> void:
-	GameGlobals.audio_manager.fade_audio_out_and_destroy("music_gameplay", gameplay_music, 1)
+	if is_instance_valid(gameplay_music):
+		GameGlobals.audio_manager.fade_audio_out_and_destroy("music_gameplay", gameplay_music, 1)
 	boss_music = GameGlobals.audio_manager.create_persistent_audio("music_boss")
 
 
@@ -252,10 +253,12 @@ func pet_the_thing() -> void:
 	if not pet_hearts.visible:
 		pet_hearts.visible = true
 	pet_hearts.emitting = true
+	pet_squeak_sound()
 	if pet_timer.is_stopped():
 		if durability < 666:
 			if pet_l.animation != "explode_plush":
 				pet_l.play("explode_plush")
+				GameGlobals.audio_manager.create_audio("sound_balloon")
 				if pet_hearts.visible:
 					pet_hearts.visible = false
 				pet_hearts.emitting = false
@@ -266,11 +269,13 @@ func fire_guns() -> void:
 		if gun_side:
 			if gun_r.animation == "idle" and gun_l.animation != "shoot":
 				gun_l.play("shoot")
+				gun_shoot_sound()
 				gun_side = !gun_side
 				gun_check()
 		else:
 			if gun_l.animation == "idle" and gun_r.animation != "shoot":
 				gun_r.play("shoot")
+				gun_shoot_sound()
 				gun_side = !gun_side
 				gun_check()
 
@@ -280,11 +285,13 @@ func throw_punch() -> void:
 		if punch_side:
 			if punch_r.animation == "idle" and punch_l.animation != "punch":
 				punch_l.play("punch")
+				punch_throw_sound()
 				punch_side = !punch_side
 				punch_check()
 		else:
 			if punch_l.animation == "idle" and punch_r.animation != "punch":
 				punch_r.play("punch")
+				punch_throw_sound()
 				punch_side = !punch_side
 				punch_check()
 
@@ -332,3 +339,22 @@ func _on_gun_l_animation_finished() -> void:
 func _on_gun_r_animation_finished() -> void:
 	if gun_r.animation == "shoot":
 		gun_r.play("idle")
+
+func gun_shoot_sound() -> void:
+	match randi_range(0,1):
+		0:
+			GameGlobals.audio_manager.create_audio("sound_playershoot1")
+		1:
+			GameGlobals.audio_manager.create_audio("sound_playershoot2")
+
+func punch_throw_sound() -> void:
+	GameGlobals.audio_manager.create_audio("sound_punchthrow")
+	
+func pet_squeak_sound() -> void:
+	match randi_range(0,2):
+		0:
+			GameGlobals.audio_manager.create_audio("sound_squeak1")
+		1:
+			GameGlobals.audio_manager.create_audio("sound_squeak2")
+		2:
+			GameGlobals.audio_manager.create_audio("sound_squeak3")

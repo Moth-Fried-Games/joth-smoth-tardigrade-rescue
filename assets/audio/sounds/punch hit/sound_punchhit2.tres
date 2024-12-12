@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://tnrd8obi1636"]
+
+[ext_resource type="AudioStream" uid="uid://d34ep2k1w4epg" path="res://assets/audio/sounds/punch hit/hit31.mp3.wav" id="1_tumxb"]
+[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_7y0y3"]
+
+[resource]
+script = ExtResource("2_7y0y3")
+limit = 10
+audio_name = ""
+audio_type = 1
+audio_stream = ExtResource("1_tumxb")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+reverb_tail = 0.0

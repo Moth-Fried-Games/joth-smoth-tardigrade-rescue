@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 					if not bullet_hit:
 						bullet_hit = true
 						body.process_hit()
+						GameGlobals.audio_manager.create_3d_audio_at_parent("sound_bullethit", body)
 				elif body.is_in_group("players"):
 					pass
 				else:

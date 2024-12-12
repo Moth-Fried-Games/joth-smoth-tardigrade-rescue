@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var start_button: Button = $Control/VBoxContainer/StartButton
-@onready var title_button: Button = $Control/VBoxContainer/TitleButton
+@onready var start_button: Button = $Control/VBoxContainer/VBoxContainer/StartButton
+@onready var title_button: Button = $Control/VBoxContainer/VBoxContainer/TitleButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

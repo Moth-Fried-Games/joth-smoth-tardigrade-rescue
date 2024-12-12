@@ -208,7 +208,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.5, 1.5, 1.5)]
+"values": [Vector3(1.4, 1.4, 1.4)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -220,7 +220,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1, 0)]
+"values": [Vector3(0, 0.95, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cn726"]
@@ -252,7 +252,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.5, 1.5, 1.5), Vector3(1.5, 0.5, 1.5)]
+"values": [Vector3(1.4, 1.4, 1.4), Vector3(1.4, 0.525, 1.4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -264,7 +264,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 1, 0), Vector3(0, 0.5, 0)]
+"values": [Vector3(0, 0.95, 0), Vector3(0, 0.45, 0)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -309,11 +309,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_a0fj0")
 
 [node name="MeleeRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 target_position = Vector3(0, 0, -1)
 
 [node name="RangeRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 target_position = Vector3(0, 0, -100)
 
 [node name="PlayerRayCast3D" type="RayCast3D" parent="."]
@@ -325,14 +325,16 @@ path_postprocessing = 1
 avoidance_enabled = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.95, 0)
 billboard = 2
+shaded = true
+alpha_cut = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_lr455")
 animation = &"attack_ranged"
 
 [node name="BulletMarker3D" type="Marker3D" parent="AnimatedSprite3D"]
-transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0.1, -0.75)
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0.15, -0.75)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
 libraries = {

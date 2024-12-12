@@ -94,6 +94,7 @@ func _physics_process(delta: float) -> void:
 						player_in_sight = true
 					if not chasing:
 						chasing = true
+						alert_sound()
 				else:
 					if player_in_sight:
 						navigation_agent_3d.avoidance_enabled = true
@@ -137,6 +138,8 @@ func _physics_process(delta: float) -> void:
 									if animated_sprite_3d.animation != "attack_melee_right":
 										animated_sprite_3d.play("attack_melee_right")
 								melee_side = !melee_side
+								punch_throw_sound()
+								punch_hit_sound()
 								melee_timer.start(0.25)
 								player_node.process_hit()
 				else:
@@ -154,6 +157,7 @@ func _physics_process(delta: float) -> void:
 							if animated_sprite_3d.animation != "attack_melee_right":
 								animated_sprite_3d.play("attack_melee_right")
 						melee_side = !melee_side
+						punch_throw_sound()
 						melee_timer.start(0.25)
 			# Shoot if the Player is in sight.
 			if ranged:
@@ -177,6 +181,7 @@ func _physics_process(delta: float) -> void:
 							):
 								if animated_sprite_3d.animation != "attack_ranged":
 									animated_sprite_3d.play("attack_ranged")
+									gun_shoot_sound()
 									for i in randi_range(2, 3):
 										shoot_player()
 									await get_tree().create_timer(0.5).timeout
@@ -302,6 +307,7 @@ func _on_velocity_computed(safe_velocity: Vector3):
 func process_hit() -> void:
 	if not chasing:
 		chasing = true
+		alert_sound()
 	if not dead:
 		health -= 1
 		if health <= 0:
@@ -314,3 +320,31 @@ func process_hit() -> void:
 				animated_sprite_3d.play("idle_ranged")
 		else:
 			animation_player.play("damage")
+
+func gun_shoot_sound() -> void:
+	match randi_range(0,2):
+		0:
+			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_enemyshoot1", self)
+		1:
+			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_enemyshoot2", self)
+		2:
+			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_enemyshoot3", self)
+
+func punch_throw_sound() -> void:
+	GameGlobals.audio_manager.create_3d_audio_at_parent("sound_punchthrow", self)
+
+func punch_hit_sound() -> void:
+	match randi_range(0,1):
+		0:
+			GameGlobals.audio_manager.create_audio("sound_punchhit1")
+		1:
+			GameGlobals.audio_manager.create_audio("sound_punchhit2")
+
+func alert_sound() -> void:
+	match randi_range(0,2):
+		0:
+			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_fly1", self)
+		1:
+			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_fly2", self)
+		2:
+			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_fly3", self)

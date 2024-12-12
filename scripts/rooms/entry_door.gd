@@ -15,4 +15,5 @@ func destroy_door() -> void:
 	if not destroyed:
 		destroyed = true
 		gpu_particles_3d.emitting = true
+		GameGlobals.audio_manager.create_3d_audio_at_parent("sound_explosion", self)
 		block_0.queue_free()

@@ -104,6 +104,7 @@ func punch_check() -> void:
 				if body.is_in_group("enemies"):
 					if not body.dead:
 						body.process_hit()
+						punch_hit_sound()
 	if melee_area_3d.has_overlapping_areas():
 		var areas := melee_area_3d.get_overlapping_areas()
 		if areas.size() > 0:
@@ -112,6 +113,7 @@ func punch_check() -> void:
 					if is_instance_valid(area):
 						if not area.destroyed:
 							area.destroy_door()
+							punch_hit_sound()
 
 
 func _physics_process(delta: float) -> void:
@@ -422,6 +424,12 @@ func _snap_up_stairs_check(delta) -> bool:
 			return true
 	return false
 
-
 func is_surface_too_steep(normal: Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
+
+func punch_hit_sound() -> void:
+	match randi_range(0,1):
+		0:
+			GameGlobals.audio_manager.create_audio("sound_punchhit1")
+		1:
+			GameGlobals.audio_manager.create_audio("sound_punchhit2")

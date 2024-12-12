@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://d1lfahpbropy4"]
+
+[ext_resource type="AudioStream" uid="uid://baoi2mdwvycpn" path="res://assets/audio/sounds/bugs/bug3.wav" id="1_a0t7n"]
+[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_ya1gv"]
+
+[resource]
+script = ExtResource("2_ya1gv")
+limit = 10
+audio_name = ""
+audio_type = 1
+audio_stream = ExtResource("1_a0t7n")
+volume = 0.0
+pitch_scale = 1.5
+pitch_randomness = 0.1
+max_distance_2d = 2000.0
+unit_size = 50.0
+max_distance_3d = 0.0
+reverb_tail = 0.0

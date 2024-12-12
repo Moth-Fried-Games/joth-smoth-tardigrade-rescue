@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://c2p8uo66ri7wg"]
+
+[ext_resource type="AudioStream" uid="uid://daviem15p6bou" path="res://assets/audio/sounds/bullet hit/hit16.mp3.wav" id="1_5j4a2"]
+[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_in1aw"]
+
+[resource]
+script = ExtResource("2_in1aw")
+limit = 10
+audio_name = ""
+audio_type = 1
+audio_stream = ExtResource("1_5j4a2")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+max_distance_2d = 2000.0
+unit_size = 50.0
+max_distance_3d = 0.0
+reverb_tail = 0.0

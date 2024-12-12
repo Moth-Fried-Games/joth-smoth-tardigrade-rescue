@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://csfi3vhqdt80e"]
+
+[ext_resource type="AudioStream" uid="uid://dr8n2dmpt65b" path="res://assets/audio/music/victory.wav" id="1_nw2ia"]
+[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_y725s"]
+
+[resource]
+script = ExtResource("2_y725s")
+limit = 1
+audio_name = ""
+audio_type = 0
+audio_stream = ExtResource("1_nw2ia")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_distance_2d = 2000.0
+unit_size = 10.0
+max_distance_3d = 0.0
+reverb_tail = 0.0

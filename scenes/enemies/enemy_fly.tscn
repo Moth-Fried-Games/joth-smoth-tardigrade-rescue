@@ -281,6 +281,8 @@ avoidance_enabled = true
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 2
+shaded = true
+alpha_cut = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_ilcsv")
 animation = &"attack_melee_left"

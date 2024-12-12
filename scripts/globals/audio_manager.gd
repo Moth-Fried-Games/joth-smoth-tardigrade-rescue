@@ -61,6 +61,7 @@ func create_2d_audio_at_location(audio_name: String, location: Vector2) -> Audio
 			new_2D_audio.pitch_scale += GameGlobals.rng.randf_range(
 				-audio_setting.pitch_randomness, audio_setting.pitch_randomness
 			)
+			new_2D_audio.max_distance = audio_setting.max_distance_2d
 			new_2D_audio.finished.connect(new_2D_audio.queue_free)
 			new_2D_audio.tree_exited.connect(audio_setting.on_audio_finished)
 
@@ -93,6 +94,7 @@ func create_2d_audio_at_parent(audio_name: String, parent: Node2D) -> AudioStrea
 			new_2D_audio.pitch_scale += GameGlobals.rng.randf_range(
 				-audio_setting.pitch_randomness, audio_setting.pitch_randomness
 			)
+			new_2D_audio.max_distance = audio_setting.max_distance_2d
 			new_2D_audio.finished.connect(new_2D_audio.queue_free)
 			new_2D_audio.tree_exited.connect(audio_setting.on_audio_finished)
 
@@ -126,6 +128,8 @@ func create_3d_audio_at_location(audio_name: String, location: Vector3) -> Audio
 			new_3D_audio.pitch_scale += GameGlobals.rng.randf_range(
 				-audio_setting.pitch_randomness, audio_setting.pitch_randomness
 			)
+			new_3D_audio.unit_size = audio_setting.unit_size
+			new_3D_audio.max_distance = audio_setting.max_distance_3d
 			new_3D_audio.finished.connect(new_3D_audio.queue_free)
 			new_3D_audio.tree_exited.connect(audio_setting.on_audio_finished)
 
@@ -137,7 +141,7 @@ func create_3d_audio_at_location(audio_name: String, location: Vector3) -> Audio
 		return null
 
 
-func create_3d_audio_at_parent(audio_name: String, parent: Node2D) -> AudioStreamPlayer3D:
+func create_3d_audio_at_parent(audio_name: String, parent: Node3D) -> AudioStreamPlayer3D:
 	if audio_setting_dict.has(audio_name):
 		var audio_setting: AudioSettings = audio_setting_dict[audio_name]
 		if audio_setting.has_open_limit():
@@ -158,6 +162,8 @@ func create_3d_audio_at_parent(audio_name: String, parent: Node2D) -> AudioStrea
 			new_3D_audio.pitch_scale += GameGlobals.rng.randf_range(
 				-audio_setting.pitch_randomness, audio_setting.pitch_randomness
 			)
+			new_3D_audio.unit_size = audio_setting.unit_size
+			new_3D_audio.max_distance = audio_setting.max_distance_3d
 			new_3D_audio.finished.connect(new_3D_audio.queue_free)
 			new_3D_audio.tree_exited.connect(audio_setting.on_audio_finished)
 

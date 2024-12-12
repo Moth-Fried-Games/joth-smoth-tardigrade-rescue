@@ -10,6 +10,9 @@ enum AudioType { MUSIC, SOUND, UI }
 @export_range(-40, 20) var volume: float = 0.0
 @export_range(0.0, 4.0, .01) var pitch_scale: float = 1.0
 @export_range(0.0, 1.0, .01) var pitch_randomness: float = 0.0
+@export var max_distance_2d: float = 2000
+@export var unit_size: float = 10
+@export var max_distance_3d: float = 0
 @export var reverb_tail: float = 0.0
 
 var audio_count: int = 0

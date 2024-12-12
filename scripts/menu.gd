@@ -17,24 +17,23 @@ var menu_music: AudioStreamPlayer = null
 # Settings
 @onready
 var settings_return_button: Button = $Control/TabContainer/Settings/VBoxContainer/ReturnButton
-@onready var master_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/MasterHSlider
-@onready var master_label: Label = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/MasterLabel
-@onready var music_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/MusicHSlider
-@onready var music_label: Label = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/MusicLabel
-@onready var sound_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/SoundHSlider
-@onready var sound_label: Label = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/SoundLabel
-@onready var mouse_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MouseHSlider
-@onready var mouse_label: Label = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MouseLabel
-@onready var display_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/DisplayOptionButton
-@onready var v_sync_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/VSyncOptionButton
-@onready var frame_cap_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/FrameCapOptionButton
-@onready var frame_label_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/FrameLabelOptionButton
-
+@onready var master_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/MasterHSlider
+@onready var master_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/MasterLabel
+@onready var music_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/MusicHSlider
+@onready var music_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/MusicLabel
+@onready var sound_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/SoundHSlider
+@onready var sound_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/SoundLabel
+@onready var mouse_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MouseHSlider
+@onready var mouse_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MouseLabel
+@onready var display_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DisplayOptionButton
+@onready var v_sync_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VSyncOptionButton
+@onready var frame_cap_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/FrameCapOptionButton
+@onready var frame_label_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/FrameLabelOptionButton
 
 # Credits
 @onready var credits_return_button: Button = $Control/TabContainer/Credits/VBoxContainer/ReturnButton
 @onready
-var credits_rich_text_label: RichTextLabel = $Control/TabContainer/Credits/VBoxContainer/RichTextLabel
+var credits_rich_text_label: RichTextLabel = $Control/TabContainer/Credits/VBoxContainer/PanelContainer/VBoxContainer/RichTextLabel
 
 
 func _ready() -> void:
@@ -52,7 +51,7 @@ func _ready() -> void:
 	mouse_h_slider.value_changed.connect(_on_mouse_value_changed)
 	display_option_button.item_selected.connect(_on_display_item_selected)
 	v_sync_option_button.item_selected.connect(_on_vsync_item_selected)
-	frame_cap_option_button.item_selected.connect(_on_vsync_item_selected)
+	frame_cap_option_button.item_selected.connect(_on_framecap_item_selected)
 	frame_label_option_button.item_selected.connect(_on_framelabel_item_selected)
 	credits_return_button.pressed.connect(main_menu)
 	credits_rich_text_label.meta_clicked.connect(credits_click_link)
@@ -152,7 +151,11 @@ func _on_mouse_value_changed(value: float) -> void:
 	GameGlobals.game_settings.update_mouse_sensitivity((value/100))
 
 func _on_display_item_selected(index: int) -> void:
-	GameGlobals.game_settings.update_display_mode(index)
+	match index:
+		0:
+			GameGlobals.game_settings.update_display_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		1:
+			GameGlobals.game_settings.update_display_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_vsync_item_selected(index: int) -> void:
 	GameGlobals.game_settings.update_vsync_mode(index)
