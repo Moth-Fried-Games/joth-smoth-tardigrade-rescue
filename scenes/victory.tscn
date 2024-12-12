@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw1usvve6opyx"]
+[gd_scene load_steps=8 format=3 uid="uid://cw1usvve6opyx"]
 
 [ext_resource type="Script" path="res://scripts/victory.gd" id="1_h6lg2"]
 [ext_resource type="FontFile" uid="uid://u4wpp2aq57lr" path="res://assets/ui/Silkscreen-Bold.ttf" id="2_1imv6"]
-[ext_resource type="Texture2D" uid="uid://cs2h3u7v8p28r" path="res://assets/ui/shekgylrioh31.jpg" id="2_ifoo3"]
+[ext_resource type="Texture2D" uid="uid://bvypwd4rlr1ku" path="res://scenes/ui/7dfps_key_nologo.png" id="2_j777j"]
 [ext_resource type="FontFile" uid="uid://bkqdmdrfnprgc" path="res://assets/ui/Silkscreen-Regular.ttf" id="3_bet3w"]
+[ext_resource type="Texture2D" uid="uid://qlw4nsn6l7y2" path="res://assets/ui/7dfps_ui.png" id="3_uq5sq"]
 [ext_resource type="Theme" uid="uid://gohx0myooook" path="res://assets/ui/joth_theme.tres" id="4_qigj2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_63cri"]
+texture = ExtResource("3_uq5sq")
+expand_margin_left = 90.0
+expand_margin_top = 50.0
+expand_margin_right = 90.0
+expand_margin_bottom = 70.0
 
 [node name="Victory" type="CanvasLayer"]
 process_mode = 3
@@ -25,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ifoo3")
+texture = ExtResource("2_j777j")
 expand_mode = 1
 stretch_mode = 6
 
@@ -42,13 +50,17 @@ offset_right = 352.5
 offset_bottom = 143.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 55
+theme_override_constants/separation = 85
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_63cri")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Label" type="RichTextLabel" parent="Control/VBoxContainer/VBoxContainer2"]
+[node name="Label" type="RichTextLabel" parent="Control/VBoxContainer/PanelContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/bold_font = ExtResource("2_1imv6")
 theme_override_font_sizes/bold_font_size = 42
@@ -56,7 +68,7 @@ bbcode_enabled = true
 text = "[center][b]VICTORY"
 fit_content = true
 
-[node name="Label2" type="RichTextLabel" parent="Control/VBoxContainer/VBoxContainer2"]
+[node name="Label2" type="RichTextLabel" parent="Control/VBoxContainer/PanelContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_bet3w")
 theme_override_font_sizes/normal_font_size = 32
