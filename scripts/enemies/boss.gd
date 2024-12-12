@@ -276,6 +276,7 @@ func _on_velocity_computed(safe_velocity: Vector3):
 func process_hit() -> void:
 	if not chasing:
 		chasing = true
+		UiMain.ui_player.play_boss_music()
 	if not dead:
 		health -= 1
 		if health <= 0:
