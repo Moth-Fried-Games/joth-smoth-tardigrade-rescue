@@ -324,14 +324,14 @@ func process_hit() -> void:
 func gun_shoot_sound() -> void:
 	match randi_range(0,2):
 		0:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_enemyshoot1", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location("sound_enemyshoot1", global_position)
 		1:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_enemyshoot2", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location("sound_enemyshoot2", global_position)
 		2:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_enemyshoot3", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location("sound_enemyshoot3", global_position)
 
 func punch_throw_sound() -> void:
-	GameGlobals.audio_manager.create_3d_audio_at_parent("sound_punchthrow", self)
+	GameGlobals.audio_manager.create_3d_audio_at_location("sound_punchthrow", global_position)
 
 func punch_hit_sound() -> void:
 	match randi_range(0,1):
@@ -343,8 +343,8 @@ func punch_hit_sound() -> void:
 func alert_sound() -> void:
 	match randi_range(0,2):
 		0:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_fly1", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location("sound_fly1", global_position)
 		1:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_fly2", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location("sound_fly2", global_position)
 		2:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_fly3", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location("sound_fly3", global_position)

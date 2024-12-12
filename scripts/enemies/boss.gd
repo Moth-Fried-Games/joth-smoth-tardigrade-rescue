@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED: float  = 12.0
+const SPEED: float = 12.0
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
@@ -21,7 +21,7 @@ var starting_position: Vector3 = Vector3.INF
 
 var dead: bool = false
 var disabled: bool = false
-var health: int = 20
+var health: int = 50
 var stress_award: int = 0
 
 var attacking: bool = false
@@ -29,8 +29,9 @@ var chasing: bool = false
 var player_in_sight: bool = false
 var melee_side: bool = false
 
+
 func _ready() -> void:
-	stress_award = health
+	stress_award = 10
 	world_node = get_tree().current_scene
 	player_node = world_node.player_node
 	camera_node = world_node.camera_node
@@ -44,24 +45,32 @@ func _ready() -> void:
 	if not is_in_group("enemies"):
 		add_to_group("enemies")
 
+
 func shoot_player() -> void:
 	var enemy_bullet = GameGlobals.enemy_bullet.instantiate()
 	var bullet_target: Vector3 = Vector3()
 	if player_node.wish_crouch:
-		bullet_target = player_node.global_transform.origin + Vector3(0+brand(), 0.5+brand(), 0+brand())
+		bullet_target = (
+			player_node.global_transform.origin + Vector3(0 + brand(), 0.5 + brand(), 0 + brand())
+		)
 	else:
-		bullet_target = player_node.global_transform.origin + Vector3(0+brand(), 1+brand(), 0+brand())
+		bullet_target = (
+			player_node.global_transform.origin + Vector3(0 + brand(), 1 + brand(), 0 + brand())
+		)
 	enemy_bullet.direction = bullet_marker_3d.global_position.direction_to(bullet_target)
 	enemy_bullet.starting_position = bullet_marker_3d.global_position
 	world_node.add_child(enemy_bullet)
 
+
 func brand() -> float:
-	return randf_range(-1,1)
+	return randf_range(-1, 1)
+
 
 func disable_enemy() -> void:
 	disabled = true
 	attacking = false
 	spawn_pet()
+
 
 func _physics_process(delta: float) -> void:
 	if global_position.distance_to(player_node.global_position) < 10 or chasing:
@@ -83,8 +92,7 @@ func _physics_process(delta: float) -> void:
 						attacking = false
 					if not player_in_sight and navigation_agent_3d.is_navigation_finished():
 						navigation_agent_3d.target_position = player_node.global_position
-					
-	
+
 		if chasing:
 			# Melee Player if close.
 			if not range_timer.is_stopped():
@@ -125,22 +133,22 @@ func _physics_process(delta: float) -> void:
 								melee_timer.start(0.25)
 								player_node.process_hit()
 				else:
-						if (
-							attacking
-							and telegraph_timer.is_stopped()
-							and melee_timer.is_stopped()
-							and not dead
-						):
-							attacking = false
-							if melee_side:
-								if animated_sprite_3d.animation != "attack_melee_left":
-									animated_sprite_3d.play("attack_melee_left")
-							else:
-								if animated_sprite_3d.animation != "attack_melee_right":
-									animated_sprite_3d.play("attack_melee_right")
-							melee_side = !melee_side
-							punch_throw_sound()
-							melee_timer.start(0.25)
+					if (
+						attacking
+						and telegraph_timer.is_stopped()
+						and melee_timer.is_stopped()
+						and not dead
+					):
+						attacking = false
+						if melee_side:
+							if animated_sprite_3d.animation != "attack_melee_left":
+								animated_sprite_3d.play("attack_melee_left")
+						else:
+							if animated_sprite_3d.animation != "attack_melee_right":
+								animated_sprite_3d.play("attack_melee_right")
+						melee_side = !melee_side
+						punch_throw_sound()
+						melee_timer.start(0.25)
 			# Shoot if the Player is in sight.
 			else:
 				if range_ray_cast_3d.is_colliding():
@@ -165,14 +173,12 @@ func _physics_process(delta: float) -> void:
 							):
 								if animated_sprite_3d.animation != "attack_ranged":
 									animated_sprite_3d.play("attack_ranged")
-									for i in randi_range(8,12):
+									for i in randi_range(8, 12):
 										shoot_player()
 										gun_shoot_sound()
 										await get_tree().create_timer(0.1).timeout
 									attacking = false
 									range_timer.start(randf_range(3, 5))
-								
-								
 
 		# Make sprite look at camera.
 		if camera_node.global_transform.origin != Vector3(0, 1, 0):
@@ -205,7 +211,7 @@ func _physics_process(delta: float) -> void:
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-		
+
 		if chasing:
 			if player_in_sight:
 				# Move towards the player.
@@ -224,14 +230,19 @@ func _physics_process(delta: float) -> void:
 					if telegraph_timer.is_stopped() and melee_timer.is_stopped() and not attacking:
 						if animated_sprite_3d.animation != "idle":
 							animated_sprite_3d.play("idle")
-				
+
 				move_and_slide()
 			else:
-				if NavigationServer3D.map_get_iteration_id(navigation_agent_3d.get_navigation_map()) == 0:
+				if (
+					NavigationServer3D.map_get_iteration_id(
+						navigation_agent_3d.get_navigation_map()
+					)
+					== 0
+				):
 					return
 				if navigation_agent_3d.is_navigation_finished():
 					return
-					
+
 				var next_path_position: Vector3 = navigation_agent_3d.get_next_path_position()
 				var direction: Vector3 = Vector3.ZERO
 				if not dead:
@@ -255,10 +266,12 @@ func _physics_process(delta: float) -> void:
 	if disabled:
 		if is_on_floor() and velocity == Vector3.ZERO:
 			process_mode = PROCESS_MODE_DISABLED
-			
+
+
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
 	move_and_slide()
+
 
 func process_hit() -> void:
 	if not chasing:
@@ -273,26 +286,36 @@ func process_hit() -> void:
 		else:
 			animation_player.play("damage")
 
+
 func spawn_pet() -> void:
 	var water_bear = GameGlobals.water_bear.instantiate()
 	water_bear.plushie = false
 	water_bear.starting_position = global_position
 	world_node.add_child(water_bear)
 
+
 func gun_shoot_sound() -> void:
-	match randi_range(0,2):
+	match randi_range(0, 2):
 		0:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_bossfire1", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location(
+				"sound_bossfire1", global_position
+			)
 		1:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_bossfire2", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location(
+				"sound_bossfire2", global_position
+			)
 		2:
-			GameGlobals.audio_manager.create_3d_audio_at_parent("sound_bossfire3", self)
+			GameGlobals.audio_manager.create_3d_audio_at_location(
+				"sound_bossfire3", global_position
+			)
+
 
 func punch_throw_sound() -> void:
-	GameGlobals.audio_manager.create_3d_audio_at_parent("sound_punchthrow", self)
+	GameGlobals.audio_manager.create_3d_audio_at_location("sound_punchthrow", global_position)
+
 
 func punch_hit_sound() -> void:
-	match randi_range(0,1):
+	match randi_range(0, 1):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_punchhit1")
 		1:

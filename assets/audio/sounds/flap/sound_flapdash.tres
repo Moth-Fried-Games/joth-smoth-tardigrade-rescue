@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://cd4dpe86ybb75"]
+
+[ext_resource type="AudioStream" uid="uid://clrq6whnsrgpv" path="res://assets/audio/sounds/flap/wings_flap_large.wav" id="1_yf8po"]
+[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_xwu6h"]
+
+[resource]
+script = ExtResource("2_xwu6h")
+limit = 10
+audio_name = ""
+audio_type = 1
+audio_stream = ExtResource("1_yf8po")
+volume = 5.0
+pitch_scale = 1.2
+pitch_randomness = 0.1
+max_distance_2d = 2000.0
+unit_size = 10.0
+max_distance_3d = 0.0
+reverb_tail = 0.0

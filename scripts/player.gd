@@ -68,7 +68,9 @@ func _input(event):
 func _handle_camera_rotation(event: InputEvent):
 	# Rotate the camera based on the mouse movement
 	rotate_y(deg_to_rad(-event.relative.x * GameGlobals.game_settings.mouse_sensitivity))
-	head_node_3d.rotate_x(deg_to_rad(-event.relative.y * GameGlobals.game_settings.mouse_sensitivity))
+	head_node_3d.rotate_x(
+		deg_to_rad(-event.relative.y * GameGlobals.game_settings.mouse_sensitivity)
+	)
 
 	# Stop the head from rotating to far up or down
 	head_node_3d.rotation.x = clamp(head_node_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
@@ -150,12 +152,13 @@ func process_input(delta: float) -> void:
 	if wish_dash and dash_timer.is_stopped():
 		dash_dir = direction.normalized()
 		dash_timer.start()
-	if dash_timer.is_stopped():	
+		GameGlobals.audio_manager.create_audio("sound_flapdash")
+	if dash_timer.is_stopped():
 		if camera_3d.fov != 80:
-			camera_3d.fov = lerpf(camera_3d.fov,80,0.25)
+			camera_3d.fov = lerpf(camera_3d.fov, 80, 0.25)
 	else:
 		if camera_3d.fov != 90:
-			camera_3d.fov = lerpf(camera_3d.fov,90,0.25)
+			camera_3d.fov = lerpf(camera_3d.fov, 90, 0.25)
 	# Diving
 	if not is_on_floor():
 		if not wish_dive and Input.is_action_just_pressed("action_crouch"):
@@ -176,7 +179,7 @@ func process_input(delta: float) -> void:
 	if ui_player.weapons_equipped:
 		if Input.is_action_pressed("action_shoot"):
 			ui_player.fire_guns()
-		if Input.is_action_pressed("action_punch"):
+		elif Input.is_action_pressed("action_punch"):
 			ui_player.throw_punch()
 
 	if ui_player.petting_animation_player:
@@ -219,8 +222,10 @@ func process_movement(delta: float) -> void:
 			if wish_jump:
 				if wish_crouch:
 					velocity.y = JUMP_IMPULSE * 2
+					GameGlobals.audio_manager.create_audio("sound_flapbig")
 				else:
 					velocity.y = JUMP_IMPULSE
+					GameGlobals.audio_manager.create_audio("sound_flap")
 				# Update velocity as if we are in the air
 				velocity = update_velocity_air(wish_dir, delta)
 				wish_jump = false
@@ -230,6 +235,7 @@ func process_movement(delta: float) -> void:
 		else:
 			if wish_jump:
 				velocity.y = JUMP_IMPULSE
+				GameGlobals.audio_manager.create_audio("sound_flap")
 				# Update velocity as if we are in the air
 				velocity = update_velocity_air(wish_dir, delta)
 				wish_jump = false
@@ -268,6 +274,7 @@ func process_movement(delta: float) -> void:
 			if not dive_falling:
 				dive_falling = true
 				velocity.y = DIVE_IMPULSE
+				GameGlobals.audio_manager.create_audio("sound_flapbig")
 		else:
 			dive_falling = false
 			wish_dive = false
@@ -424,11 +431,13 @@ func _snap_up_stairs_check(delta) -> bool:
 			return true
 	return false
 
+
 func is_surface_too_steep(normal: Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
 
+
 func punch_hit_sound() -> void:
-	match randi_range(0,1):
+	match randi_range(0, 1):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_punchhit1")
 		1:
