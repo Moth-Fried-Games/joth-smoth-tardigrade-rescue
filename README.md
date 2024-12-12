@@ -22,7 +22,10 @@ Moth Project 3: Our submission for 7dfps 2024
 - [Q009's weapon sounds by Q009](https://opengameart.org/content/q009s-weapon-sounds) 
 - [Squeak toy sounds by bart](https://opengameart.org/content/squeak-toy-sounds)
 - [Balloon Sounds by AntumDeluge](https://opengameart.org/content/balloon-sounds)
-  
+
+### Fonts
+- [Silkscreen by Jason Kottke](https://fonts.google.com/?query=Jason+Kottke)
+
 ### Resources
 - [AudioManager](https://github.com/Aarimous/AudioManager) 
 - [Recreating Quake / GoldSrc Movement in Godot 4.0](https://aneacsu.com/blog/2023-04-09-quake-movement-godot) 
