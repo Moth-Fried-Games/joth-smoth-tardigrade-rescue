@@ -3,7 +3,7 @@ Moth Project 3: Our submission for 7dfps 2024
 
 ## Credits
 ### Art
-- Sprites and Textures by [Atlas](https://explorermoo.carrd.co/)
+- Sprites, Textures and Illustrations by [Atlas](https://explorermoo.carrd.co/)
   
 ### Music
 - Joth Jam by [Erik McClure](https://erikmcclure.bandcamp.com/)
