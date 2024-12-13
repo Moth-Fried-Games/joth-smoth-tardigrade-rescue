@@ -310,7 +310,7 @@ shape = SubResource("CapsuleShape3D_a0fj0")
 
 [node name="MeleeRayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.5)
 
 [node name="RangeRayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

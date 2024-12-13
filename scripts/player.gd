@@ -76,11 +76,16 @@ func _handle_camera_rotation(event: InputEvent):
 	head_node_3d.rotation.x = clamp(head_node_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 
-func process_hit() -> void:
+func process_bullet_hit() -> void:
 	if not ui_player.petting_equipped:
 		ui_player.hurt_effect()
 		ui_player.increase_stress(1)
-	#ui_color_rect.color.a = 1
+
+
+func process_melee_hit() -> void:
+	if not ui_player.petting_equipped:
+		ui_player.hurt_effect()
+		ui_player.increase_stress(2)
 
 
 func gun_check(gun_side: bool) -> void:
@@ -177,9 +182,11 @@ func process_input(delta: float) -> void:
 			dive_window += delta
 
 	if ui_player.weapons_equipped:
-		if Input.is_action_pressed("action_shoot"):
+		if Input.is_action_pressed("action_shoot") and not Input.is_action_pressed("action_punch"):
 			ui_player.fire_guns()
-		elif Input.is_action_pressed("action_punch"):
+		elif (
+			Input.is_action_pressed("action_punch") and not Input.is_action_pressed("action_shoot")
+		):
 			ui_player.throw_punch()
 
 	if ui_player.petting_animation_player:
@@ -437,7 +444,7 @@ func is_surface_too_steep(normal: Vector3) -> bool:
 
 
 func punch_hit_sound() -> void:
-	match randi_range(0, 1):
+	match GameGlobals.rng.randi_range(0, 1):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_punchhit1")
 		1:

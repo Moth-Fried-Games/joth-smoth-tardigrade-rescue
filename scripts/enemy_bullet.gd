@@ -1,6 +1,6 @@
 extends Area3D
 
-const SPEED: float = 64.0
+const SPEED: float = 32.0
 var direction: Vector3 = Vector3()
 var starting_position: Vector3 = Vector3()
 
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 				if body.is_in_group("players"):
 					if not bullet_hit:
 						bullet_hit = true
-						body.process_hit()
+						body.process_bullet_hit()
 						GameGlobals.audio_manager.create_audio("sound_bullethit")
 				else:
 					if not bullet_hit:

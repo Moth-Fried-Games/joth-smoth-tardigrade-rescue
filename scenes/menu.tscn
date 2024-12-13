@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=4 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_p4cgt"]
-[ext_resource type="Texture2D" uid="uid://bvypwd4rlr1ku" path="res://scenes/ui/7dfps_key_nologo.png" id="2_5d1bc"]
+[ext_resource type="Texture2D" uid="uid://bvypwd4rlr1ku" path="res://assets/ui/7dfps_key_nologo.png" id="2_5d1bc"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_israh"]
 [ext_resource type="Texture2D" uid="uid://cfjdscvblci3w" path="res://assets/ui/7dfps_logo.png" id="5_wi5ge"]
 [ext_resource type="Theme" uid="uid://gohx0myooook" path="res://assets/ui/joth_theme.tres" id="6_fu6ku"]
@@ -265,11 +265,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0kw5f")
 }
 autoplay = "blink"
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Start"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Main" type="Control" parent="Control/TabContainer"]
 visible = false

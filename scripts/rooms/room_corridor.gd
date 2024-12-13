@@ -40,8 +40,8 @@ func setup_room() -> void:
 		wall_r.queue_free()
 	else:
 		door__r.queue_free()
-	if randf_range(0, 1) >= 0.2:
-		enemy_spawner.spawn_amount = randi_range(1,2)
+	if GameGlobals.rng.randf_range(0, 1) >= 0.2:
+		enemy_spawner.spawn_amount = GameGlobals.rng.randi_range(1, 3)
 		enemy_spawner.spawn_enemy()
 	else:
 		enemy_spawner.queue_free()

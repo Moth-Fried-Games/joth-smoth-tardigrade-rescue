@@ -34,11 +34,11 @@ var melee_side: bool = false
 
 func _ready() -> void:
 	if not melee and not ranged:
-		if randi_range(0, 1) == 0:
+		if GameGlobals.rng.randi_range(0, 1) == 0:
 			melee = true
 		else:
 			ranged = true
-	stress_award = 1
+	stress_award = health * 0.80
 	if melee:
 		SPEED += 4
 		animated_sprite_3d.play("idle_melee")
@@ -75,7 +75,7 @@ func shoot_player() -> void:
 
 
 func brand() -> float:
-	return randf_range(-1, 1)
+	return GameGlobals.rng.randf_range(-1, 1)
 
 
 func disable_enemy() -> void:
@@ -141,7 +141,7 @@ func _physics_process(delta: float) -> void:
 								punch_throw_sound()
 								punch_hit_sound()
 								melee_timer.start(0.25)
-								player_node.process_hit()
+								player_node.process_melee_hit()
 				else:
 					if (
 						attacking
@@ -182,11 +182,11 @@ func _physics_process(delta: float) -> void:
 								if animated_sprite_3d.animation != "attack_ranged":
 									animated_sprite_3d.play("attack_ranged")
 									gun_shoot_sound()
-									for i in randi_range(2, 3):
+									for i in GameGlobals.rng.randi_range(2, 3):
 										shoot_player()
 									await get_tree().create_timer(0.5).timeout
 									attacking = false
-									range_timer.start(randf_range(1, 2))
+									range_timer.start(GameGlobals.rng.randf_range(1, 2))
 
 		# Make sprite look at camera.
 		if camera_node.global_transform.origin != Vector3(0, 1, 0):
@@ -321,27 +321,37 @@ func process_hit() -> void:
 		else:
 			animation_player.play("damage")
 
+
 func gun_shoot_sound() -> void:
-	match randi_range(0,2):
+	match GameGlobals.rng.randi_range(0, 2):
 		0:
-			GameGlobals.audio_manager.create_3d_audio_at_location("sound_enemyshoot1", global_position)
+			GameGlobals.audio_manager.create_3d_audio_at_location(
+				"sound_enemyshoot1", global_position
+			)
 		1:
-			GameGlobals.audio_manager.create_3d_audio_at_location("sound_enemyshoot2", global_position)
+			GameGlobals.audio_manager.create_3d_audio_at_location(
+				"sound_enemyshoot2", global_position
+			)
 		2:
-			GameGlobals.audio_manager.create_3d_audio_at_location("sound_enemyshoot3", global_position)
+			GameGlobals.audio_manager.create_3d_audio_at_location(
+				"sound_enemyshoot3", global_position
+			)
+
 
 func punch_throw_sound() -> void:
 	GameGlobals.audio_manager.create_3d_audio_at_location("sound_punchthrow", global_position)
 
+
 func punch_hit_sound() -> void:
-	match randi_range(0,1):
+	match GameGlobals.rng.randi_range(0, 1):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_punchhit1")
 		1:
 			GameGlobals.audio_manager.create_audio("sound_punchhit2")
 
+
 func alert_sound() -> void:
-	match randi_range(0,2):
+	match GameGlobals.rng.randi_range(0, 2):
 		0:
 			GameGlobals.audio_manager.create_3d_audio_at_location("sound_fly1", global_position)
 		1:

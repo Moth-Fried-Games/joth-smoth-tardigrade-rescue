@@ -63,7 +63,7 @@ func shoot_player() -> void:
 
 
 func brand() -> float:
-	return randf_range(-1, 1)
+	return GameGlobals.rng.randf_range(-1, 1)
 
 
 func disable_enemy() -> void:
@@ -131,7 +131,7 @@ func _physics_process(delta: float) -> void:
 								punch_throw_sound()
 								punch_hit_sound()
 								melee_timer.start(0.25)
-								player_node.process_hit()
+								player_node.process_melee_hit()
 				else:
 					if (
 						attacking
@@ -173,12 +173,12 @@ func _physics_process(delta: float) -> void:
 							):
 								if animated_sprite_3d.animation != "attack_ranged":
 									animated_sprite_3d.play("attack_ranged")
-									for i in randi_range(8, 12):
+									for i in GameGlobals.rng.randi_range(8, 12):
 										shoot_player()
 										gun_shoot_sound()
 										await get_tree().create_timer(0.1).timeout
 									attacking = false
-									range_timer.start(randf_range(3, 5))
+									range_timer.start(GameGlobals.rng.randf_range(3, 5))
 
 		# Make sprite look at camera.
 		if camera_node.global_transform.origin != Vector3(0, 1, 0):
@@ -296,7 +296,7 @@ func spawn_pet() -> void:
 
 
 func gun_shoot_sound() -> void:
-	match randi_range(0, 2):
+	match GameGlobals.rng.randi_range(0, 2):
 		0:
 			GameGlobals.audio_manager.create_3d_audio_at_location(
 				"sound_bossfire1", global_position
@@ -316,7 +316,7 @@ func punch_throw_sound() -> void:
 
 
 func punch_hit_sound() -> void:
-	match randi_range(0, 1):
+	match GameGlobals.rng.randi_range(0, 1):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_punchhit1")
 		1:

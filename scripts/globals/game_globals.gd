@@ -34,6 +34,7 @@ var loading_screen: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	randomize()
 	rng.randomize()
 	add_child(game_settings)
 	add_child(game_data)

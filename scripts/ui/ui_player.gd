@@ -66,6 +66,7 @@ func initialize() -> void:
 	weapons_equipped = false
 	petting_equipped = false
 	game_over = false
+	victory = false
 	control.visible = false
 	weapon_animation_player.play("equip")
 	punch_l.play("idle")
@@ -191,7 +192,7 @@ func switch_to_pet_plushie() -> void:
 	pet_l.play("idle_plush")
 	pet_u.play("idle")
 	weapons_equipped = false
-	durability = randf_range(2, 4)
+	durability = GameGlobals.rng.randf_range(2, 4)
 
 
 func switch_to_pet_real() -> void:
@@ -340,18 +341,21 @@ func _on_gun_r_animation_finished() -> void:
 	if gun_r.animation == "shoot":
 		gun_r.play("idle")
 
+
 func gun_shoot_sound() -> void:
-	match randi_range(0,1):
+	match GameGlobals.rng.randi_range(0, 1):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_playershoot1")
 		1:
 			GameGlobals.audio_manager.create_audio("sound_playershoot2")
 
+
 func punch_throw_sound() -> void:
 	GameGlobals.audio_manager.create_audio("sound_punchthrow")
-	
+
+
 func pet_squeak_sound() -> void:
-	match randi_range(0,2):
+	match GameGlobals.rng.randi_range(0, 2):
 		0:
 			GameGlobals.audio_manager.create_audio("sound_squeak1")
 		1:

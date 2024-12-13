@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/victory.gd" id="1_h6lg2"]
 [ext_resource type="FontFile" uid="uid://u4wpp2aq57lr" path="res://assets/ui/Silkscreen-Bold.ttf" id="2_1imv6"]
-[ext_resource type="Texture2D" uid="uid://bvypwd4rlr1ku" path="res://scenes/ui/7dfps_key_nologo.png" id="2_j777j"]
+[ext_resource type="Texture2D" uid="uid://bvypwd4rlr1ku" path="res://assets/ui/7dfps_key_nologo.png" id="2_j777j"]
 [ext_resource type="FontFile" uid="uid://bkqdmdrfnprgc" path="res://assets/ui/Silkscreen-Regular.ttf" id="3_bet3w"]
 [ext_resource type="Texture2D" uid="uid://qlw4nsn6l7y2" path="res://assets/ui/7dfps_ui.png" id="3_uq5sq"]
 [ext_resource type="Theme" uid="uid://gohx0myooook" path="res://assets/ui/joth_theme.tres" id="4_qigj2"]
@@ -45,9 +45,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -352.5
-offset_top = -143.5
+offset_top = -243.5
 offset_right = 352.5
-offset_bottom = 143.5
+offset_bottom = 243.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 85

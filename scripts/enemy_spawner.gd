@@ -21,6 +21,7 @@ var enemy_spawns: Array[Resource] = []
 
 var world_node: Node3D = null
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text_mesh_instance_3d.visible = false
@@ -38,19 +39,21 @@ func _ready() -> void:
 	if boss:
 		enemy_spawns.append(GameGlobals.enemy_resources["Boss"])
 
+
 func spawn_enemy() -> void:
 	if spawn_time > 0:
 		spawn_timer.start(spawn_time)
 	else:
 		spawn_timer_timeout()
 
+
 func spawn_timer_timeout() -> void:
-	for i in randi_range(1, spawn_amount):
+	for i in GameGlobals.rng.randi_range(1, spawn_amount):
 		var spawn_selection: Resource = enemy_spawns.pick_random()
 		var enemy_node = spawn_selection.instantiate()
 		enemy_node.starting_position = global_position
-		enemy_node.starting_position.x += randf_range(-2.5,2.5)
-		enemy_node.starting_position.z += randf_range(-2.5,2.5)
+		enemy_node.starting_position.x += GameGlobals.rng.randf_range(-2.5, 2.5)
+		enemy_node.starting_position.z += GameGlobals.rng.randf_range(-2.5, 2.5)
 		world_node.add_child(enemy_node)
 	if not spawn_once:
 		spawn_timer.start()
