@@ -16,7 +16,7 @@ config/description="Become Joth Smoth, the most powerful moth in Lepidopteros. A
 After their pet tardigrade was stolen by the bug mafia, they were taken out of their peaceful life as they attempt to rescue their beloved water bear (the only animal capable of withstanding Joth Smoth's affection).
 
 Break though the bug mafia's cardboard mansion and defeat the family boss, before Joth becomes so enraged they lose control and destroy the world!"
-config/version="1.0"
+config/version="1.0.0"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
