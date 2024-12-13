@@ -9,13 +9,13 @@ Moth Project 3: Our submission for 7dfps 2024
 - Joth Jam by [Erik McClure](https://erikmcclure.bandcamp.com/)
   
 ### Programming
-- [Myr the Moth](https://mothfriedgames.neocities.org/)
+- [Myr the Moth](https://myrthemoth.neocities.org/)
 
 ### Level Design
-- [Myr the Moth](https://mothfriedgames.neocities.org/)
+- [Myr the Moth](https://myrthemoth.neocities.org/)
 
 ### Sounds
-- Enemy Alert Sounds by [Myr the Moth](https://mothfriedgames.neocities.org/)
+- Enemy Alert Sounds by [Myr the Moth](https://myrthemoth.neocities.org/)
 - [37 hits/punches by Independent.nu](https://opengameart.org/content/37-hitspunches) 
 - [3 Melee sounds by remaxim](https://opengameart.org/content/3-melee-sounds) 
 - [Space Shoot Sounds by Robin Lamb](https://opengameart.org/content/space-shoot-sounds) 
