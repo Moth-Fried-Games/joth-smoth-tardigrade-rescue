@@ -1,6 +1,8 @@
 # JOTH SMOTH: TARDIGRADE RESCUE
 Moth Project 3: Our submission for [7dfps](https://itch.io/jam/7dfps) 2024
 
+Builds on Itch.io https://mothfriedgames.itch.io/joth-smoth
+
 ## Credits
 ### Art
 - Sprites, Textures and Illustrations by [Atlas](https://explorermoo.carrd.co/)
