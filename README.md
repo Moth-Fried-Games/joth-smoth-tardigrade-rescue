@@ -5,7 +5,7 @@ Builds on Itch.io https://mothfriedgames.itch.io/joth-smoth
 
 ## Credits
 ### Art
-- Sprites, Textures and Illustrations by [Atlas](https://explorermoo.carrd.co/)
+- Sprites, Textures and Illustrations by [Atlas](https://explorermoo.com/)
   
 ### Music
 - Joth Jam by [Erik McClure](https://erikmcclure.bandcamp.com/)
