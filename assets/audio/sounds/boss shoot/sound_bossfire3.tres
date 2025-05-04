@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://crw72rikstvda"]
 
 [ext_resource type="AudioStream" uid="uid://c8mja0sdm4mmk" path="res://assets/audio/sounds/boss shoot/minigun3.ogg" id="1_bkgkx"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_ed6rn"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="2_ed6rn"]
 
 [resource]
 script = ExtResource("2_ed6rn")

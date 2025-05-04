@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://csfi3vhqdt80e"]
 
 [ext_resource type="AudioStream" uid="uid://dr8n2dmpt65b" path="res://assets/audio/music/victory.wav" id="1_nw2ia"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_y725s"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="2_y725s"]
 
 [resource]
 script = ExtResource("2_y725s")

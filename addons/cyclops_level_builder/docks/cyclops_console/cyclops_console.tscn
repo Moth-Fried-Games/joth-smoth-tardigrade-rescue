@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbo80g1hbom2"]
 
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/docks/cyclops_console/cyclops_console.gd" id="1_f4kro"]
+[ext_resource type="Script" uid="uid://b2bup3lw2rjs3" path="res://addons/cyclops_level_builder/docks/cyclops_console/cyclops_console.gd" id="1_f4kro"]
 [ext_resource type="PackedScene" uid="uid://cphtpklx81l3w" path="res://addons/cyclops_level_builder/controls/vector3_edit.tscn" id="2_qpx41"]
 
 [node name="PanelContainer" type="PanelContainer"]

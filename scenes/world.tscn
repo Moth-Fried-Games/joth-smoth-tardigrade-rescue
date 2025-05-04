@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c76xn5stygcb0"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_w5epn"]
-[ext_resource type="Script" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="2_5wsjh"]
+[ext_resource type="Script" uid="uid://b4gjxomm8gfj" path="res://scripts/world.gd" id="1_w5epn"]
+[ext_resource type="Script" uid="uid://bt6ccxp2vd8fe" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="2_5wsjh"]
 [ext_resource type="PackedScene" uid="uid://cihqdp4pordr3" path="res://scenes/rooms/standard_1.tscn" id="3_1xaxn"]
 [ext_resource type="PackedScene" uid="uid://bov2tnfc1n4kk" path="res://scenes/rooms/corridor.tscn" id="3_qklsp"]
 [ext_resource type="PackedScene" uid="uid://cx46fnhwlx7en" path="res://scenes/rooms/start_test.tscn" id="4_8utma"]

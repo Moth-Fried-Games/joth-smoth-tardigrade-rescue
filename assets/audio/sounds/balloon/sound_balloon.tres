@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://c2o32ne0qsv1i"]
 
 [ext_resource type="AudioStream" uid="uid://v0gg3efsw4hj" path="res://assets/audio/sounds/balloon/balloon_pop.ogg" id="1_7vi6h"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="1_ic8tq"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="1_ic8tq"]
 
 [resource]
 script = ExtResource("1_ic8tq")

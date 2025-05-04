@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://xy32ng8bht2r"]
 
 [ext_resource type="AudioStream" uid="uid://bcvv2rbphvd40" path="res://assets/audio/sounds/squeaks/squeak toy - squeak1.wav" id="1_4wxyd"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="1_jo32r"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="1_jo32r"]
 
 [resource]
 script = ExtResource("1_jo32r")
@@ -12,4 +12,7 @@ audio_stream = ExtResource("1_4wxyd")
 volume = 0.0
 pitch_scale = 1.0
 pitch_randomness = 0.2
+max_distance_2d = 2000.0
+unit_size = 10.0
+max_distance_3d = 0.0
 reverb_tail = 0.0

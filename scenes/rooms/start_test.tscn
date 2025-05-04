@@ -1,12 +1,12 @@
 [gd_scene load_steps=258 format=3 uid="uid://cx46fnhwlx7en"]
 
-[ext_resource type="Script" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="1_hglrv"]
-[ext_resource type="Script" path="res://scripts/rooms/room_start_test.gd" id="2_kwly0"]
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="3_b2e23"]
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_byte.gd" id="4_8olms"]
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="5_m66kg"]
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="6_n28dp"]
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="7_2f1nm"]
+[ext_resource type="Script" uid="uid://cmqe11q6bwbsq" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="1_hglrv"]
+[ext_resource type="Script" uid="uid://bravtx71sbr16" path="res://scripts/rooms/room_start_test.gd" id="2_kwly0"]
+[ext_resource type="Script" uid="uid://bbic1qmbm4fr4" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="3_b2e23"]
+[ext_resource type="Script" uid="uid://bkkbt70ljl4mq" path="res://addons/cyclops_level_builder/resources/data_vector_byte.gd" id="4_8olms"]
+[ext_resource type="Script" uid="uid://bfoslpdc8m6mf" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="5_m66kg"]
+[ext_resource type="Script" uid="uid://btbr72ekixv3y" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="6_n28dp"]
+[ext_resource type="Script" uid="uid://l1spyxmgilhp" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="7_2f1nm"]
 [ext_resource type="Material" uid="uid://cbxp3qp3iwsvk" path="res://assets/materials/door.tres" id="8_8lel6"]
 [ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player.tscn" id="8_xmylm"]
 [ext_resource type="Material" uid="uid://x5f3a803i6xl" path="res://assets/materials/ground.tres" id="8_y5vu5"]
@@ -14,7 +14,7 @@
 [ext_resource type="Material" uid="uid://clv3b2kgfjndm" path="res://assets/materials/pillar.tres" id="10_au4ug"]
 [ext_resource type="Material" uid="uid://be8e3iw7l3o7x" path="res://assets/materials/wall.tres" id="10_gfoah"]
 [ext_resource type="Material" uid="uid://c0dx3aido4ley" path="res://assets/materials/wallbottom.tres" id="13_8qcs1"]
-[ext_resource type="Script" path="res://scripts/rooms/entry_door.gd" id="13_a8vpm"]
+[ext_resource type="Script" uid="uid://drjecwerks7uy" path="res://scripts/rooms/entry_door.gd" id="13_a8vpm"]
 
 [sub_resource type="Resource" id="Resource_a277i"]
 script = ExtResource("4_8olms")

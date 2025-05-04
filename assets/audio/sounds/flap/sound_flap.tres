@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://bmxhrylykbvjy"]
 
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="1_fba3a"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="1_fba3a"]
 [ext_resource type="AudioStream" uid="uid://clrq6whnsrgpv" path="res://assets/audio/sounds/flap/wings_flap_large.wav" id="1_u7c47"]
 
 [resource]

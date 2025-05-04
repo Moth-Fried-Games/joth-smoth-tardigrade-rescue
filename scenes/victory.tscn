@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cw1usvve6opyx"]
 
-[ext_resource type="Script" path="res://scripts/victory.gd" id="1_h6lg2"]
+[ext_resource type="Script" uid="uid://bwxicpt35jplw" path="res://scripts/victory.gd" id="1_h6lg2"]
 [ext_resource type="FontFile" uid="uid://u4wpp2aq57lr" path="res://assets/ui/Silkscreen-Bold.ttf" id="2_1imv6"]
 [ext_resource type="Texture2D" uid="uid://bvypwd4rlr1ku" path="res://assets/ui/7dfps_key_nologo.png" id="2_j777j"]
 [ext_resource type="FontFile" uid="uid://bkqdmdrfnprgc" path="res://assets/ui/Silkscreen-Regular.ttf" id="3_bet3w"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://denc7grw42qsu"]
 
-[ext_resource type="Script" path="res://addons/cyclops_level_builder/docks/material_palette/material_viewer/material_viewer.gd" id="1_nrjye"]
+[ext_resource type="Script" uid="uid://bv1vne48g1i1w" path="res://addons/cyclops_level_builder/docks/material_palette/material_viewer/material_viewer.gd" id="1_nrjye"]
 [ext_resource type="PackedScene" uid="uid://cchlfqbh0djdn" path="res://addons/cyclops_level_builder/docks/material_palette/material_viewer/material_groups_tree.tscn" id="2_8hnut"]
 
 [node name="MaterialViewer" type="PanelContainer"]

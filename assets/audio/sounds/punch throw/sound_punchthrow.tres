@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://dn4fcjqw8rlmn"]
 
 [ext_resource type="AudioStream" uid="uid://b53v4mrj1jvgs" path="res://assets/audio/sounds/punch throw/melee sound.wav" id="1_e4g76"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_v0p0q"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="2_v0p0q"]
 
 [resource]
 script = ExtResource("2_v0p0q")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://cqo3kjsdqndu7"]
 
 [ext_resource type="AudioStream" uid="uid://dsybi1y51ttyr" path="res://assets/audio/music/gameplay_LOOP_738420.wav" id="1_xi2ac"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_2pkvx"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="2_2pkvx"]
 
 [resource]
 script = ExtResource("2_2pkvx")

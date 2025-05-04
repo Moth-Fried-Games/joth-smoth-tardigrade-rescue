@@ -17,8 +17,9 @@ After their pet tardigrade was stolen by the bug mafia, they were taken out of t
 
 Break though the bug mafia's cardboard mansion and defeat the family boss, before Joth becomes so enraged they lose control and destroy the world!"
 config/version="1.0.0"
+config/tags=PackedStringArray("game")
 run/main_scene="res://scenes/menu.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -109,6 +110,8 @@ action_punch={
 [physics]
 
 common/physics_ticks_per_second=120
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
 
 [rendering]
 

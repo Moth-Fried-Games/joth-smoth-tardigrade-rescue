@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwa6h68gp3cra"]
 
-[ext_resource type="Script" path="res://scripts/ui/ui_frame_rate.gd" id="1_ejxet"]
+[ext_resource type="Script" uid="uid://24dx4uu4d3ij" path="res://scripts/ui/ui_frame_rate.gd" id="1_ejxet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ikx0"]
 font_size = 12

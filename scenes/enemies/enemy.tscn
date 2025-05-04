@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://dg6bem5ocftx0"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_ixyqq"]
+[ext_resource type="Script" uid="uid://cb0e2qm3pokdr" path="res://scripts/enemies/enemy.gd" id="1_ixyqq"]
 [ext_resource type="Texture2D" uid="uid://c5nun7p2l2sar" path="res://assets/textures/enemies/7dfps_sprites_roach.png" id="2_2h1fp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0fj0"]
@@ -295,9 +295,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5ce5"]
 _data = {
-"RESET": SubResource("Animation_x1gyd"),
-"damage": SubResource("Animation_cn726"),
-"dead": SubResource("Animation_cvyt6")
+&"RESET": SubResource("Animation_x1gyd"),
+&"damage": SubResource("Animation_cn726"),
+&"dead": SubResource("Animation_cvyt6")
 }
 
 [node name="Enemy" type="CharacterBody3D"]
@@ -338,7 +338,7 @@ transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0.15,
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
 libraries = {
-"": SubResource("AnimationLibrary_k5ce5")
+&"": SubResource("AnimationLibrary_k5ce5")
 }
 
 [node name="TelegraphTimer" type="Timer" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=60 format=3 uid="uid://cq65futumwc7q"]
 
-[ext_resource type="Script" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
+[ext_resource type="Script" uid="uid://sui2f5stioq8" path="res://scripts/ui/ui_player.gd" id="1_ut2mg"]
 [ext_resource type="Texture2D" uid="uid://dw5im76bjncqt" path="res://assets/textures/player/7dfps_hud_gun.png" id="2_5xdao"]
 [ext_resource type="Texture2D" uid="uid://2vcvadm840jy" path="res://assets/textures/player/7dfps_hud_punch.png" id="2_ifkk2"]
 [ext_resource type="Texture2D" uid="uid://co6wgh5ogjbvv" path="res://assets/textures/player/7dfps_hud_petplush_lower.png" id="4_bs5mu"]
@@ -210,12 +210,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57qyq"]
 _data = {
-"RESET": SubResource("Animation_s22nu"),
-"equip": SubResource("Animation_wou78"),
-"idle": SubResource("Animation_vtkmn"),
-"move": SubResource("Animation_al03o"),
-"move_2": SubResource("Animation_y8sf4"),
-"unequip": SubResource("Animation_f6a3s")
+&"RESET": SubResource("Animation_s22nu"),
+&"equip": SubResource("Animation_wou78"),
+&"idle": SubResource("Animation_vtkmn"),
+&"move": SubResource("Animation_al03o"),
+&"move_2": SubResource("Animation_y8sf4"),
+&"unequip": SubResource("Animation_f6a3s")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0he6"]
@@ -429,10 +429,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohs4v"]
 _data = {
-"RESET": SubResource("Animation_s22nu"),
-"equip": SubResource("Animation_wou78"),
-"new": SubResource("Animation_q5x65"),
-"unequip": SubResource("Animation_f6a3s")
+&"RESET": SubResource("Animation_s22nu"),
+&"equip": SubResource("Animation_wou78"),
+&"new": SubResource("Animation_q5x65"),
+&"unequip": SubResource("Animation_f6a3s")
 }
 
 [sub_resource type="Gradient" id="Gradient_l7fa7"]
@@ -565,7 +565,7 @@ animation = &"idle"
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Control/Weapons"]
 libraries = {
-"": SubResource("AnimationLibrary_57qyq")
+&"": SubResource("AnimationLibrary_57qyq")
 }
 
 [node name="Petting" type="Control" parent="Control"]
@@ -614,15 +614,15 @@ animation = &"idle"
 [node name="PetHearts" type="GPUParticles2D" parent="Control/Petting/Control2"]
 emitting = false
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_ie4io")
 texture = ExtResource("7_nu2qq")
 lifetime = 0.2
 one_shot = true
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ie4io")
 
 [node name="PettingAnimationPlayer" type="AnimationPlayer" parent="Control/Petting"]
 libraries = {
-"": SubResource("AnimationLibrary_ohs4v")
+&"": SubResource("AnimationLibrary_ohs4v")
 }
 
 [node name="GameOverTextureRect" type="TextureRect" parent="Control"]

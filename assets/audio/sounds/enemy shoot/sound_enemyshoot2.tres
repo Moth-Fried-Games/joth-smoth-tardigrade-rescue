@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://cj885t7skha1a"]
 
 [ext_resource type="AudioStream" uid="uid://cuy3pqg61kmle" path="res://assets/audio/sounds/enemy shoot/pistol2.ogg" id="1_vwfi6"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_wcubn"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="2_wcubn"]
 
 [resource]
 script = ExtResource("2_wcubn")

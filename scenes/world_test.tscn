@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://dg0mx11xpegnj"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_2u64q"]
+[ext_resource type="Script" uid="uid://b4gjxomm8gfj" path="res://scripts/world.gd" id="1_2u64q"]
 [ext_resource type="PackedScene" uid="uid://d3pyy37xkklbi" path="res://scenes/player.tscn" id="1_8nv5v"]
 [ext_resource type="PackedScene" uid="uid://d1c5ker3gajbn" path="res://scenes/pet_pickup.tscn" id="3_0evou"]
 [ext_resource type="PackedScene" uid="uid://dg6bem5ocftx0" path="res://scenes/enemies/enemy.tscn" id="3_qbru8"]

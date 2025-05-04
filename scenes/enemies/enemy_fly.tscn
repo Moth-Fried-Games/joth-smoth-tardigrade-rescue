@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://sjvu3pfum0ou"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_fly.gd" id="1_is0u8"]
+[ext_resource type="Script" uid="uid://8526utknqxq2" path="res://scripts/enemies/enemy_fly.gd" id="1_is0u8"]
 [ext_resource type="Texture2D" uid="uid://b51krwx8slry6" path="res://assets/textures/enemies/7dfps_sprites_fly.png" id="2_1wxbg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dg45j"]
@@ -248,9 +248,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_350q7"]
 _data = {
-"RESET": SubResource("Animation_4x53o"),
-"damage": SubResource("Animation_omotb"),
-"dead": SubResource("Animation_h245i")
+&"RESET": SubResource("Animation_4x53o"),
+&"damage": SubResource("Animation_omotb"),
+&"dead": SubResource("Animation_h245i")
 }
 
 [node name="Enemy Fly" type="CharacterBody3D"]
@@ -292,7 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
 libraries = {
-"": SubResource("AnimationLibrary_350q7")
+&"": SubResource("AnimationLibrary_350q7")
 }
 
 [node name="TelegraphTimer" type="Timer" parent="."]

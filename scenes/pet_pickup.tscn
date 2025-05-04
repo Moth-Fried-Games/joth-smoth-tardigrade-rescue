@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1c5ker3gajbn"]
 
-[ext_resource type="Script" path="res://scripts/pet_pickup.gd" id="1_6t0vt"]
+[ext_resource type="Script" uid="uid://csuwtvxu0vgdy" path="res://scripts/pet_pickup.gd" id="1_6t0vt"]
 [ext_resource type="Texture2D" uid="uid://dm8ksubcwhcrx" path="res://assets/textures/enemies/7dfps_sprites_plush.png" id="2_4hhc4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_17tu0"]

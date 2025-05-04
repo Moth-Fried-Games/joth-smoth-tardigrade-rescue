@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bt58ok2qwcjln"]
 
-[ext_resource type="Script" path="res://scripts/ui/ui_transitions.gd" id="1_0bwdo"]
+[ext_resource type="Script" uid="uid://denyqt0c7vejb" path="res://scripts/ui/ui_transitions.gd" id="1_0bwdo"]
 [ext_resource type="FontFile" uid="uid://bkqdmdrfnprgc" path="res://assets/ui/Silkscreen-Regular.ttf" id="2_65n51"]
 
 [sub_resource type="Animation" id="Animation_oudmt"]
@@ -52,9 +52,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wrhr2"]
 _data = {
-"RESET": SubResource("Animation_oudmt"),
-"fade_in": SubResource("Animation_cwsfi"),
-"fade_out": SubResource("Animation_eb803")
+&"RESET": SubResource("Animation_oudmt"),
+&"fade_in": SubResource("Animation_cwsfi"),
+&"fade_out": SubResource("Animation_eb803")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_oua5h"]

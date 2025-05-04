@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://dvdly7xo8rxig"]
 
-[ext_resource type="Script" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/corridor.gd" id="1_sogev"]
+[ext_resource type="Script" uid="uid://73fg7u282eme" path="res://addons/SimpleDungeons/sample_dungeons/lowpoly_kit_1_rooms/corridor.gd" id="1_sogev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upkxj"]
 resource_name = "dark grey"

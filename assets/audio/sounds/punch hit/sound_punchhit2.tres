@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://tnrd8obi1636"]
 
 [ext_resource type="AudioStream" uid="uid://d34ep2k1w4epg" path="res://assets/audio/sounds/punch hit/hit31.mp3.wav" id="1_tumxb"]
-[ext_resource type="Script" path="res://scripts/globals/audio_settings.gd" id="2_7y0y3"]
+[ext_resource type="Script" uid="uid://bt7xlwqg84ywv" path="res://scripts/globals/audio_settings.gd" id="2_7y0y3"]
 
 [resource]
 script = ExtResource("2_7y0y3")
@@ -12,4 +12,7 @@ audio_stream = ExtResource("1_tumxb")
 volume = 0.0
 pitch_scale = 1.0
 pitch_randomness = 0.2
+max_distance_2d = 2000.0
+unit_size = 10.0
+max_distance_3d = 0.0
 reverb_tail = 0.0

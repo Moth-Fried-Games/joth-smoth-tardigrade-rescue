@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://b136cqpv3heu8"]
 
-[ext_resource type="Script" path="res://scripts/enemies/boss.gd" id="1_grp3v"]
+[ext_resource type="Script" uid="uid://cip2yoofpyvmp" path="res://scripts/enemies/boss.gd" id="1_grp3v"]
 [ext_resource type="Texture2D" uid="uid://da2tdbh5ov6vg" path="res://assets/textures/enemies/7dfps_sprites_mantis.png" id="2_7u2pc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0fj0"]
@@ -264,9 +264,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s3kwa"]
 _data = {
-"RESET": SubResource("Animation_e4nhc"),
-"damage": SubResource("Animation_nk82v"),
-"dead": SubResource("Animation_fp6sr")
+&"RESET": SubResource("Animation_e4nhc"),
+&"damage": SubResource("Animation_nk82v"),
+&"dead": SubResource("Animation_fp6sr")
 }
 
 [node name="Boss" type="CharacterBody3D"]
@@ -307,7 +307,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
 libraries = {
-"": SubResource("AnimationLibrary_s3kwa")
+&"": SubResource("AnimationLibrary_s3kwa")
 }
 
 [node name="TelegraphTimer" type="Timer" parent="."]
